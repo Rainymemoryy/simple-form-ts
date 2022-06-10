@@ -13,8 +13,19 @@ import ItemImage from './ItemImage'
 import SelectType from './SelectType'
 import WarningIcon from '@mui/icons-material/Warning'
 
-export default function ItemLayout(props) {
-  const { type, provided, snapshot } = props
+interface Props {
+  provided?: any
+  snapshot?: any
+  type?: any
+  regName: string
+}
+
+export default function ItemLayout({
+  provided,
+  snapshot,
+  type,
+  regName
+}: Props) {
   const [isShowContent, setShowContent] = useState(true)
   const [typeItem, setTypeItem] = useState(10)
 
@@ -43,14 +54,9 @@ export default function ItemLayout(props) {
             // {...methods.register(`itemName`)}
           />
 
-          {/* <div className="px-3 rounded hover:bg-violet-50 box-border h-8 flex items-center gap-1 text-violet-700">
-            <span className="text-sm">Chọn một lựa chọn</span>
-            <CheckBoxIcon fontSize="small" />
-          </div> */}
-
           <SelectType
             value={typeItem}
-            onChange={e => setTypeItem(e.target.value)}
+            onChange={(e: any) => setTypeItem(e.target.value)}
           />
         </div>
 

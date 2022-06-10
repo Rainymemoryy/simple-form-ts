@@ -1,4 +1,3 @@
-import React from 'react'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import MemoCheckOrRadio from './MemoCheckOrRadio'
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate'
@@ -22,7 +21,6 @@ export default function MemoItemLayout(props) {
       <section className='flex flex-col gap-1 flex-1 border border-violet-200 rounded p-3 hover:border-violet-400'>
         <div className='flex gap-1 items-center pl-3'>
           <input className='input-text w-full h-8' placeholder='Nhập câu hỏi' />
-          {/* <ClearIcon fontSize="small" /> */}
         </div>
 
         {type === 1 && (

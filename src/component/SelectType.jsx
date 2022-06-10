@@ -45,9 +45,6 @@ export default function SelectType(props) {
         sx={{ width: 200, height: 40 }}
         value={value}
         size='small'
-        // open={open}
-        // onClose={handleClose}
-        // onOpen={handleOpen}
         onChange={onChange}
         input={<OutlinedInput notched label='Lựa chọn' size='small' />}
         MenuProps={MenuProps}

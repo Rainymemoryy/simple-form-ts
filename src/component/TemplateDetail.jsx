@@ -3,6 +3,7 @@ import { Draggable } from 'react-beautiful-dnd'
 import { Droppable } from 'react-beautiful-dnd'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form'
+import { regName } from '../constants/registerCreateTemplate'
 import useGetTemplateItems from '../hooks/useGetTemplateItems'
 import CreateItem from './CreateItem'
 import ItemLayout from './ItemLayout'
@@ -16,8 +17,6 @@ export default function TemplateDetail() {
   })
 
   const data = useGetTemplateItems(methods)
-
-  console.log('rerender')
 
   return (
     <main className='max-w-3xl w-full h-fit flex flex-col gap-5'>
@@ -51,8 +50,8 @@ export default function TemplateDetail() {
                 >
                   {data?.map((item, index) => (
                     <Draggable
-                      key={`card${item.idTmp}`}
-                      draggableId={`card${item.idTmp}`}
+                      key={`card${item?.itemTmpID}`}
+                      draggableId={`card${item?.itemTmpID}`}
                       index={index}
                     >
                       {(provided, snapshot) => {
@@ -66,6 +65,7 @@ export default function TemplateDetail() {
                                 type={3}
                                 provided={provided}
                                 snapshot={snapshot}
+                                regName={regName(index)}
                               />
                             </div>
 
@@ -81,7 +81,6 @@ export default function TemplateDetail() {
               )}
             </Droppable>
           </DragDropContext>
-
           <CreateItem />
         </form>
       </FormProvider>

@@ -27,14 +27,13 @@ export default function CreateItem() {
             onChange={e => {
               setItemName(e.target.value)
             }}
-            onKeyPress={e => {
+            onKeyPress={(e: any) => {
               if (e.key === 'Enter') {
                 e.target.blur()
-
                 append({
                   itemName,
-                  type: 10,
-                  idTmp: `item-${Math.random()}`
+                  itemType: 10,
+                  itemTmpID: `item-${Math.random()}`
                 })
                 setItemName('')
               }
