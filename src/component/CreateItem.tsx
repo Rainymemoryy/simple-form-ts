@@ -2,6 +2,7 @@ import { Button, TextareaAutosize } from '@mui/material'
 import AddTaskIcon from '@mui/icons-material/AddTask'
 import { useFieldArray, useFormContext } from 'react-hook-form'
 import { registerCreateItem } from '../constants/regCreTemplate'
+import { itemType } from '../constants/itemType'
 
 export default function CreateItem() {
   const methods = useFormContext()
@@ -25,7 +26,7 @@ export default function CreateItem() {
                 e?.target.blur()
                 append({
                   itemName: methods.watch(registerCreateItem.itemName),
-                  itemType: 10,
+                  itemType: itemType.text,
                   itemTmpID: `item-${Math.random()}`
                 })
                 methods.setValue(registerCreateItem.itemName, '')

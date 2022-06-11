@@ -15,6 +15,7 @@ import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked'
 import styled from '@emotion/styled'
 import { useFormContext } from 'react-hook-form'
 import { memo } from 'react'
+import { itemType } from '../constants/itemType'
 
 const MenuItemCustom = styled(MenuItem)`
   border-radius: '4px';
@@ -55,38 +56,38 @@ const SelectType = memo(({ regName }: Props) => {
         {...methods.register(regName)}
         value={methods.watch(regName)}
       >
-        <MenuItemCustom value={10}>
+        <MenuItemCustom value={itemType.text}>
           <div className='flex gap-1'>
             <ShortTextIcon />
             <span>Text</span>
           </div>
         </MenuItemCustom>
-        <MenuItem value={20}>
+        <MenuItem value={itemType.checkbox}>
           <div className='flex gap-1'>
             <CheckBoxIcon />
             <span>Checkbox</span>
           </div>
         </MenuItem>
-        <MenuItem value={30}>
+        <MenuItem value={itemType.radio}>
           <div className='flex gap-1'>
             <RadioButtonCheckedIcon />
             <span>Radio</span>
           </div>
         </MenuItem>
 
-        <MenuItem value={40}>
+        <MenuItem value={itemType.time}>
           <div className='flex gap-1'>
             <AccessTimeIcon />
             <span>Time</span>
           </div>
         </MenuItem>
-        <MenuItem value={50}>
+        <MenuItem value={itemType.date}>
           <div className='flex gap-1'>
             <CalendarTodayIcon />
             <span>Date</span>
           </div>
         </MenuItem>
-        <MenuItem value={60}>
+        <MenuItem value={itemType.image}>
           <div className='flex gap-1'>
             <ImageIcon />
             <span>Image</span>

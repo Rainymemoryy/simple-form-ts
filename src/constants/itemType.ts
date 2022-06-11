@@ -1,3 +1,8 @@
 export const itemType = {
-  createTemplate: '/create-template'
+  text: 'Text',
+  checkbox: 'CheckBox',
+  radio: 'Radio',
+  date: 'Date',
+  time: 'Time',
+  image: 'Image'
 }
