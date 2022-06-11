@@ -1,9 +1,7 @@
 import { Button } from '@mui/material'
-import { Draggable } from 'react-beautiful-dnd'
-import { Droppable } from 'react-beautiful-dnd'
-import { DragDropContext } from 'react-beautiful-dnd'
+import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd'
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form'
-import { regName } from '../constants/registerCreateTemplate'
+import { regItem } from '../constants/regCreTemplate'
 import useGetTemplateItems from '../hooks/useGetTemplateItems'
 import CreateItem from './CreateItem'
 import ItemLayout from './ItemLayout'
@@ -17,6 +15,7 @@ export default function TemplateDetail() {
   })
 
   const data = useGetTemplateItems(methods)
+  // const data = methods?.watch('items')
 
   return (
     <main className='max-w-3xl w-full h-fit flex flex-col gap-5'>
@@ -35,9 +34,12 @@ export default function TemplateDetail() {
           >
             <span className='text-center block'>Submit</span>
           </Button>
+
           <DragDropContext
             onDragEnd={e => {
-              move(e.source.index, e.destination.index)
+              e.source &&
+                e.destination &&
+                move(e.source.index, e.destination.index)
             }}
           >
             <Droppable droppableId='6000' type='droppableItem'>
@@ -62,10 +64,10 @@ export default function TemplateDetail() {
                           >
                             <div className='py-2.5'>
                               <ItemLayout
-                                type={3}
+                                type={1}
                                 provided={provided}
                                 snapshot={snapshot}
-                                regName={regName(index)}
+                                regName={regItem(index)}
                               />
                             </div>
 
@@ -81,6 +83,7 @@ export default function TemplateDetail() {
               )}
             </Droppable>
           </DragDropContext>
+
           <CreateItem />
         </form>
       </FormProvider>

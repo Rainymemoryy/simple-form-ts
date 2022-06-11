@@ -5,9 +5,11 @@ export default function useGetTemplateItems(methods) {
 
   const items = methods?.watch('items')
 
+  const tmpData = items?.map(e => e.itemTmpID)
+
   useEffect(() => {
-    setListItem(items)
-  }, [items])
+    setListItem(tmpData)
+  }, [tmpData])
 
   return listItems
 }

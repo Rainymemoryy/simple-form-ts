@@ -6,6 +6,7 @@ import { useFieldArray, useFormContext } from 'react-hook-form'
 
 export default function CreateItem() {
   const [itemName, setItemName] = useState('')
+  // const [itemType, setItemType] = useState('')
   const methods = useFormContext()
 
   const { append } = useFieldArray({
@@ -29,7 +30,7 @@ export default function CreateItem() {
             }}
             onKeyPress={(e: any) => {
               if (e.key === 'Enter') {
-                e.target.blur()
+                e?.target.blur()
                 append({
                   itemName,
                   itemType: 10,
