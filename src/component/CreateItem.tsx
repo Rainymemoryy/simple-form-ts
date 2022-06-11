@@ -1,11 +1,11 @@
 import { Button, TextareaAutosize } from '@mui/material'
-import React, { useState } from 'react'
-import SelectType from './SelectType'
+import React from 'react'
+
 import AddTaskIcon from '@mui/icons-material/AddTask'
 import { useFieldArray, useFormContext } from 'react-hook-form'
+import { registerCreateItem } from '../constants/regCreTemplate'
 
 export default function CreateItem() {
-  const [itemName, setItemName] = useState('')
   // const [itemType, setItemType] = useState('')
   const methods = useFormContext()
 
@@ -13,6 +13,8 @@ export default function CreateItem() {
     control: methods.control,
     name: 'items'
   })
+
+  console.log('rerender')
 
   return (
     <main className='flex items-center relative py-3'>
@@ -24,41 +26,32 @@ export default function CreateItem() {
             aria-label='Item name'
             className='input-text min-h-[32px] mt-0.5 py-0.5 text-lg tracking-wide font-medium resize-none flex-1'
             placeholder='Nhập tên câu hỏi'
-            value={itemName}
-            onChange={e => {
-              setItemName(e.target.value)
-            }}
             onKeyPress={(e: any) => {
               if (e.key === 'Enter') {
                 e?.target.blur()
                 append({
-                  itemName,
+                  itemName: methods.watch(registerCreateItem.itemName),
                   itemType: 10,
                   itemTmpID: `item-${Math.random()}`
                 })
-                setItemName('')
+                methods.setValue(registerCreateItem.itemName, '')
               }
             }}
+            {...methods.register(registerCreateItem.itemName)}
           />
-        </div>
 
-        <div className='flex justify-between pt-2 gap-3 items-center'>
-          <div></div>
-
-          <div className='flex justify-end gap-3 items-center'>
-            <Button
-              className='button-default flex gap-1.5'
-              sx={{
-                textTransform: 'unset',
-                fontSize: 16,
-                fontWeight: '400'
-              }}
-              disabled={!itemName}
-            >
-              <span className='text-center block'> Tạo một câu hỏi mới</span>
-              <AddTaskIcon />
-            </Button>
-          </div>
+          <Button
+            className='button-default flex gap-1.5'
+            sx={{
+              textTransform: 'unset',
+              fontSize: 16,
+              fontWeight: '400'
+            }}
+            disabled={!methods.watch(registerCreateItem.itemName)}
+          >
+            <span className='text-center block'> Tạo một câu hỏi mới</span>
+            <AddTaskIcon />
+          </Button>
         </div>
       </div>
     </main>
