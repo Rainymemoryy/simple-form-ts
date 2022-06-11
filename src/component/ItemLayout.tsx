@@ -10,24 +10,30 @@ import ItemText from './ItemText'
 import ItemImage from './ItemImage'
 import WarningIcon from '@mui/icons-material/Warning'
 import { registerItem } from '../constants/regCreTemplate'
-import { useFormContext } from 'react-hook-form'
+import { useFieldArray, useFormContext } from 'react-hook-form'
 import SelectType from './SelectType'
 
 interface Props {
-  provided?: any
-  snapshot?: any
+  provided: any
+  snapshot: any
   type?: any
   regName: string
+  index: number
 }
 
 export default function ItemLayout({
   provided,
   snapshot,
   type,
-  regName
+  regName,
+  index
 }: Props) {
   const [isShowContent, setShowContent] = useState(true)
   const methods = useFormContext()
+  const { remove } = useFieldArray({
+    control: methods.control,
+    name: 'items'
+  })
 
   return (
     <main className='flex items-center relative'>
@@ -89,14 +95,20 @@ export default function ItemLayout({
               <ContentCopyIcon />
             </IconButton>
 
-            <IconButton className='w-8 h-8 hover:text-violet-700'>
+            <IconButton
+              className='w-8 h-8 hover:text-violet-700'
+              onClick={() => {
+                console.log(index)
+                remove(index)
+              }}
+            >
               <DeleteOutlineIcon />
             </IconButton>
 
-            <div className='flex items-center border-l'>
+            {/* <div className='flex items-center border-l'>
               <Switch />
               Xác thực
-            </div>
+            </div> */}
 
             <div className='flex items-center border-l'>
               <Switch

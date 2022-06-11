@@ -6,15 +6,11 @@ import { useFieldArray, useFormContext } from 'react-hook-form'
 import { registerCreateItem } from '../constants/regCreTemplate'
 
 export default function CreateItem() {
-  // const [itemType, setItemType] = useState('')
   const methods = useFormContext()
-
   const { append } = useFieldArray({
     control: methods.control,
     name: 'items'
   })
-
-  console.log('rerender')
 
   return (
     <main className='flex items-center relative py-3'>
@@ -27,7 +23,7 @@ export default function CreateItem() {
             className='input-text min-h-[32px] mt-0.5 py-0.5 text-lg tracking-wide font-medium resize-none flex-1'
             placeholder='Nhập tên câu hỏi'
             onKeyPress={(e: any) => {
-              if (e.key === 'Enter') {
+              if (e.key === 'Enter' && !e.shiftKey) {
                 e?.target.blur()
                 append({
                   itemName: methods.watch(registerCreateItem.itemName),
