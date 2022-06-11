@@ -37,7 +37,6 @@ interface Props {
 
 const SelectType = memo(({ regName }: Props) => {
   const methods = useFormContext()
-  console.log('reRender SelectType')
   return (
     <FormControl
       sx={{

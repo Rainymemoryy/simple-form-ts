@@ -6,6 +6,8 @@ import { regItem } from '../constants/regCreTemplate'
 import CreateItem from './CreateItem'
 import ItemLayout from './ItemLayout'
 
+let renderCount = 0
+
 export default function TemplateDetail() {
   const methods = useForm()
 
@@ -15,8 +17,7 @@ export default function TemplateDetail() {
   })
 
   // const data = useGetTemplateItems(methods)
-  const data = methods?.watch('items')?.map(e => e.itemTmpID)
-  console.log('rerender')
+  const data = methods?.watch('items')
 
   return (
     <main className='max-w-3xl w-full h-fit flex flex-col gap-5'>
@@ -33,7 +34,7 @@ export default function TemplateDetail() {
               fontWeight: '400'
             }}
           >
-            <span className='text-center block'>Submit</span>
+            <span className='text-center block'>Submit {++renderCount}</span>
           </Button>
 
           <DragDropContext
@@ -51,33 +52,35 @@ export default function TemplateDetail() {
                     snapshot.isDraggingOver && 'rounded bg-slate-50'
                   }`}
                 >
-                  {data?.map((item, index) => (
-                    <Draggable
-                      key={`card${item}`}
-                      draggableId={`card${item}`}
-                      index={index}
-                    >
-                      {(provided, snapshot) => {
-                        return (
-                          <div
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                          >
-                            <div className='py-2.5'>
-                              <ItemLayout
-                                type={2}
-                                provided={provided}
-                                snapshot={snapshot}
-                                regName={regItem(index)}
-                              />
-                            </div>
+                  {data
+                    ?.map(e => e.itemTmpID)
+                    ?.map((item, index) => (
+                      <Draggable
+                        key={`card${item}`}
+                        draggableId={`card${item}`}
+                        index={index}
+                      >
+                        {(provided, snapshot) => {
+                          return (
+                            <div
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                            >
+                              <div className='py-2.5'>
+                                <ItemLayout
+                                  type={3}
+                                  provided={provided}
+                                  snapshot={snapshot}
+                                  regName={regItem(index)}
+                                />
+                              </div>
 
-                            {provided.placeholder}
-                          </div>
-                        )
-                      }}
-                    </Draggable>
-                  ))}
+                              {provided.placeholder}
+                            </div>
+                          )
+                        }}
+                      </Draggable>
+                    ))}
 
                   {provided.placeholder}
                 </div>
