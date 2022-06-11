@@ -40,7 +40,6 @@ export default function CreateItem() {
               }
             }}
           />
-          <SelectType />
         </div>
 
         <div className='flex justify-between pt-2 gap-3 items-center'>

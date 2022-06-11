@@ -12,8 +12,9 @@ import ImageIcon from '@mui/icons-material/Image'
 import ShortTextIcon from '@mui/icons-material/ShortText'
 import CheckBoxIcon from '@mui/icons-material/CheckBox'
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked'
-
-import styled from 'styled-components'
+import styled from '@emotion/styled'
+import { useFormContext } from 'react-hook-form'
+import { memo } from 'react'
 
 const MenuItemCustom = styled(MenuItem)`
   border-radius: '4px';
@@ -30,8 +31,13 @@ const MenuProps = {
   }
 }
 
-export default function SelectType(props) {
-  const { onChange, value } = props
+interface Props {
+  regName?: any
+}
+
+const SelectType = memo(({ regName }: Props) => {
+  const methods = useFormContext()
+  console.log('reRender SelectType')
   return (
     <FormControl
       sx={{
@@ -40,20 +46,20 @@ export default function SelectType(props) {
       size='small'
     >
       <InputLabel shrink>Lựa chọn</InputLabel>
+
       <Select
         variant='outlined'
         sx={{ width: 200, height: 40 }}
-        value={value}
         size='small'
-        onChange={onChange}
         input={<OutlinedInput notched label='Lựa chọn' size='small' />}
         MenuProps={MenuProps}
-        defaultValue='10'
+        {...methods.register(regName)}
+        value={methods.watch(regName)}
       >
         <MenuItemCustom value={10}>
           <div className='flex gap-1'>
-            <RadioButtonCheckedIcon />
-            <span>Radio</span>
+            <ShortTextIcon />
+            <span>Text</span>
           </div>
         </MenuItemCustom>
         <MenuItem value={20}>
@@ -64,8 +70,8 @@ export default function SelectType(props) {
         </MenuItem>
         <MenuItem value={30}>
           <div className='flex gap-1'>
-            <ShortTextIcon />
-            <span>Text</span>
+            <RadioButtonCheckedIcon />
+            <span>Radio</span>
           </div>
         </MenuItem>
 
@@ -90,4 +96,6 @@ export default function SelectType(props) {
       </Select>
     </FormControl>
   )
-}
+})
+
+export default SelectType

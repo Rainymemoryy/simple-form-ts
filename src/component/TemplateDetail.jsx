@@ -2,7 +2,7 @@ import { Button } from '@mui/material'
 import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd'
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form'
 import { regItem } from '../constants/regCreTemplate'
-import useGetTemplateItems from '../hooks/useGetTemplateItems'
+// import useGetTemplateItems from '../hooks/useGetTemplateItems'
 import CreateItem from './CreateItem'
 import ItemLayout from './ItemLayout'
 
@@ -14,8 +14,9 @@ export default function TemplateDetail() {
     name: 'items'
   })
 
-  const data = useGetTemplateItems(methods)
-  // const data = methods?.watch('items')
+  // const data = useGetTemplateItems(methods)
+  const data = methods?.watch('items')?.map(e => e.itemTmpID)
+  console.log('rerender')
 
   return (
     <main className='max-w-3xl w-full h-fit flex flex-col gap-5'>
@@ -52,8 +53,8 @@ export default function TemplateDetail() {
                 >
                   {data?.map((item, index) => (
                     <Draggable
-                      key={`card${item?.itemTmpID}`}
-                      draggableId={`card${item?.itemTmpID}`}
+                      key={`card${item}`}
+                      draggableId={`card${item}`}
                       index={index}
                     >
                       {(provided, snapshot) => {
@@ -64,7 +65,7 @@ export default function TemplateDetail() {
                           >
                             <div className='py-2.5'>
                               <ItemLayout
-                                type={1}
+                                type={2}
                                 provided={provided}
                                 snapshot={snapshot}
                                 regName={regItem(index)}
@@ -83,7 +84,6 @@ export default function TemplateDetail() {
               )}
             </Droppable>
           </DragDropContext>
-
           <CreateItem />
         </form>
       </FormProvider>

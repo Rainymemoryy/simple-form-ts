@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
-// import TextareaAutosize from "react-textarea-autosize";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
-// import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import { IconButton, Switch, TextareaAutosize } from '@mui/material'
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
 import ItemCheckbox from './ItemCheckbox'
 import ItemText from './ItemText'
 import ItemImage from './ItemImage'
-import SelectType from './SelectType'
 import WarningIcon from '@mui/icons-material/Warning'
+import { registerItem } from '../constants/regCreTemplate'
+import { useFormContext } from 'react-hook-form'
+import SelectType from './SelectType'
 
 interface Props {
   provided?: any
@@ -27,7 +27,7 @@ export default function ItemLayout({
   regName
 }: Props) {
   const [isShowContent, setShowContent] = useState(true)
-  const [typeItem, setTypeItem] = useState(10)
+  const methods = useFormContext()
 
   return (
     <main className='flex items-center relative'>
@@ -50,20 +50,22 @@ export default function ItemLayout({
             aria-label='Item name'
             className='input-text min-h-[32px] mt-0.5 py-0.5 text-lg tracking-wide font-medium resize-none flex-1'
             placeholder='Nhập tên câu hỏi'
-
-            // {...methods.register(`itemName`)}
+            {...methods.register(`${regName}.${registerItem.itemName}`)}
+            onKeyDown={(e: any) => {
+              if (!e.shiftKey && e.keyCode === 13) {
+                e.target.blur()
+              }
+            }}
           />
 
-          <SelectType
-            value={typeItem}
-            onChange={(e: any) => setTypeItem(e.target.value)}
-          />
+          <SelectType regName={`${regName}.${registerItem.itemType}`} />
         </div>
 
         <TextareaAutosize
           aria-label='Item description'
           className='input-text text-sm resize-none w-full text-gray-500'
           placeholder='Nhập mô tả'
+          {...methods.register(`${regName}.${registerItem.itemDecs}`)}
         />
 
         {isShowContent && type === 1 && <ItemCheckbox />}
@@ -73,7 +75,6 @@ export default function ItemLayout({
         <div className='flex justify-between pt-2 gap-3 items-center'>
           <div className='flex justify-end gap-3 items-center text-yellow-400'>
             <WarningIcon />
-            không hỗ trợ điện thoại
           </div>
 
           <div className='flex justify-end gap-3 items-center'>
@@ -98,7 +99,11 @@ export default function ItemLayout({
             </div>
 
             <div className='flex items-center border-l'>
-              <Switch />
+              <Switch
+                {...methods.register(
+                  `${regName}.${registerItem.itemIsRequired}`
+                )}
+              />
               Bắt buộc
             </div>
           </div>
