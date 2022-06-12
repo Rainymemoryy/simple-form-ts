@@ -54,7 +54,6 @@ const SelectType = memo(({ regName }: Props) => {
         input={<OutlinedInput notched label='Lựa chọn' size='small' />}
         MenuProps={MenuProps}
         {...methods.register(regName)}
-        // value={methods.watch(regName) || itemType.text}
         defaultValue={itemType.text}
       >
         <MenuItemCustom value={itemType.text}>

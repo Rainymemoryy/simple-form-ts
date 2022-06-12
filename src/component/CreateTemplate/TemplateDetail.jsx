@@ -2,7 +2,6 @@ import { Button } from '@mui/material'
 import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd'
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form'
 import { regItem } from '../../constants/regCreTemplate'
-// import useGetTemplateItems from '../hooks/useGetTemplateItems'
 import CreateItem from './CreateItem'
 import ItemLayout from './ItemLayout'
 
@@ -15,9 +14,6 @@ export default function TemplateDetail() {
     control: methods.control,
     name: 'items'
   })
-
-  // const data = useGetTemplateItems(methods)
-  const data = methods?.watch('items')
 
   return (
     <main className='max-w-3xl w-full h-fit flex flex-col gap-5'>
@@ -52,7 +48,7 @@ export default function TemplateDetail() {
                     snapshot.isDraggingOver && 'rounded bg-slate-50'
                   }`}
                 >
-                  {data
+                  {fieldArray?.fields
                     ?.map(e => e.itemTmpID)
                     ?.map((item, index) => (
                       <Draggable
