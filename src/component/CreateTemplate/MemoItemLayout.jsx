@@ -1,5 +1,5 @@
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
-import MemoCheckOrRadio from './MemoCheckOrRadio'
+import MemoCheckOrRadio from './TypeItem/CheckBoxOrRadio/MemoCheckOrRadioxOrRadio/MemoCheckOrRadio'
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
