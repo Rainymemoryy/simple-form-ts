@@ -5,7 +5,6 @@ import { regItem } from '../../constants/regCreTemplate'
 import CreateItem from './CreateItem'
 import ItemLayout from './ItemLayout'
 
-
 let renderCount = 0
 
 export default function TemplateDetail() {
