@@ -1,15 +1,13 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
-import { useSelector } from 'react-redux'
 import { itemType } from '../../../constants/itemType'
-
 import { registerItem } from '../../../constants/regCreTemplate'
 import ItemCheckbox from './ItemCheckbox'
 import ItemImage from './ItemImage'
 import ItemText from './ItemText'
 
 interface Props {
-  regName: string
+  regName?: string
   index: number
 }
 
@@ -28,10 +26,10 @@ export default function ItemTypeWrapper({ regName, index }: Props) {
       <>
         {type === itemType.checkbox && <ItemCheckbox />}
         {type === itemType.image && <ItemImage />}
-        {type === itemType.text && <ItemText />}
+        {type === itemType.text && <ItemText regName={regName} />}
       </>
     )
-  }, [type])
+  }, [regName, type])
 
   return <div>{RenderItemType}</div>
 }

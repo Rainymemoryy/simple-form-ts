@@ -1,16 +1,39 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { TextareaAutosize } from '@mui/material'
+import { Checkbox, TextareaAutosize } from '@mui/material'
+import { useFormContext } from 'react-hook-form'
+import { itemType } from '../../../constants/itemType'
+import { registerItem } from '../../../constants/regCreTemplate'
 
-export default function () {
+interface Props {
+  regName: any
+}
+
+export default function ({ regName }: Props) {
+  const methods = useFormContext()
   return (
     <main className='w-full'>
-      <TextareaAutosize
-        minRows={2}
-        className='input-defaulvalue w-full'
-        placeholder='Nhập câu trả lời'
-      />
-      <section className='flex items-center w-full'>
-        {/* <MemoLayout /> */}
+      {methods.watch(`${regName}.${registerItem.isMultiLine}`) ? (
+        <TextareaAutosize
+          minRows={2}
+          className='input-defaulvalue w-full'
+          placeholder='Nhập một đoạn văn'
+          {...methods.register(`${regName}.${itemType.textDefault}`)}
+        />
+      ) : (
+        <input
+          className='input-text h-8'
+          placeholder='Nhập một câu ngắn'
+          {...methods.register(`${regName}.${itemType.textDefault}`)}
+        />
+      )}
+
+      <section className='flex items-center w-full justify-end'>
+        <div className='flex items-center'>
+          <Checkbox
+            {...methods.register(`${regName}.${registerItem.isMultiLine}`)}
+          />
+          Nhiều dòng
+        </div>
       </section>
     </main>
   )

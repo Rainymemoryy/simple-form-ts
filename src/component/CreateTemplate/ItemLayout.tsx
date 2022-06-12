@@ -7,26 +7,23 @@ import { IconButton, Switch, TextareaAutosize } from '@mui/material'
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
 import WarningIcon from '@mui/icons-material/Warning'
 
-import {
-  FieldValues,
-  UseFieldArrayReturn,
-  useFormContext
-} from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 import { registerItem } from '../../constants/regCreTemplate'
 import SelectType from './SelectType'
 import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
+import { itemType } from '../../constants/itemType'
 
 interface Props {
   provided: any
   snapshot: any
-  type?: any
+
   regName: string
   index: number
-  fieldArray: UseFieldArrayReturn<FieldValues, 'items', 'id'>
+  fieldArray: any
 }
 
 export const ItemLayout = memo(
-  ({ provided, snapshot, type, index, regName, fieldArray }: Props) => {
+  ({ provided, snapshot, index, regName, fieldArray }: Props) => {
     const [isShowContent, setShowContent] = useState(true)
     const methods = useFormContext()
 
@@ -69,13 +66,13 @@ export const ItemLayout = memo(
             {...methods.register(`${regName}.${registerItem.itemDecs}`)}
           />
 
-          {isShowContent && (
+          {/* {isShowContent && (
             <img
               className='rounded'
               src='https://images.wallpapersden.com/image/wxl-small-memory_58461.jpg'
               alt=''
             />
-          )}
+          )} */}
 
           {isShowContent && <ItemTypeWrapper regName={regName} index={index} />}
 
@@ -119,9 +116,7 @@ export const ItemLayout = memo(
 
               <div className='flex items-center border-l'>
                 <Switch
-                  {...methods.register(
-                    `${regName}.${registerItem.itemIsRequired}`
-                  )}
+                  {...methods.register(`${regName}.${registerItem.isRequired}`)}
                 />
                 Bắt buộc
               </div>

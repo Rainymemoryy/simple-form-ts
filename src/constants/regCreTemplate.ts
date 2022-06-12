@@ -4,7 +4,9 @@ export const registerItem = {
   itemTmpID: 'itemTmpID',
   itemType: 'itemType',
   itemDecs: 'itemDecs',
-  itemIsRequired: 'itemIsRequired'
+  isRequired: 'itemIsRequired',
+
+  isMultiLine: 'isMultiLine'
 }
 
 export const registerCreateItem = {

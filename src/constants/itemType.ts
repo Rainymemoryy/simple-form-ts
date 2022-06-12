@@ -4,5 +4,6 @@ export const itemType = {
   radio: 'Radio',
   date: 'Date',
   time: 'Time',
-  image: 'Image'
+  image: 'Image',
+  textDefault: 'textDefault'
 }

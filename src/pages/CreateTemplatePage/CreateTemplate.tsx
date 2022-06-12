@@ -9,7 +9,7 @@ export default function CreateTemplate() {
       <section className='w-96 hidden lg:block'>
         <TemplateNav />
       </section>
-      <section className='hidden sm:flex flex-1 justify-center overflow-auto p-3 lg:p-10'>
+      <section className='hidden sm:flex flex-1 justify-center overflow-auto py-3 px-6  lg:p-10'>
         <TemplateDetail />
       </section>
       <section className='sm:hidden'>
