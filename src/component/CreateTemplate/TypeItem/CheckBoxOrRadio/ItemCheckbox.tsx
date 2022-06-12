@@ -1,12 +1,11 @@
-import { Button, Checkbox } from '@mui/material'
-
-import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { Droppable } from 'react-beautiful-dnd'
 import { Draggable } from 'react-beautiful-dnd'
 import { useFieldArray, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../../../constants/regCreTemplate'
 import CheckboxOrRadioItem from './CheckboxOrRadioItem'
+import AddItemCheckorRadio from './AddItemCheckorRadio'
+import Another from './Another'
 
 interface Props {
   regName: any
@@ -21,7 +20,6 @@ export default function ItemCheckbox({ regName }: Props) {
   })
 
   const { fields, move } = fieldArray
-  console.log(fields)
 
   return (
     <div>
@@ -36,10 +34,10 @@ export default function ItemCheckbox({ regName }: Props) {
               ref={provided.innerRef}
               className={`${snapshot.isDraggingOver && 'rounded bg-slate-50'}`}
             >
-              {[1, 2, 3].map((item, index) => (
+              {fields.map((item, index) => (
                 <Draggable
-                  key={`checkItem${item}`}
-                  draggableId={`checkItem${item}`}
+                  key={`checkItem${index}`}
+                  draggableId={`checkItem${index}`}
                   index={index}
                 >
                   {(provided, snapshot) => {
@@ -63,38 +61,9 @@ export default function ItemCheckbox({ regName }: Props) {
         </Droppable>
       </DragDropContext>
 
-      <div className='flex items-center w-full relative'>
-        <DragIndicatorIcon className='opacity-0' />
-        <Checkbox disabled />
+      <Another regName={regName} />
 
-        <input
-          className='input-text flex-1 h-8 truncate bg-transparent border-dashed'
-          placeholder='Khác...'
-          disabled
-        />
-      </div>
-
-      <div className='flex items-center w-full relative'>
-        <DragIndicatorIcon className='opacity-0' />
-        <Checkbox disabled />
-        <div className='flex gap-1 items-center flex-1'>
-          <input
-            className='input-text flex-1 h-8 truncate'
-            placeholder='Thêm tuỳ chọn mới'
-          />
-          hoặc
-          <Button
-            className='button-default'
-            sx={{
-              textTransform: 'unset',
-              fontSize: 16,
-              fontWeight: '400'
-            }}
-          >
-            <span className='text-center block'>thêm "Khác"</span>
-          </Button>
-        </div>
-      </div>
+      <AddItemCheckorRadio fieldArray={fieldArray} regName={regName} />
     </div>
   )
 }

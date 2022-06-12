@@ -8,9 +8,9 @@ import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
 import WarningIcon from '@mui/icons-material/Warning'
 
 import { useFormContext } from 'react-hook-form'
-import { registerItem } from '../../../../constants/regCreTemplate'
-import SelectType from '../../SelectType'
-import ItemTypeWrapper from '../ItemTypeWrapper'
+import { registerItem } from '../../constants/regCreTemplate'
+import SelectType from './SelectType'
+import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
 
 interface Props {
   provided: any
@@ -24,6 +24,8 @@ export const ItemLayout = memo(
   ({ provided, snapshot, index, regName, fieldArray }: Props) => {
     const [isShowContent, setShowContent] = useState(true)
     const methods = useFormContext()
+
+    console.log('reRender', regName)
 
     return (
       <main className='flex items-center relative'>

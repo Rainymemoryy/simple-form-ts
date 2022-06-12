@@ -15,7 +15,8 @@ export const registerItem = {
   isMultiLine: 'isMultiLine',
 
   //check or radio
-  listCheckOrRadio: 'listCheckOrRadio'
+  listCheckOrRadio: 'listCheckOrRadio',
+  isAnother: 'isAnother'
 }
 
 export const regItem = (itemIndex: number) =>
