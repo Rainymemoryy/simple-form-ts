@@ -11,12 +11,10 @@ import { useFormContext } from 'react-hook-form'
 import { registerItem } from '../../constants/regCreTemplate'
 import SelectType from './SelectType'
 import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
-import { itemType } from '../../constants/itemType'
 
 interface Props {
   provided: any
   snapshot: any
-
   regName: string
   index: number
   fieldArray: any
