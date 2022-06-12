@@ -11,7 +11,7 @@ let renderCount = 0
 export default function TemplateDetail() {
   const methods = useForm()
 
-  const { move } = useFieldArray({
+  const fieldArray = useFieldArray({
     control: methods.control,
     name: 'items'
   })
@@ -41,7 +41,7 @@ export default function TemplateDetail() {
             onDragEnd={e => {
               e.source &&
                 e.destination &&
-                move(e.source.index, e.destination.index)
+                fieldArray.move(e.source.index, e.destination.index)
             }}
           >
             <Droppable droppableId='6000' type='droppableItem'>
@@ -72,6 +72,8 @@ export default function TemplateDetail() {
                                   provided={provided}
                                   snapshot={snapshot}
                                   regName={regItem(index)}
+                                  index={index}
+                                  fieldArray={fieldArray}
                                 />
                               </div>
 
@@ -87,7 +89,7 @@ export default function TemplateDetail() {
               )}
             </Droppable>
           </DragDropContext>
-          <CreateItem />
+          <CreateItem append={fieldArray.append} />
         </form>
       </FormProvider>
     </main>

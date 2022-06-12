@@ -10,7 +10,7 @@ import ItemText from './ItemText'
 import ItemImage from './ItemImage'
 import WarningIcon from '@mui/icons-material/Warning'
 import { registerItem } from '../constants/regCreTemplate'
-import { useFieldArray, useFormContext } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 import SelectType from './SelectType'
 
 interface Props {
@@ -19,25 +19,27 @@ interface Props {
   type?: any
   regName: string
   index: number
+  remove: any
+  insert: any
 }
 
 export default function ItemLayout({
   provided,
   snapshot,
   type,
+  index,
   regName,
-  index
+  remove,
+  insert
 }: Props) {
   const [isShowContent, setShowContent] = useState(true)
   const methods = useFormContext()
-  const { remove } = useFieldArray({
-    control: methods.control,
-    name: 'items'
-  })
+
+  console.log('reRender ItemLayout', regName)
 
   return (
     <main className='flex items-center relative'>
-      <div
+      <section
         className='opacity-50 group-hover:opacity-100 hover:fill-violet-400 absolute left-[-24px]'
         {...provided.dragHandleProps}
         onClick={e => {
@@ -45,7 +47,7 @@ export default function ItemLayout({
         }}
       >
         <DragIndicatorIcon />
-      </div>
+      </section>
       <section
         className={`bg-white flex-1 relative rounded-lg gap-1 box-border p-8 pb-6 outline-none border-2 border-transparent hover:border-violet-400 cursor-default flex flex-col shadow-11 ${
           snapshot?.isDragging && 'border-violet-400'
@@ -91,24 +93,21 @@ export default function ItemLayout({
               {isShowContent ? <UnfoldLessIcon /> : <UnfoldMoreIcon />}
             </IconButton>
 
-            <IconButton className='w-8 h-8 hover:text-violet-700'>
+            <IconButton
+              className='w-8 h-8 hover:text-violet-700'
+              onClick={() => {}}
+            >
               <ContentCopyIcon />
             </IconButton>
 
             <IconButton
               className='w-8 h-8 hover:text-violet-700'
               onClick={() => {
-                console.log(index)
                 remove(index)
               }}
             >
               <DeleteOutlineIcon />
             </IconButton>
-
-            {/* <div className='flex items-center border-l'>
-              <Switch />
-              Xác thực
-            </div> */}
 
             <div className='flex items-center border-l'>
               <Switch

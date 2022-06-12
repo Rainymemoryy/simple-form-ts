@@ -1,15 +1,12 @@
 import { Button, TextareaAutosize } from '@mui/material'
 import AddTaskIcon from '@mui/icons-material/AddTask'
-import { useFieldArray, useFormContext } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 import { registerCreateItem } from '../constants/regCreTemplate'
 import { itemType } from '../constants/itemType'
 
-export default function CreateItem() {
+export default function CreateItem(props: any) {
   const methods = useFormContext()
-  const { append } = useFieldArray({
-    control: methods.control,
-    name: 'items'
-  })
+  const { append } = props
 
   return (
     <main className='flex items-center relative py-3'>
