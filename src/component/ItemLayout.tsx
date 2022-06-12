@@ -10,7 +10,11 @@ import ItemText from './ItemText'
 import ItemImage from './ItemImage'
 import WarningIcon from '@mui/icons-material/Warning'
 import { registerItem } from '../constants/regCreTemplate'
-import { useFormContext } from 'react-hook-form'
+import {
+  FieldValues,
+  UseFieldArrayReturn,
+  useFormContext
+} from 'react-hook-form'
 import SelectType from './SelectType'
 
 interface Props {
@@ -19,8 +23,7 @@ interface Props {
   type?: any
   regName: string
   index: number
-  remove: any
-  insert: any
+  fieldArray: UseFieldArrayReturn<FieldValues, 'items', 'id'>
 }
 
 export default function ItemLayout({
@@ -29,8 +32,7 @@ export default function ItemLayout({
   type,
   index,
   regName,
-  remove,
-  insert
+  fieldArray
 }: Props) {
   const [isShowContent, setShowContent] = useState(true)
   const methods = useFormContext()
@@ -95,7 +97,16 @@ export default function ItemLayout({
 
             <IconButton
               className='w-8 h-8 hover:text-violet-700'
-              onClick={() => {}}
+              onClick={() => {
+                const field: any = fieldArray.fields[index]
+                const copyData = {
+                  ...field,
+                  itemTmpID: `item-${Math.random()}`,
+                  itemName: `${field.itemName} - copy`
+                }
+
+                fieldArray.insert(index + 1, copyData)
+              }}
             >
               <ContentCopyIcon />
             </IconButton>
@@ -103,7 +114,7 @@ export default function ItemLayout({
             <IconButton
               className='w-8 h-8 hover:text-violet-700'
               onClick={() => {
-                remove(index)
+                fieldArray.remove(index)
               }}
             >
               <DeleteOutlineIcon />
