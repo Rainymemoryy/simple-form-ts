@@ -15,7 +15,6 @@ interface Props {
 export default function ItemTypeWrapper({ regName, index }: Props) {
   const methods = useFormContext()
   const [type, setType] = useState(itemType.text)
-
   const typeTMP = methods.watch(`${regName}.${registerItem.itemType}`)
 
   useEffect(() => {

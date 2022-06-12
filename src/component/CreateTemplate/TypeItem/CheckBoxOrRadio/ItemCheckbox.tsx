@@ -3,9 +3,10 @@ import { Droppable } from 'react-beautiful-dnd'
 import { Draggable } from 'react-beautiful-dnd'
 import { useFieldArray, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../../../constants/regCreTemplate'
-import CheckboxOrRadioItem from './CheckboxOrRadioItem'
-import AddItemCheckorRadio from './AddItemCheckorRadio'
+
+import AddItemCheckorRadio from './AddItem'
 import Another from './Another'
+import CheckboxOrRadioItem from './CheckboxOrRadioItem'
 
 interface Props {
   regName: any
@@ -28,7 +29,7 @@ export default function ItemCheckbox({ regName }: Props) {
           e.source && e.destination && move(e.source.index, e.destination.index)
         }}
       >
-        <Droppable droppableId='61000' type='droppableItem'>
+        <Droppable droppableId={regName} type='droppableItem'>
           {(provided, snapshot) => (
             <div
               ref={provided.innerRef}
@@ -36,17 +37,18 @@ export default function ItemCheckbox({ regName }: Props) {
             >
               {fields.map((item, index) => (
                 <Draggable
-                  key={`checkItem${index}`}
-                  draggableId={`checkItem${index}`}
+                  key={`checkItem${item.id}`}
+                  draggableId={`checkItem${item.id}`}
                   index={index}
                 >
                   {(provided, snapshot) => {
                     return (
                       <div ref={provided.innerRef} {...provided.draggableProps}>
                         <CheckboxOrRadioItem
-                          key={index}
                           provided={provided}
-                          snapshot={snapshot}
+                          regName={`${regNameItem}[${index}]`}
+                          fieldArray={fieldArray}
+                          index={index}
                         />
                         {provided.placeholder}
                       </div>

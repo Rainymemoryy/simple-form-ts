@@ -28,7 +28,7 @@ export default function AddItemCheckorRadio({ fieldArray, regName }: Props) {
               if (value !== '') {
                 console.log(value)
                 setValue('')
-                fieldArray.append({ name: value, tmpID: Math.random() })
+                fieldArray.append({ value, tmpID: Math.random() })
               }
 
               e.preventDefault()
