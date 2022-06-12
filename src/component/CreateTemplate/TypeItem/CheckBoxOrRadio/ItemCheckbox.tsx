@@ -1,20 +1,42 @@
 import { Button, Checkbox } from '@mui/material'
-import CheckboxOrRadioItem from '../CheckboxOrRadioItem'
+
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { Droppable } from 'react-beautiful-dnd'
 import { Draggable } from 'react-beautiful-dnd'
-export default function ItemCheckbox() {
+import { useFieldArray, useFormContext } from 'react-hook-form'
+import { registerItem } from '../../../../constants/regCreTemplate'
+import CheckboxOrRadioItem from './CheckboxOrRadioItem'
+
+interface Props {
+  regName: any
+}
+
+export default function ItemCheckbox({ regName }: Props) {
+  const regNameItem = `${regName}.${registerItem.listCheckOrRadio}`
+  const methods = useFormContext()
+  const fieldArray = useFieldArray({
+    control: methods.control,
+    name: regNameItem
+  })
+
+  const { fields, move } = fieldArray
+  console.log(fields)
+
   return (
     <div>
-      <DragDropContext onDragEnd={ee => {}}>
+      <DragDropContext
+        onDragEnd={e => {
+          e.source && e.destination && move(e.source.index, e.destination.index)
+        }}
+      >
         <Droppable droppableId='61000' type='droppableItem'>
           {(provided, snapshot) => (
             <div
               ref={provided.innerRef}
               className={`${snapshot.isDraggingOver && 'rounded bg-slate-50'}`}
             >
-              {[0, 1, 2, 3, 4, 5].map((item, index) => (
+              {fields.map((item, index) => (
                 <Draggable
                   key={`checkItem${item}`}
                   draggableId={`checkItem${item}`}

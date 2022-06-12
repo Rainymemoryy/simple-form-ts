@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-import MemoItemLayout from './MemoItemLayout'
+import MemoItemLayout from '../../MemoItemLayoutyout'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { Droppable } from 'react-beautiful-dnd'
 import { Draggable } from 'react-beautiful-dnd'

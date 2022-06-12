@@ -8,9 +8,9 @@ import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
 import WarningIcon from '@mui/icons-material/Warning'
 
 import { useFormContext } from 'react-hook-form'
-import { registerItem } from '../../constants/regCreTemplate'
-import SelectType from './SelectType'
-import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
+import { registerItem } from '../../../../constants/regCreTemplate'
+import SelectType from '../../SelectType'
+import ItemTypeWrapper from '../ItemTypeWrapper'
 
 interface Props {
   provided: any

@@ -1,18 +1,21 @@
 export const registerItem = {
   items: 'items',
+
+  //type
   itemName: 'itemName',
   itemTmpID: 'itemTmpID',
   itemType: 'itemType',
   itemDecs: 'itemDecs',
+  itemCheckOrRadioItem: 'itemCheckOrRadioItem',
+
+  //config
   isRequired: 'itemIsRequired',
 
-  isMultiLine: 'isMultiLine'
-}
+  //text
+  isMultiLine: 'isMultiLine',
 
-export const registerCreateItem = {
-  itemName: 'createItem.itemName',
-  itemTmpID: 'createItem.itemTmpID',
-  itemType: 'createItem.itemType'
+  //check or radio
+  listCheckOrRadio: 'listCheckOrRadio'
 }
 
 export const regItem = (itemIndex: number) =>

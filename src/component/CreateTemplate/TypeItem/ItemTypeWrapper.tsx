@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { itemType } from '../../../constants/itemType'
 import { registerItem } from '../../../constants/regCreTemplate'
-import ItemCheckbox from './ItemCheckbox'
+import ItemCheckbox from './CheckBoxOrRadio/ItemCheckbox'
+
 import ItemImage from './ItemImage'
 import ItemText from './ItemText'
 
@@ -24,7 +25,7 @@ export default function ItemTypeWrapper({ regName, index }: Props) {
   const RenderItemType = useMemo(() => {
     return (
       <>
-        {type === itemType.checkbox && <ItemCheckbox />}
+        {type === itemType.checkbox && <ItemCheckbox regName={regName} />}
         {type === itemType.image && <ItemImage />}
         {type === itemType.text && <ItemText regName={regName} />}
       </>
