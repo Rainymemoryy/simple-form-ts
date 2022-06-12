@@ -19,7 +19,7 @@ export default function ItemTypeWrapper({ regName, index }: Props) {
 
   const RenderItemType = useMemo(() => {
     return (
-      <div className='w-full flex' >
+      <div className='w-full'>
         {type === itemType.checkbox && <ItemCheckbox />}
         {type === itemType.image && <ItemImage />}
         {type === itemType.text && <ItemText />}
