@@ -37,8 +37,6 @@ export default function ItemLayout({
   const [isShowContent, setShowContent] = useState(true)
   const methods = useFormContext()
 
-  console.log('reRender ItemLayout', regName)
-
   return (
     <main className='flex items-center relative'>
       <section
