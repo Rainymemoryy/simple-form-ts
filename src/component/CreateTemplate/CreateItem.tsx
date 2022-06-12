@@ -1,6 +1,7 @@
 import { Button, TextareaAutosize } from '@mui/material'
 import AddTaskIcon from '@mui/icons-material/AddTask'
 import { useState } from 'react'
+import { itemType } from '../../constants/itemType'
 
 export default function CreateItem(props: any) {
   const { append } = props
@@ -41,7 +42,8 @@ export default function CreateItem(props: any) {
             onClick={() => {
               append({
                 itemName: value,
-                itemTmpID: `item-${Math.random()}`
+                itemTmpID: `item-${Math.random()}`,
+                itemType: itemType.text
               })
               setValue('')
             }}

@@ -1,5 +1,6 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
+import { useSelector } from 'react-redux'
 import { itemType } from '../../../constants/itemType'
 
 import { registerItem } from '../../../constants/regCreTemplate'
@@ -14,16 +15,21 @@ interface Props {
 
 export default function ItemTypeWrapper({ regName, index }: Props) {
   const methods = useFormContext()
+  const [type, setType] = useState(itemType.text)
 
-  const type = methods.watch(`${regName}.${registerItem.itemType}`)
+  const typeTMP = methods.watch(`${regName}.${registerItem.itemType}`)
+
+  useEffect(() => {
+    setType(typeTMP)
+  }, [typeTMP])
 
   const RenderItemType = useMemo(() => {
     return (
-      <div className='w-full'>
+      <>
         {type === itemType.checkbox && <ItemCheckbox />}
         {type === itemType.image && <ItemImage />}
         {type === itemType.text && <ItemText />}
-      </div>
+      </>
     )
   }, [type])
 
