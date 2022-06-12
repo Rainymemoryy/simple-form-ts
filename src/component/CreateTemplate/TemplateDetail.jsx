@@ -1,7 +1,7 @@
 import { Button } from '@mui/material'
 import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd'
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form'
-import { regItem } from '../constants/regCreTemplate'
+import { regItem } from '../../constants/regCreTemplate'
 // import useGetTemplateItems from '../hooks/useGetTemplateItems'
 import CreateItem from './CreateItem'
 import ItemLayout from './ItemLayout'

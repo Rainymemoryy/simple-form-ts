@@ -9,13 +9,14 @@ import ItemCheckbox from './ItemCheckbox'
 import ItemText from './ItemText'
 import ItemImage from './ItemImage'
 import WarningIcon from '@mui/icons-material/Warning'
-import { registerItem } from '../constants/regCreTemplate'
+
 import {
   FieldValues,
   UseFieldArrayReturn,
   useFormContext
 } from 'react-hook-form'
 import SelectType from './SelectType'
+import { registerItem } from '../../constants/regCreTemplate'
 
 interface Props {
   provided: any

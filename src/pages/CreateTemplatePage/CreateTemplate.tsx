@@ -1,7 +1,7 @@
 import React from 'react'
-import Template404 from '../../component/Template404'
-import TemplateDetail from '../../component/TemplateDetail'
-import TemplateNav from '../../component/TemplateNav'
+import Template404 from '../../component/CreateTemplate/Template404'
+import TemplateDetail from '../../component/CreateTemplate/TemplateDetail'
+import TemplateNav from '../../component/CreateTemplate/TemplateNav'
 
 export default function CreateTemplate() {
   return (

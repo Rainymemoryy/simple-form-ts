@@ -15,7 +15,7 @@ import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked'
 import styled from '@emotion/styled'
 import { useFormContext } from 'react-hook-form'
 import { memo } from 'react'
-import { itemType } from '../constants/itemType'
+import { itemType } from '../../constants/itemType'
 
 const MenuItemCustom = styled(MenuItem)`
   border-radius: '4px';

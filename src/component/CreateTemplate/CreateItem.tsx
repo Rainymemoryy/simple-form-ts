@@ -1,11 +1,8 @@
 import { Button, TextareaAutosize } from '@mui/material'
 import AddTaskIcon from '@mui/icons-material/AddTask'
-import { useFormContext } from 'react-hook-form'
-import { registerCreateItem } from '../constants/regCreTemplate'
 import { useState } from 'react'
 
 export default function CreateItem(props: any) {
-  const methods = useFormContext()
   const { append } = props
   const [value, setValue] = useState('')
 
@@ -20,6 +17,7 @@ export default function CreateItem(props: any) {
             className='input-text min-h-[32px] mt-0.5 py-0.5 text-lg tracking-wide font-medium resize-none flex-1'
             placeholder='Nhập tên câu hỏi'
             onChange={e => setValue(e.target.value)}
+            value={value}
             onKeyPress={(e: any) => {
               if (e.key === 'Enter' && !e.shiftKey && value !== '') {
                 e?.target.blur()
@@ -39,7 +37,7 @@ export default function CreateItem(props: any) {
               fontSize: 16,
               fontWeight: '400'
             }}
-            disabled={!methods.watch(registerCreateItem.itemName)}
+            disabled={value === ''}
             onClick={() => {
               append({
                 itemName: value,
