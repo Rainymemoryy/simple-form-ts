@@ -1,9 +1,9 @@
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
-import MemoCheckOrRadio from './TypeItem/CheckBoxOrRadio/MemoCheckOrRadioxOrRadio/MemoCheckOrRadio'
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import { IconButton, TextareaAutosize } from '@mui/material'
+import MemoCheckOrRadio from './TypeItem/CheckBoxOrRadio/MemoCheckOrRadio'
 export default function MemoItemLayout(props) {
   const { type, provided } = props
   return (

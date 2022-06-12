@@ -36,7 +36,7 @@ export default function ItemCheckbox({ regName }: Props) {
               ref={provided.innerRef}
               className={`${snapshot.isDraggingOver && 'rounded bg-slate-50'}`}
             >
-              {fields.map((item, index) => (
+              {[1, 2, 3].map((item, index) => (
                 <Draggable
                   key={`checkItem${item}`}
                   draggableId={`checkItem${item}`}
