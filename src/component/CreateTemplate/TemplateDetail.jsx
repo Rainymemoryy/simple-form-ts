@@ -3,7 +3,8 @@ import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd'
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form'
 import { regItem } from '../../constants/regCreTemplate'
 import CreateItem from './CreateItem'
-import ItemLayout from './TypeItem/ItemLayouttemLayout'
+import ItemLayout from './ItemLayout'
+
 
 let renderCount = 0
 

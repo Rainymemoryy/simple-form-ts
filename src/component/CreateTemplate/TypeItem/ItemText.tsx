@@ -1,8 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-
 import { TextareaAutosize } from '@mui/material'
-import React from 'react'
-// import MemoLayout from "./MemoLayout";
 
 export default function () {
   return (

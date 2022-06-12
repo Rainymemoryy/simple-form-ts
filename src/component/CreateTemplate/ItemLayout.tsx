@@ -5,9 +5,6 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
 import { IconButton, Switch, TextareaAutosize } from '@mui/material'
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
-import ItemCheckbox from './ItemCheckbox'
-import ItemText from './ItemText'
-import ItemImage from './ItemImage'
 import WarningIcon from '@mui/icons-material/Warning'
 
 import {
@@ -15,8 +12,12 @@ import {
   UseFieldArrayReturn,
   useFormContext
 } from 'react-hook-form'
-import SelectType from './SelectType'
+
+import ItemCheckbox from './TypeItem/ItemCheckbox'
+import ItemImage from './TypeItem/ItemImage'
+import ItemText from './TypeItem/ItemText'
 import { registerItem } from '../../constants/regCreTemplate'
+import SelectType from './SelectType'
 
 interface Props {
   provided: any
@@ -76,6 +77,14 @@ export default function ItemLayout({
           placeholder='Nhập mô tả'
           {...methods.register(`${regName}.${registerItem.itemDecs}`)}
         />
+
+        {isShowContent && (
+          <img
+            className='rounded'
+            src='https://images.wallpapersden.com/image/wxl-small-memory_58461.jpg'
+            alt=''
+          />
+        )}
 
         {isShowContent && type === 1 && <ItemCheckbox />}
         {isShowContent && type === 2 && <ItemImage />}

@@ -1,6 +1,5 @@
 import { Button, Checkbox } from '@mui/material'
-import React from 'react'
-import CheckboxOrRadioItem from './CheckboxOrRadioItem'
+import CheckboxOrRadioItem from '../CheckboxOrRadioItem'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { Droppable } from 'react-beautiful-dnd'
