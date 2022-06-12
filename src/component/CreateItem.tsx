@@ -2,11 +2,12 @@ import { Button, TextareaAutosize } from '@mui/material'
 import AddTaskIcon from '@mui/icons-material/AddTask'
 import { useFormContext } from 'react-hook-form'
 import { registerCreateItem } from '../constants/regCreTemplate'
-import { itemType } from '../constants/itemType'
+import { useState } from 'react'
 
 export default function CreateItem(props: any) {
   const methods = useFormContext()
   const { append } = props
+  const [value, setValue] = useState('')
 
   return (
     <main className='flex items-center relative py-3'>
@@ -18,18 +19,17 @@ export default function CreateItem(props: any) {
             aria-label='Item name'
             className='input-text min-h-[32px] mt-0.5 py-0.5 text-lg tracking-wide font-medium resize-none flex-1'
             placeholder='Nhập tên câu hỏi'
+            onChange={e => setValue(e.target.value)}
             onKeyPress={(e: any) => {
-              if (e.key === 'Enter' && !e.shiftKey) {
+              if (e.key === 'Enter' && !e.shiftKey && value !== '') {
                 e?.target.blur()
                 append({
-                  itemName: methods.watch(registerCreateItem.itemName),
-                  itemType: itemType.text,
+                  itemName: value,
                   itemTmpID: `item-${Math.random()}`
                 })
-                methods.setValue(registerCreateItem.itemName, '')
+                setValue('')
               }
             }}
-            {...methods.register(registerCreateItem.itemName)}
           />
 
           <Button
@@ -40,6 +40,13 @@ export default function CreateItem(props: any) {
               fontWeight: '400'
             }}
             disabled={!methods.watch(registerCreateItem.itemName)}
+            onClick={() => {
+              append({
+                itemName: value,
+                itemTmpID: `item-${Math.random()}`
+              })
+              setValue('')
+            }}
           >
             <span className='text-center block'> Tạo một câu hỏi mới</span>
             <AddTaskIcon />
