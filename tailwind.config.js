@@ -12,9 +12,11 @@ module.exports = withMT({
         58: 'rgba(0, 0, 0, 0.15) 0px 5px 15px 0px'
       }
     },
+
     fontFamily: {
       sans: ['Roboto', 'sans-serif']
     },
+
     colors: {
       'violet-50': 'rgb(245 243 255)',
       'violet-100': 'rgb(237 233 254)',
@@ -36,8 +38,20 @@ module.exports = withMT({
       'slate-600': 'rgb(71 85 105)',
       'slate-700': 'rgb(51 65 85)',
       'slate-800': 'rgb(30 41 59)',
-      'slate-900': 'rgb(15 23 42)'
+      'slate-900': 'rgb(15 23 42)',
+
+      'bg-gray-50': 'rgb(249 250 251)',
+      'bg-gray-100': 'rgb(243 244 246)',
+      'bg-gray-200': 'rgb(229 231 235)',
+      'bg-gray-300': 'rgb(209 213 219)',
+      'bg-gray-400': 'rgb(156 163 175)',
+      'bg-gray-500': 'rgb(107 114 128)',
+      'bg-gray-600': 'rgb(75 85 99)',
+      'bg-gray-700': 'rgb(55 65 81)',
+      'bg-gray-800': 'rgb(31 41 55)',
+      'bg-gray-900': 'rgb(17 24 39)'
     }
   },
+
   plugins: []
 })
