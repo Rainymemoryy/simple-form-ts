@@ -25,7 +25,7 @@ export default function CheckboxOrRadioItem({
     <main>
       <section className='flex items-center w-full relative group'>
         <div
-          className='opacity-50 group-hover:opacity-100 group-hover:fill-violet-400'
+          className='opacity-70 group-hover:opacity-100 group-hover:fill-violet-400 text-violet-400'
           {...provided.dragHandleProps}
           onClick={e => {
             e.stopPropagation()
@@ -35,6 +35,7 @@ export default function CheckboxOrRadioItem({
         </div>
 
         <Checkbox name='check' />
+
         <input
           className='input-text h-8 flex-1 group-hover:border-violet-400'
           placeholder='Nhập tuỳ chọn'

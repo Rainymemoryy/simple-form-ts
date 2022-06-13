@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react'
+import React, { memo, useRef, useState } from 'react'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
@@ -6,7 +6,6 @@ import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
 import { IconButton, Switch, TextareaAutosize } from '@mui/material'
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
 import WarningIcon from '@mui/icons-material/Warning'
-
 import { useFormContext } from 'react-hook-form'
 import { registerItem } from '../../constants/regCreTemplate'
 import SelectType from './SelectType'
@@ -20,12 +19,14 @@ interface Props {
   fieldArray: any
 }
 
-export const ItemLayout = memo(
+const ItemLayout = memo(
   ({ provided, snapshot, index, regName, fieldArray }: Props) => {
     const [isShowContent, setShowContent] = useState(true)
     const methods = useFormContext()
-
     console.log('reRender', regName)
+
+    const refName = useRef<any>()
+    const refDesc = useRef<any>()
 
     return (
       <main className='flex items-center relative'>
@@ -51,7 +52,10 @@ export const ItemLayout = memo(
               {...methods.register(`${regName}.${registerItem.itemName}`)}
               onKeyDown={(e: any) => {
                 if (!e.shiftKey && e.keyCode === 13) {
-                  e.target.blur()
+                  // e.target.blur()
+                  // methods.setFocus(`${regName}.${registerItem.itemDecs}`)
+                  refDesc?.current.focus()
+                  console.log(refDesc?.current.selectionEnd)
                 }
               }}
             />
@@ -64,6 +68,7 @@ export const ItemLayout = memo(
             className='input-text text-sm resize-none w-full text-gray-500'
             placeholder='Nhập mô tả'
             {...methods.register(`${regName}.${registerItem.itemDecs}`)}
+            ref={refDesc}
           />
 
           {/* {isShowContent && (

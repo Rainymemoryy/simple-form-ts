@@ -15,7 +15,7 @@ export default function AddItemCheckorRadio({ fieldArray, regName }: Props) {
 
   return (
     <div className='flex items-center w-full relative'>
-      <DragIndicatorIcon className='opacity-0' />
+      <DragIndicatorIcon className='opacity-20' />
       <Checkbox disabled />
       <div className='flex gap-1 items-center flex-1'>
         <input

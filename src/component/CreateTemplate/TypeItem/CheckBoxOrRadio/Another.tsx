@@ -1,9 +1,9 @@
 import React from 'react'
-import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
-import { Checkbox } from '@mui/material'
+import { Checkbox, IconButton } from '@mui/material'
 import { useFormContext } from 'react-hook-form'
 import { registerItem } from '../../../../constants/regCreTemplate'
-
+import ClearIcon from '@mui/icons-material/Clear'
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 interface Props {
   fieldArray?: any
   regName?: any
@@ -16,8 +16,8 @@ export default function Another({ fieldArray, regName }: Props) {
   return (
     <>
       {isShow && (
-        <div className='flex items-center w-full relative'>
-          <DragIndicatorIcon className='opacity-0' />
+        <div className='flex items-center w-full relative group'>
+          <DragIndicatorIcon className='opacity-20' />
           <Checkbox disabled />
 
           <input
@@ -25,6 +25,20 @@ export default function Another({ fieldArray, regName }: Props) {
             placeholder='Khác...'
             disabled
           />
+
+          <div className='flex gap-1'>
+            <IconButton
+              className='w-8 h-8 hover:text-violet-700'
+              onClick={() => {
+                methods.setValue(`${regName}.${registerItem.isAnother}`, false)
+              }}
+            >
+              <ClearIcon
+                fontSize='small'
+                className='opacity-0 group-hover:opacity-100'
+              />
+            </IconButton>
+          </div>
         </div>
       )}
     </>
