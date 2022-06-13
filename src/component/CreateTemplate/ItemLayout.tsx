@@ -10,7 +10,6 @@ import { Controller, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../constants/regCreTemplate'
 import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
 import { SelectType } from './SelectType'
-
 interface Props {
   provided: any
   snapshot: any
