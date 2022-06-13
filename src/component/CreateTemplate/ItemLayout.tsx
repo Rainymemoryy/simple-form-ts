@@ -23,7 +23,7 @@ const ItemLayout = memo(
   ({ provided, snapshot, index, regName, fieldArray }: Props) => {
     const [isShowContent, setShowContent] = useState(true)
     const methods = useFormContext()
-    console.log('reRender', regName)
+    // console.log('reRender', regName)
 
     const refName = useRef<any>()
     const refDesc = useRef<any>()
@@ -55,7 +55,7 @@ const ItemLayout = memo(
                   // e.target.blur()
                   // methods.setFocus(`${regName}.${registerItem.itemDecs}`)
                   refDesc?.current.focus()
-                  console.log(refDesc?.current.selectionEnd)
+                  // console.log(refDesc?.current.selectionEnd)
                 }
               }}
             />

@@ -26,7 +26,6 @@ export default function AddItemCheckorRadio({ fieldArray, regName }: Props) {
           onKeyPress={e => {
             if (e.key === 'Enter') {
               if (value !== '') {
-                console.log(value)
                 setValue('')
                 fieldArray.append({ value, tmpID: Math.random() })
               }

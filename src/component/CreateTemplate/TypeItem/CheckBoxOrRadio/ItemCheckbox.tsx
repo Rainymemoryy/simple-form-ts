@@ -21,6 +21,7 @@ export default function ItemCheckbox({ regName }: Props) {
   })
 
   const { fields, move } = fieldArray
+  console.log(regName, fields)
 
   return (
     <div>
@@ -49,6 +50,7 @@ export default function ItemCheckbox({ regName }: Props) {
                           regName={`${regNameItem}[${index}]`}
                           fieldArray={fieldArray}
                           index={index}
+                          groupCheck={regName}
                         />
                         {provided.placeholder}
                       </div>

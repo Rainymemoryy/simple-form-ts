@@ -1,4 +1,4 @@
-import { Checkbox, IconButton } from '@mui/material'
+import { Checkbox, IconButton, Radio } from '@mui/material'
 import React from 'react'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
@@ -12,15 +12,18 @@ interface Props {
   provided: any
   fieldArray: any
   index: any
+  groupCheck: any
 }
 
 export default function CheckboxOrRadioItem({
   provided,
   regName,
   fieldArray,
-  index
+  index,
+  groupCheck
 }: Props) {
   const methods = useFormContext()
+
   return (
     <main>
       <section className='flex items-center w-full relative group'>
@@ -34,7 +37,7 @@ export default function CheckboxOrRadioItem({
           <DragIndicatorIcon />
         </div>
 
-        <Checkbox name='check' />
+        <Checkbox {...methods.register(`${regName}.isCheck`)} />
 
         <input
           className='input-text h-8 flex-1 group-hover:border-violet-400'
