@@ -8,6 +8,14 @@ import ItemCheckbox from './CheckBoxOrRadio/ItemCheckbox'
 import ItemImage from './ItemImage'
 import ItemText from './ItemText'
 
+const useGetType = (regName, methods) => {
+  const typeTMP = methods.watch(`${regName}.${registerItem.itemType}`)
+  const type = useMemo(() => {
+    return typeTMP
+  }, [typeTMP])
+  return type
+}
+
 interface Props {
   regName?: string
   index: number
@@ -15,25 +23,7 @@ interface Props {
 
 export default function ItemTypeWrapper({ regName, index }: Props) {
   const methods = useFormContext()
-  // const [type, setType] = useState(itemType.text)
-  // const typeTMP = methods.watch(`${regName}.${registerItem.itemType}`)
-
-  // useEffect(() => {
-  //   setType(typeTMP)
-  // }, [typeTMP])
-
-  // const RenderItemType = useMemo(() => {
-  //   return (
-  //     <>
-  //       {type === itemType.checkbox && <ItemCheckbox regName={regName} />}
-  //       {type === itemType.image && <ItemImage />}
-  //       {type === itemType.text && <ItemText regName={regName} />}
-  //     </>
-  //   )
-  // }, [regName, type])
-
-  const type = methods.watch(`${regName}.${registerItem.itemType}`)
-
+  const type = useGetType(regName, methods)
   return (
     <div>
       {type === itemType.checkbox && <ItemCheckbox regName={regName} />}

@@ -67,13 +67,13 @@ export default function ItemLayout({
           {...methods.register(`${regName}.${registerItem.itemDecs}`)}
         />
 
-        {/* {isShowContent && (
-            <img
-              className='rounded'
-              src='https://images.wallpapersden.com/image/wxl-small-memory_58461.jpg'
-              alt=''
-            />
-          )} */}
+        {isShowContent && (
+          <img
+            className='rounded'
+            src='https://images.wallpapersden.com/image/wxl-small-memory_58461.jpg'
+            alt=''
+          />
+        )}
 
         {isShowContent && <ItemTypeWrapper regName={regName} index={index} />}
 
@@ -93,9 +93,7 @@ export default function ItemLayout({
             <IconButton
               className='w-8 h-8 hover:text-violet-700'
               onClick={() => {
-                // const field: any = fieldArray.fields[index]
                 const field: any = methods.getValues(`${regName}`)
-                console.log('field copy', field)
                 const copyData = {
                   ...field,
                   itemTmpID: `item-${Math.random()}`,

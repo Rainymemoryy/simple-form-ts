@@ -24,7 +24,8 @@ export default function CreateItem(props: any) {
                 e?.target.blur()
                 append({
                   itemName: value,
-                  itemTmpID: `item-${Math.random()}`
+                  itemTmpID: `item-${Math.random()}`,
+                  itemType: itemType.text
                 })
                 setValue('')
               }
