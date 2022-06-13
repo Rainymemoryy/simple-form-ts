@@ -1,10 +1,8 @@
-import { Checkbox, IconButton, Radio } from '@mui/material'
-import React from 'react'
+import { Checkbox, IconButton } from '@mui/material'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import ClearIcon from '@mui/icons-material/Clear'
 import AddIcon from '@mui/icons-material/Add'
-import MemoLayout from './MemoLayout'
 import { useFormContext } from 'react-hook-form'
 
 interface Props {
@@ -12,15 +10,13 @@ interface Props {
   provided: any
   fieldArray: any
   index: any
-  groupCheck: any
 }
 
 export default function CheckboxOrRadioItem({
   provided,
   regName,
   fieldArray,
-  index,
-  groupCheck
+  index
 }: Props) {
   const methods = useFormContext()
 

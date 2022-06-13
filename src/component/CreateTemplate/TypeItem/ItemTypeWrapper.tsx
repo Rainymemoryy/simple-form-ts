@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useMemo, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { itemType } from '../../../constants/itemType'
@@ -31,5 +32,11 @@ export default function ItemTypeWrapper({ regName, index }: Props) {
     )
   }, [regName, type])
 
-  return <div>{RenderItemType}</div>
+  return (
+    <div>
+      {type === itemType.checkbox && <ItemCheckbox regName={regName} />}
+      {type === itemType.image && <ItemImage />}
+      {type === itemType.text && <ItemText regName={regName} />}
+    </div>
+  )
 }

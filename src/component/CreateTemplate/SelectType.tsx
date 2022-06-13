@@ -14,7 +14,6 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox'
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked'
 import styled from '@emotion/styled'
 import { useFormContext } from 'react-hook-form'
-import { memo } from 'react'
 import { itemType } from '../../constants/itemType'
 
 const MenuItemCustom = styled(MenuItem)`
@@ -36,7 +35,7 @@ interface Props {
   regName?: any
 }
 
-const SelectType = memo(({ regName }: Props) => {
+export function SelectType({ regName }: Props) {
   const methods = useFormContext()
   return (
     <FormControl
@@ -54,7 +53,7 @@ const SelectType = memo(({ regName }: Props) => {
         input={<OutlinedInput notched label='Lựa chọn' size='small' />}
         MenuProps={MenuProps}
         {...methods.register(regName)}
-        defaultValue={itemType.text}
+        value={methods.getValues(regName) || itemType.text}
       >
         <MenuItemCustom value={itemType.text}>
           <div className='flex gap-1'>
@@ -96,6 +95,4 @@ const SelectType = memo(({ regName }: Props) => {
       </Select>
     </FormControl>
   )
-})
-
-export default SelectType
+}
