@@ -6,7 +6,7 @@ import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
 import { IconButton, Switch, TextareaAutosize } from '@mui/material'
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
 import WarningIcon from '@mui/icons-material/Warning'
-import { useFormContext } from 'react-hook-form'
+import { Controller, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../constants/regCreTemplate'
 import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
 import { SelectType } from './SelectType'
@@ -102,7 +102,6 @@ export default function ItemLayout({
                   itemTmpID: `item-${Math.random()}`,
                   itemName: `${field.itemName} - copy`
                 }
-
                 fieldArray.insert(index + 1, copyData)
               }}
             >
@@ -119,8 +118,16 @@ export default function ItemLayout({
             </IconButton>
 
             <div className='flex items-center border-l'>
-              <Switch
-                {...methods.register(`${regName}.${registerItem.isRequired}`)}
+              <Controller
+                control={methods.control}
+                name={`${regName}.${registerItem.isRequired}`}
+                render={({ field: { onChange, onBlur, value, ref } }) => (
+                  <Switch
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    checked={value || false}
+                  />
+                )}
               />
               Bắt buộc
             </div>
