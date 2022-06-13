@@ -15,22 +15,24 @@ interface Props {
 
 export default function ItemTypeWrapper({ regName, index }: Props) {
   const methods = useFormContext()
-  const [type, setType] = useState(itemType.text)
-  const typeTMP = methods.watch(`${regName}.${registerItem.itemType}`)
+  // const [type, setType] = useState(itemType.text)
+  // const typeTMP = methods.watch(`${regName}.${registerItem.itemType}`)
 
-  useEffect(() => {
-    setType(typeTMP)
-  }, [typeTMP])
+  // useEffect(() => {
+  //   setType(typeTMP)
+  // }, [typeTMP])
 
-  const RenderItemType = useMemo(() => {
-    return (
-      <>
-        {type === itemType.checkbox && <ItemCheckbox regName={regName} />}
-        {type === itemType.image && <ItemImage />}
-        {type === itemType.text && <ItemText regName={regName} />}
-      </>
-    )
-  }, [regName, type])
+  // const RenderItemType = useMemo(() => {
+  //   return (
+  //     <>
+  //       {type === itemType.checkbox && <ItemCheckbox regName={regName} />}
+  //       {type === itemType.image && <ItemImage />}
+  //       {type === itemType.text && <ItemText regName={regName} />}
+  //     </>
+  //   )
+  // }, [regName, type])
+
+  const type = methods.watch(`${regName}.${registerItem.itemType}`)
 
   return (
     <div>

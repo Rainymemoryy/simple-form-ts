@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { Checkbox, TextareaAutosize } from '@mui/material'
-import { useFormContext } from 'react-hook-form'
+import { Controller, useFormContext } from 'react-hook-form'
 import { itemType } from '../../../constants/itemType'
 import { registerItem } from '../../../constants/regCreTemplate'
 
@@ -29,8 +29,16 @@ export default function ({ regName }: Props) {
 
       <section className='flex items-center w-full justify-end'>
         <div className='flex items-center'>
-          <Checkbox
-            {...methods.register(`${regName}.${registerItem.isMultiLine}`)}
+          <Controller
+            control={methods.control}
+            name={`${regName}.${registerItem.isMultiLine}`}
+            render={({ field: { onChange, onBlur, value, ref } }) => (
+              <Checkbox
+                onChange={onChange}
+                onBlur={onBlur}
+                checked={value || false}
+              />
+            )}
           />
           Nhiều dòng
         </div>

@@ -3,7 +3,7 @@ import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import ClearIcon from '@mui/icons-material/Clear'
 import AddIcon from '@mui/icons-material/Add'
-import { useFormContext } from 'react-hook-form'
+import { Controller, useFormContext } from 'react-hook-form'
 
 interface Props {
   regName: any
@@ -33,7 +33,18 @@ export default function CheckboxOrRadioItem({
           <DragIndicatorIcon />
         </div>
 
-        <Checkbox {...methods.register(`${regName}.isCheck`)} />
+        <Controller
+          control={methods.control}
+          name={`${regName}.isCheck`}
+          render={({ field: { onChange, onBlur, value, ref } }) => (
+            <Checkbox
+              onChange={onChange}
+              onBlur={onBlur}
+              checked={value || false}
+            />
+          )}
+        />
+        {/* <Checkbox {...methods.register()} /> */}
 
         <input
           className='input-text h-8 flex-1 group-hover:border-violet-400'
