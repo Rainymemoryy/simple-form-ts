@@ -1,22 +1,32 @@
-import { Button, Checkbox, IconButton } from '@mui/material'
+import { Button, Checkbox, IconButton, Radio } from '@mui/material'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import { useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { registerItem } from '../../../../constants/regCreTemplate'
 import AddIcon from '@mui/icons-material/Add'
+import { itemType } from '../../../../constants/itemType'
 interface Props {
   fieldArray?: any
   regName?: any
+  type?: any
 }
 
-export default function AddItemCheckorRadio({ fieldArray, regName }: Props) {
+export default function AddItemCheckorRadio({
+  fieldArray,
+  regName,
+  type
+}: Props) {
   const methods = useFormContext()
   const [value, setValue] = useState('')
 
   return (
     <div className='flex items-center w-full relative group'>
       <DragIndicatorIcon className='opacity-20' />
-      <Checkbox disabled />
+
+      {type === itemType.checkbox && <Checkbox disabled />}
+
+      {type === itemType.radio && <Radio disabled />}
+
       <div className='flex gap-1 items-center flex-1'>
         <input
           className='input-text flex-1 h-8 truncate group-hover:border-violet-400'

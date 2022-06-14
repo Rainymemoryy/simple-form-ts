@@ -66,9 +66,13 @@ export default function ItemCheckbox({ regName, type }: Props) {
         </Droppable>
       </DragDropContext>
 
-      <Another regName={regName} />
+      <Another regName={regName} type={type} />
 
-      <AddItemCheckorRadio fieldArray={fieldArray} regName={regName} />
+      <AddItemCheckorRadio
+        fieldArray={fieldArray}
+        regName={regName}
+        type={type}
+      />
     </div>
   )
 }

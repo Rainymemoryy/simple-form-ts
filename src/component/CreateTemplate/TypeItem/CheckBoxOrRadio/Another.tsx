@@ -1,15 +1,17 @@
 import React from 'react'
-import { Checkbox, IconButton } from '@mui/material'
+import { Checkbox, IconButton, Radio } from '@mui/material'
 import { useFormContext } from 'react-hook-form'
 import { registerItem } from '../../../../constants/regCreTemplate'
 import ClearIcon from '@mui/icons-material/Clear'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
+import { itemType } from '../../../../constants/itemType'
 interface Props {
   fieldArray?: any
   regName?: any
+  type?: any
 }
 
-export default function Another({ fieldArray, regName }: Props) {
+export default function Another({ fieldArray, regName, type }: Props) {
   const methods = useFormContext()
   const isShow = methods.watch(`${regName}.${registerItem.isAnother}`)
 
@@ -18,7 +20,9 @@ export default function Another({ fieldArray, regName }: Props) {
       {isShow && (
         <div className='flex items-center w-full relative group'>
           <DragIndicatorIcon className='opacity-20' />
-          <Checkbox disabled />
+
+          {type === itemType.checkbox && <Checkbox disabled />}
+          {type === itemType.radio && <Radio disabled />}
 
           <input
             className='input-text flex-1 h-8 truncate bg-transparent border-dashed'
