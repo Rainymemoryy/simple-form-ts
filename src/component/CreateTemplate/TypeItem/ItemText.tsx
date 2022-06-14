@@ -21,7 +21,7 @@ export default function ({ regName }: Props) {
         />
       ) : (
         <input
-          className='input-text h-8'
+          className='input-text h-8 w-full'
           placeholder='Nhập một câu ngắn'
           {...methods.register(`${regName}.${itemType.textDefault}`)}
         />
