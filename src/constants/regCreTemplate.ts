@@ -16,7 +16,10 @@ export const registerItem = {
 
   //check or radio
   listCheckOrRadio: 'listCheckOrRadio',
-  isAnother: 'isAnother'
+  isAnother: 'isAnother',
+
+  //show
+  isShowContent: 'isShowContent'
 }
 
 export const regItem = (itemIndex: number) =>

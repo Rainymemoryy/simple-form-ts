@@ -25,7 +25,8 @@ export default function CreateItem(props: any) {
                 append({
                   itemName: value,
                   itemTmpID: `item-${Math.random()}`,
-                  itemType: itemType.text
+                  itemType: itemType.text,
+                  isShowContent: true
                 })
                 setValue('')
               }
@@ -44,7 +45,8 @@ export default function CreateItem(props: any) {
               append({
                 itemName: value,
                 itemTmpID: `item-${Math.random()}`,
-                itemType: itemType.text
+                itemType: itemType.text,
+                isShowContent: true
               })
               setValue('')
             }}

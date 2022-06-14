@@ -64,7 +64,6 @@ export default function TemplateDetail() {
                             >
                               <div className='py-2.5'>
                                 <ItemLayout
-                                  type={3}
                                   provided={provided}
                                   snapshot={snapshot}
                                   regName={regItem(index)}

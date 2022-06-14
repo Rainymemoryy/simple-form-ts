@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
-import { IconButton, Switch, TextareaAutosize } from '@mui/material'
+import { Checkbox, IconButton, Switch, TextareaAutosize } from '@mui/material'
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
 import WarningIcon from '@mui/icons-material/Warning'
 import { Controller, useFormContext } from 'react-hook-form'
@@ -39,6 +39,16 @@ const SelectWrapper = styled.div`
   }
 `
 
+const useShowContent = (methods, regName) => {
+  const isShowContent = methods.watch(
+    `${regName}.${registerItem.isShowContent}`
+  )
+  const data = useMemo(() => {
+    return isShowContent
+  }, [isShowContent])
+  return data
+}
+
 export default function ItemLayout({
   provided,
   snapshot,
@@ -46,9 +56,8 @@ export default function ItemLayout({
   regName,
   fieldArray
 }: Props) {
-  const [isShowContent, setShowContent] = useState(true)
   const methods = useFormContext()
-
+  const isShowContent = useShowContent(methods, regName)
   return (
     <main className='flex items-center relative'>
       <section
@@ -163,12 +172,30 @@ export default function ItemLayout({
           </div>
 
           <div className='flex justify-end gap-3 items-center'>
-            <IconButton
+            {/* <IconButton
               className='w-8 h-8 hover:text-violet-700'
-              onClick={() => setShowContent(!isShowContent)}
+              onClick={() => {
+                methods.setValue(
+                  `${regName}.${registerItem.isShowContent}`,
+                  !isShowContent
+                )
+              }}
             >
               {isShowContent ? <UnfoldLessIcon /> : <UnfoldMoreIcon />}
-            </IconButton>
+            </IconButton> */}
+
+            <Controller
+              control={methods.control}
+              name={`${regName}.${registerItem.isShowContent}`}
+              render={({ field: { onChange, onBlur, value, ref } }) => (
+                <IconButton
+                  className='w-8 h-8 hover:text-violet-700'
+                  onClick={() => onChange(!value)}
+                >
+                  {value ? <UnfoldLessIcon /> : <UnfoldMoreIcon />}
+                </IconButton>
+              )}
+            />
 
             <IconButton
               className='w-8 h-8 hover:text-violet-700'
