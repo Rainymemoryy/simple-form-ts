@@ -13,7 +13,7 @@ export default function Template404() {
             Hãy chọn màn hình có kích thước lớn hơn để đảm bảo trải nghiệm tốt
             nhất.{' '}
           </p>
-          <button className='px-4 inline py-2 text-sm font-medium leading-5 shadow text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-none focus:shadow-outline-blue bg-blue-600 active:bg-blue-600 hover:bg-blue-700'>
+          <button className='px-4 inline py-2 text-sm font-medium leading-5 shadow text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-0 focus:shadow-outline-blue bg-blue-600 active:bg-blue-600 hover:bg-blue-700'>
             trở về trang chủ
           </button>
         </div>

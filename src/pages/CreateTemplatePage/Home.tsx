@@ -9,7 +9,7 @@ export default function Home() {
       <section className='flex-1 bg-slate-50 flex justify-center items-center'>
         <Link to={path.createTemplate}>
           <div aria-label='Lựa chọn container' className='flex flex-col gap-3'>
-            <button className='bg-white flex relative h-20 w-96 rounded-lg border outline-none border-violet-200 hover:border-violet-400 hover:shadow-xl'>
+            <button className='bg-white flex relative h-20 w-96 rounded-lg border outline-0 border-violet-200 hover:border-violet-400 hover:shadow-xl'>
               <label className='w-10 h-10 rounded-full bg-violet-400 absolute right-5 top-5 flex justify-between items-center scale-150'></label>
               <label className='w-10 h-10 rounded-full bg-violet-400 absolute right-5 top-5 shadow-55 flex justify-between items-center'>
                 <svg
