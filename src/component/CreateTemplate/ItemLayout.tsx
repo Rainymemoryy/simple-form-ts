@@ -9,15 +9,7 @@ import WarningIcon from '@mui/icons-material/Warning'
 import { Controller, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../constants/regCreTemplate'
 import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
-import { Select, Option } from '@material-tailwind/react'
-import ShortTextIcon from '@mui/icons-material/ShortText'
-import { itemType } from '../../constants/itemType'
-import AccessTimeIcon from '@mui/icons-material/AccessTime'
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
-import ImageIcon from '@mui/icons-material/Image'
-import CheckBoxIcon from '@mui/icons-material/CheckBox'
-import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked'
-import styled from '@emotion/styled'
+import { SelectType } from './SelectType'
 
 interface Props {
   provided: any
@@ -27,17 +19,6 @@ interface Props {
   fieldArray: any
 }
 
-const SelectWrapper = styled.div`
-  width: 200px;
-
-  label {
-  }
-  button {
-    padding: 0 10px;
-    outline: none;
-    /* border-radius: 4px; */
-  }
-`
 
 const useShowContent = (methods, regName) => {
   const isShowContent = methods.watch(
@@ -88,65 +69,7 @@ export default function ItemLayout({
             }}
           />
 
-          {/* <SelectType regName={`${regName}.${registerItem.itemType}`} /> */}
-
-          <SelectWrapper className='w-52'>
-            <Controller
-              control={methods.control}
-              name={`${regName}.${registerItem.itemType}`}
-              render={({ field: { onChange, onBlur, value, ref } }) => (
-                <Select
-                  label='Lựa chọn'
-                  onChange={onChange}
-                  size='md'
-                  value={value || itemType.text}
-                >
-                  <Option
-                    value={itemType.text}
-                    className='flex gap-1 items-center text-grey-900 outline-0 border-none'
-                  >
-                    <ShortTextIcon />
-                    <span>Text</span>
-                  </Option>
-                  <Option
-                    value={itemType.checkbox}
-                    className='flex gap-1 items-center text-grey-900 outline-0 border-none'
-                  >
-                    <CheckBoxIcon />
-                    <span>Checkbox</span>
-                  </Option>
-                  <Option
-                    value={itemType.radio}
-                    className='flex gap-1 items-center text-grey-900 outline-0 border-none'
-                  >
-                    <RadioButtonCheckedIcon />
-                    <span>Radio</span>
-                  </Option>
-                  <Option
-                    value={itemType.time}
-                    className='flex gap-1 items-center text-grey-900 outline-0 border-none'
-                  >
-                    <AccessTimeIcon />
-                    <span>Time</span>
-                  </Option>
-                  <Option
-                    value={itemType.date}
-                    className='flex gap-1 items-center text-grey-900 outline-0 border-none'
-                  >
-                    <CalendarTodayIcon />
-                    <span>Date</span>
-                  </Option>
-                  <Option
-                    value={itemType.image}
-                    className='flex gap-1 items-center text-grey-900 outline-0 border-none'
-                  >
-                    <ImageIcon />
-                    <span>Image</span>
-                  </Option>
-                </Select>
-              )}
-            />
-          </SelectWrapper>
+          <SelectType regName={`${regName}.${registerItem.itemType}`} />
         </div>
 
         <TextareaAutosize

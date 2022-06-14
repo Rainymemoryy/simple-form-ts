@@ -13,8 +13,10 @@ import ShortTextIcon from '@mui/icons-material/ShortText'
 import CheckBoxIcon from '@mui/icons-material/CheckBox'
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked'
 import styled from '@emotion/styled'
-import { useFormContext } from 'react-hook-form'
+import { Controller, useFormContext } from 'react-hook-form'
 import { itemType } from '../../constants/itemType'
+import { registerItem } from '../../constants/regCreTemplate'
+import { Console } from 'console'
 
 const MenuItemCustom = styled(MenuItem)`
   border-radius: '4px';
@@ -46,53 +48,80 @@ export function SelectType({ regName }: Props) {
     >
       <InputLabel shrink>Lựa chọn</InputLabel>
 
-      <Select
-        variant='outlined'
-        sx={{ width: 200, height: 40 }}
-        size='small'
-        input={<OutlinedInput notched label='Lựa chọn' size='small' />}
-        MenuProps={MenuProps}
-        {...methods.register(regName)}
-        value={methods.getValues(regName) || itemType.text}
-      >
-        <MenuItemCustom value={itemType.text}>
-          <div className='flex gap-1'>
-            <ShortTextIcon />
-            <span>Text</span>
-          </div>
-        </MenuItemCustom>
-        <MenuItemCustom value={itemType.checkbox}>
-          <div className='flex gap-1'>
-            <CheckBoxIcon />
-            <span>Checkbox</span>
-          </div>
-        </MenuItemCustom>
-        <MenuItemCustom value={itemType.radio}>
-          <div className='flex gap-1'>
-            <RadioButtonCheckedIcon />
-            <span>Radio</span>
-          </div>
-        </MenuItemCustom>
+      <Controller
+        control={methods.control}
+        name={`${regName}`}
+        render={({ field: { onChange, onBlur, value, ref } }) => (
+          <Select
+            variant='outlined'
+            sx={{ width: 200, height: 40 }}
+            size='small'
+            input={<OutlinedInput notched label='Lựa chọn' size='small' />}
+            MenuProps={MenuProps}
+            onChange={e => {
+              onChange(e)
+              onBlur()
+            }}
+            value={value || itemType.text}
+          >
+            <MenuItem
+              sx={{ borderRadius: '4px', marginT: '4px' }}
+              value={itemType.text}
+            >
+              <div className='flex gap-1'>
+                <ShortTextIcon />
+                <span>Text</span>
+              </div>
+            </MenuItem>
+            <MenuItem
+              sx={{ borderRadius: '4px', marginY: '4px' }}
+              value={itemType.checkbox}
+            >
+              <div className='flex gap-1'>
+                <CheckBoxIcon />
+                <span>Checkbox</span>
+              </div>
+            </MenuItem>
+            <MenuItem
+              sx={{ borderRadius: '4px', marginY: '4px' }}
+              value={itemType.radio}
+            >
+              <div className='flex gap-1'>
+                <RadioButtonCheckedIcon />
+                <span>Radio</span>
+              </div>
+            </MenuItem>
 
-        <MenuItemCustom value={itemType.time}>
-          <div className='flex gap-1'>
-            <AccessTimeIcon />
-            <span>Time</span>
-          </div>
-        </MenuItemCustom>
-        <MenuItemCustom value={itemType.date}>
-          <div className='flex gap-1'>
-            <CalendarTodayIcon />
-            <span>Date</span>
-          </div>
-        </MenuItemCustom>
-        <MenuItemCustom value={itemType.image}>
-          <div className='flex gap-1'>
-            <ImageIcon />
-            <span>Image</span>
-          </div>
-        </MenuItemCustom>
-      </Select>
+            <MenuItem
+              sx={{ borderRadius: '4px', marginY: '4px' }}
+              value={itemType.time}
+            >
+              <div className='flex gap-1'>
+                <AccessTimeIcon />
+                <span>Time</span>
+              </div>
+            </MenuItem>
+            <MenuItem
+              sx={{ borderRadius: '4px', marginY: '4px' }}
+              value={itemType.date}
+            >
+              <div className='flex gap-1'>
+                <CalendarTodayIcon />
+                <span>Date</span>
+              </div>
+            </MenuItem>
+            <MenuItem
+              sx={{ borderRadius: '4px', marginY: '4px' }}
+              value={itemType.image}
+            >
+              <div className='flex gap-1'>
+                <ImageIcon />
+                <span>Image</span>
+              </div>
+            </MenuItem>
+          </Select>
+        )}
+      />
     </FormControl>
   )
 }

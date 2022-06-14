@@ -1,10 +1,9 @@
-import { Checkbox, IconButton } from '@mui/material'
+import { Checkbox, IconButton, Radio } from '@mui/material'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import ClearIcon from '@mui/icons-material/Clear'
 import AddIcon from '@mui/icons-material/Add'
 import { Controller, useFormContext } from 'react-hook-form'
-import { Radio } from '@material-tailwind/react'
 
 interface Props {
   regName: any
@@ -39,6 +38,7 @@ export default function CheckboxOrRadioItem({
           name={`${regName}.isCheck`}
           render={({ field: { onChange, onBlur, value, ref } }) => (
             <Checkbox
+              name='1'
               onChange={onChange}
               onBlur={onBlur}
               checked={value || false}
@@ -46,16 +46,17 @@ export default function CheckboxOrRadioItem({
           )}
         />
 
-        <div className='flex gap-4 w-max'>
-          <Radio id='blue' name='color' color='blue' defaultChecked />
-          <Radio id='red' name='color' color='red' />
-          <Radio id='green' name='color' color='green' />
-          <Radio id='amber' name='color' color='amber' />
-          <Radio id='teal' name='color' color='teal' />
-          <Radio id='indigo' name='color' color='indigo' />
-          <Radio id='purple' name='color' color='purple' />
-          <Radio id='pink' name='color' color='pink' />
-        </div>
+        <Controller
+          control={methods.control}
+          name='regName'
+          render={({ field: { onChange, onBlur, value, ref } }) => (
+            <Radio
+              name='regName'
+              onChange={() => onChange(regName)}
+              checked={value === regName}
+            />
+          )}
+        />
 
         <input
           className='input-text h-8 flex-1 group-hover:border-violet-400'
