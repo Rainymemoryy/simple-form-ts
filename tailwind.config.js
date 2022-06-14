@@ -3,6 +3,16 @@ const withMT = require('@material-tailwind/react/utils/withMT')
 module.exports = withMT({
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
+    borderWidth: {
+      DEFAULT: '1px',
+      0: '0',
+      2: '1px',
+      '2px': '2px',
+      3: '3px',
+      4: '4px',
+      6: '6px',
+      8: '8px'
+    },
     extend: {
       boxShadow: {
         34: 'rgba(0, 0, 0, 0.05) 0px 0px 0px 1px',

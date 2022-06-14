@@ -10,7 +10,7 @@ export default function CreateItem(props: any) {
   return (
     <main className='flex items-center relative py-3'>
       <div
-        className={`bg-white flex-1 relative rounded-lg gap-1 box-border p-8 pb-6 outline-none border-2 border-transparent hover:border-violet-400 cursor-default flex flex-col shadow-11 transition-colors`}
+        className={`bg-white flex-1 relative rounded-lg gap-1 box-border p-8 pb-6 outline-none border-2px border-transparent hover:border-violet-400 cursor-default flex flex-col shadow-11 transition-colors`}
       >
         <div className='flex flex-1 gap-3'>
           <TextareaAutosize
