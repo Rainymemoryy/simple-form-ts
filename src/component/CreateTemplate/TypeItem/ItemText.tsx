@@ -1,7 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { Checkbox, TextareaAutosize } from '@mui/material'
 import { Controller, useFormContext } from 'react-hook-form'
-import { itemType } from '../../../constants/itemType'
 import { registerItem } from '../../../constants/regCreTemplate'
 
 interface Props {
@@ -17,13 +16,13 @@ export default function ({ regName }: Props) {
           minRows={2}
           className='input-defaulvalue w-full'
           placeholder='Nhập một đoạn văn'
-          {...methods.register(`${regName}.${itemType.textDefault}`)}
+          {...methods.register(`${regName}.${registerItem.textDefault}`)}
         />
       ) : (
         <input
           className='input-text h-8 w-full'
           placeholder='Nhập một câu ngắn'
-          {...methods.register(`${regName}.${itemType.textDefault}`)}
+          {...methods.register(`${regName}.${registerItem.textDefault}`)}
         />
       )}
 

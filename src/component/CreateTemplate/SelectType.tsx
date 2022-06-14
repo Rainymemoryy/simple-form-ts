@@ -12,15 +12,8 @@ import ImageIcon from '@mui/icons-material/Image'
 import ShortTextIcon from '@mui/icons-material/ShortText'
 import CheckBoxIcon from '@mui/icons-material/CheckBox'
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked'
-import styled from '@emotion/styled'
 import { Controller, useFormContext } from 'react-hook-form'
 import { itemType } from '../../constants/itemType'
-import { registerItem } from '../../constants/regCreTemplate'
-import { Console } from 'console'
-
-const MenuItemCustom = styled(MenuItem)`
-  border-radius: '4px';
-`
 
 const MenuProps = {
   PaperProps: {
@@ -117,6 +110,20 @@ export function SelectType({ regName }: Props) {
               <div className='flex gap-1'>
                 <ImageIcon />
                 <span>Image</span>
+              </div>
+            </MenuItem>
+
+            <MenuItem sx={{ borderRadius: '4px', marginY: '4px' }} disabled>
+              <div className='bg-gray-900 h-0.5 w-full'></div>
+            </MenuItem>
+
+            <MenuItem
+              sx={{ borderRadius: '4px', marginY: '4px' }}
+              value={itemType.vectorCheckbox}
+            >
+              <div className='flex gap-1'>
+                <ImageIcon />
+                <span>Lưới chọn nhiều</span>
               </div>
             </MenuItem>
           </Select>

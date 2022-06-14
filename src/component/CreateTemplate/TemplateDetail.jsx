@@ -15,6 +15,11 @@ export default function TemplateDetail() {
     name: 'items'
   })
 
+  const fieldArrayOpen = useFieldArray({
+    control: methods.control,
+    name: 'showList'
+  })
+
   return (
     <main className='max-w-3xl w-full h-fit flex flex-col gap-5'>
       <FormProvider {...methods}>
@@ -69,6 +74,7 @@ export default function TemplateDetail() {
                                   regName={regItem(index)}
                                   index={index}
                                   fieldArray={fieldArray}
+                                  fieldArrayOpen={fieldArrayOpen}
                                 />
                               </div>
 

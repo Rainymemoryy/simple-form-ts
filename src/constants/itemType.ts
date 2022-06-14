@@ -5,5 +5,6 @@ export const itemType = {
   date: 'Date',
   time: 'Time',
   image: 'Image',
-  textDefault: 'textDefault'
+
+  vectorCheckbox: 'vectorCheckbox'
 }

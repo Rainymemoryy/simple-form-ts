@@ -1,9 +1,9 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
-import { Checkbox, IconButton, Switch, TextareaAutosize } from '@mui/material'
+import { IconButton, Switch, TextareaAutosize } from '@mui/material'
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
 import WarningIcon from '@mui/icons-material/Warning'
 import { Controller, useFormContext } from 'react-hook-form'
@@ -17,8 +17,8 @@ interface Props {
   regName: string
   index: number
   fieldArray: any
+  fieldArrayOpen: any
 }
-
 
 const useShowContent = (methods, regName) => {
   const isShowContent = methods.watch(
@@ -35,7 +35,8 @@ export default function ItemLayout({
   snapshot,
   index,
   regName,
-  fieldArray
+  fieldArray,
+  fieldArrayOpen
 }: Props) {
   const methods = useFormContext()
   const isShowContent = useShowContent(methods, regName)
@@ -95,18 +96,6 @@ export default function ItemLayout({
           </div>
 
           <div className='flex justify-end gap-3 items-center'>
-            {/* <IconButton
-              className='w-8 h-8 hover:text-violet-700'
-              onClick={() => {
-                methods.setValue(
-                  `${regName}.${registerItem.isShowContent}`,
-                  !isShowContent
-                )
-              }}
-            >
-              {isShowContent ? <UnfoldLessIcon /> : <UnfoldMoreIcon />}
-            </IconButton> */}
-
             <Controller
               control={methods.control}
               name={`${regName}.${registerItem.isShowContent}`}
@@ -119,6 +108,20 @@ export default function ItemLayout({
                 </IconButton>
               )}
             />
+
+            {/* <Controller
+              control={methods.control}
+              name={`showList.${index}`}
+              defaultValue={true}
+              render={({ field: { onChange, onBlur, value, ref } }) => (
+                <IconButton
+                  className='w-8 h-8 hover:text-violet-700'
+                  onClick={() => onChange(!value)}
+                >
+                  {value ? <UnfoldLessIcon /> : <UnfoldMoreIcon />}
+                </IconButton>
+              )}
+            /> */}
 
             <IconButton
               className='w-8 h-8 hover:text-violet-700'

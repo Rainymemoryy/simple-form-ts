@@ -13,6 +13,7 @@ export const registerItem = {
 
   //text
   isMultiLine: 'isMultiLine',
+  textDefault: 'textDefault',
 
   //check or radio
   listCheckbox: 'listCheckOrRadio',
