@@ -10,10 +10,11 @@ import CheckboxOrRadioItem from './CheckboxOrRadioItem'
 
 interface Props {
   regName: any
+  type: any
 }
 
-export default function ItemCheckbox({ regName }: Props) {
-  const regNameItem = `${regName}.${registerItem.listCheckOrRadio}`
+export default function ItemCheckbox({ regName, type }: Props) {
+  const regNameItem = `${regName}.${registerItem.listCheckbox}`
   const methods = useFormContext()
   const fieldArray = useFieldArray({
     control: methods.control,
@@ -49,6 +50,8 @@ export default function ItemCheckbox({ regName }: Props) {
                           regName={`${regNameItem}[${index}]`}
                           fieldArray={fieldArray}
                           index={index}
+                          regNameItem={regName}
+                          type={type}
                         />
                         {provided.placeholder}
                       </div>

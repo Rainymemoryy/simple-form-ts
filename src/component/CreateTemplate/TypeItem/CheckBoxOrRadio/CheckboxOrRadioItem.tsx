@@ -4,27 +4,35 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import ClearIcon from '@mui/icons-material/Clear'
 import AddIcon from '@mui/icons-material/Add'
 import { Controller, useFormContext } from 'react-hook-form'
+import { registerItem } from '../../../../constants/regCreTemplate'
+import { itemType } from '../../../../constants/itemType'
 
 interface Props {
   regName: any
   provided: any
   fieldArray: any
   index: any
+  regNameItem: any
+  type: any
 }
 
 export default function CheckboxOrRadioItem({
   provided,
   regName,
   fieldArray,
-  index
+  index,
+  regNameItem,
+  type
 }: Props) {
   const methods = useFormContext()
 
+  console.log('reRender', regName)
+
   return (
     <main>
-      <section className='flex items-center w-full relative'>
+      <section className='flex items-center w-full relative group'>
         <div
-          className='opacity-70 group-hover:opacity-100 group-hover:fill-violet-400 text-violet-400'
+          className='opacity-70 group-hover:opacity-100 group-hover:fill-violet-400 text-violet-400 '
           {...provided.dragHandleProps}
           onClick={e => {
             e.stopPropagation()
@@ -33,30 +41,34 @@ export default function CheckboxOrRadioItem({
           <DragIndicatorIcon />
         </div>
 
-        <Controller
-          control={methods.control}
-          name={`${regName}.isCheck`}
-          render={({ field: { onChange, onBlur, value, ref } }) => (
-            <Checkbox
-              name='1'
-              onChange={onChange}
-              onBlur={onBlur}
-              checked={value || false}
-            />
-          )}
-        />
+        {type === itemType.checkbox && (
+          <Controller
+            control={methods.control}
+            name={`${regName}.isCheck`}
+            render={({ field: { onChange, onBlur, value, ref } }) => (
+              <Checkbox
+                name='1'
+                onChange={onChange}
+                onBlur={onBlur}
+                checked={value || false}
+              />
+            )}
+          />
+        )}
 
-        <Controller
-          control={methods.control}
-          name='regName'
-          render={({ field: { onChange, onBlur, value, ref } }) => (
-            <Radio
-              name='regName'
-              onChange={() => onChange(regName)}
-              checked={value === regName}
-            />
-          )}
-        />
+        {type === itemType.radio && (
+          <Controller
+            control={methods.control}
+            name={`${regNameItem}.${registerItem.radioCheck}`}
+            render={({ field: { onChange, onBlur, value, ref } }) => (
+              <Radio
+                name={`${regNameItem}.${registerItem.radioCheck}`}
+                onChange={() => onChange(index)}
+                checked={value === index}
+              />
+            )}
+          />
+        )}
 
         <input
           className='input-text h-8 flex-1 group-hover:border-violet-400'

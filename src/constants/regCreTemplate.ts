@@ -15,7 +15,8 @@ export const registerItem = {
   isMultiLine: 'isMultiLine',
 
   //check or radio
-  listCheckOrRadio: 'listCheckOrRadio',
+  listCheckbox: 'listCheckOrRadio',
+  radioCheck: 'radioCheck',
   isAnother: 'isAnother',
 
   //show

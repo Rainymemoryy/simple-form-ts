@@ -24,11 +24,17 @@ interface Props {
 export default function ItemTypeWrapper({ regName, index }: Props) {
   const methods = useFormContext()
   const type = useGetType(regName, methods)
+
   return (
     <div>
-      {type === itemType.checkbox && <ItemCheckbox regName={regName} />}
-      {type === itemType.image && <ItemImage />}
       {type === itemType.text && <ItemText regName={regName} />}
+      {type === itemType.checkbox && (
+        <ItemCheckbox regName={regName} type={type} />
+      )}
+      {type === itemType.radio && (
+        <ItemCheckbox regName={regName} type={type} />
+      )}
+      {type === itemType.image && <ItemImage />}
     </div>
   )
 }
