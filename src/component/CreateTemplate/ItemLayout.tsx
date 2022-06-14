@@ -60,8 +60,9 @@ export default function ItemLayout({
       >
         <DragIndicatorIcon />
       </section>
+
       <section
-        className={`bg-white flex-1 relative rounded-lg gap-1 box-border p-8 pb-6 outline-none border-2px border-transparent hover:border-violet-400 cursor-default flex flex-col shadow-11 ${
+        className={`bg-white flex-1 relative rounded-lg gap-1 box-border p-8 pb-6 outline-0 border-2px border-transparent hover:border-violet-400 cursor-default flex flex-col shadow-11 ${
           snapshot?.isDragging && 'border-violet-400'
         } transition-colors`}
       >
