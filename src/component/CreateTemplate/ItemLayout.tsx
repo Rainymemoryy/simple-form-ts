@@ -11,15 +11,6 @@ import { registerItem } from '../../constants/regCreTemplate'
 import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
 import { SelectType } from './SelectType'
 
-interface Props {
-  provided: any
-  snapshot: any
-  regName: string
-  index: number
-  fieldArray: any
-  fieldArrayOpen: any
-}
-
 const useShowContent = (methods, regName) => {
   const isShowContent = methods.watch(
     `${regName}.${registerItem.isShowContent}`
@@ -30,6 +21,14 @@ const useShowContent = (methods, regName) => {
   return data
 }
 
+interface Props {
+  provided: any
+  snapshot: any
+  regName: string
+  index: number
+  fieldArray: any
+  fieldArrayOpen: any
+}
 export default function ItemLayout({
   provided,
   snapshot,
@@ -41,7 +40,10 @@ export default function ItemLayout({
   const methods = useFormContext()
   const isShowContent = useShowContent(methods, regName)
   return (
-    <main className='flex items-center relative'>
+    <main
+      className='flex items-center relative u--bounceInDown'
+      id={fieldArray.fields[index].itemTmpID}
+    >
       <section
         className='opacity-50 group-hover:opacity-100 hover:fill-violet-400 absolute left-[-24px]'
         {...provided.dragHandleProps}
@@ -53,7 +55,7 @@ export default function ItemLayout({
       </section>
 
       <section
-        className={`bg-white flex-1 relative rounded-lg gap-1 box-border p-8 pb-6 outline-0 border-2px border-transparent hover:border-violet-400 cursor-default flex flex-col shadow-11 ${
+        className={`bg-white flex-1 relative rounded-lg gap-1 box-border p-8 pb-6 outline-0 border-2 border-transparent hover:border-violet-400 cursor-default flex flex-col shadow-11 ${
           snapshot?.isDragging && 'border-violet-400'
         } transition-colors`}
       >

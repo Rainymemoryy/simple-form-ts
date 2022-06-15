@@ -26,9 +26,9 @@ export default function TemplateDetail() {
       <form
         onSubmit={methods.handleSubmit(data => console.log('submit', data))}
       >
-        <div className='flex justify-center'>
-          <nav className='w-96 hidden lg:block'>
-            <TemplateNav />
+        <div className='flex justify-center py-6 px-6'>
+          <nav className='w-96 hidden lg:block '>
+            <TemplateNav fieldArray={fieldArray} />
           </nav>
           <main className='max-w-3xl w-full'>
             <Button
