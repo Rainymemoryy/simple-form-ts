@@ -10,6 +10,7 @@ import { Controller, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../constants/regCreTemplate'
 import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
 import { SelectType } from './SelectType'
+import MyListbox from '../SelectTypeCustom'
 
 const useShowContent = (methods, regName) => {
   const isShowContent = methods.watch(
@@ -59,7 +60,7 @@ export default function ItemLayout({
           snapshot?.isDragging && 'border-violet-400'
         } transition-colors`}
       >
-        <div className='flex flex-1 gap-3'>
+        <div className='flex flex-1 gap-3 items-center'>
           <TextareaAutosize
             aria-label='Item name'
             className='input-text min-h-[32px] mt-0.5 py-0.5 text-lg tracking-wide font-medium resize-none flex-1'
@@ -71,8 +72,9 @@ export default function ItemLayout({
               }
             }}
           />
+          <MyListbox regName={`${regName}.${registerItem.itemType}`} />
 
-          <SelectType regName={`${regName}.${registerItem.itemType}`} />
+          {/* <SelectType regName={`${regName}.${registerItem.itemType}`} /> */}
         </div>
 
         <TextareaAutosize
