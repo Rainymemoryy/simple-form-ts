@@ -62,7 +62,7 @@ export default function MyListbox({ regName }: Props) {
                     <Listbox.Option
                       key={index}
                       className={({ active }) =>
-                        `cursor-default select-none h-10 rounded pl-1.5 pr-0.5 flex items-center ${
+                        `cursor-default select-none h-10 rounded pl-1.5 pr-0.5 flex items-center outline-none ${
                           active ? ' bg-violet-50' : 'text-gray-900'
                         }`
                       }
