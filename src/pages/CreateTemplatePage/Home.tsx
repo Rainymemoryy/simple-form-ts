@@ -5,15 +5,15 @@ import { path } from '../../constants/path'
 export default function Home() {
   return (
     <main className='flex h-screen'>
-      <section className='flex-1 flex justify-center items-center'></section>
-      <section className='flex-1 bg-slate-50 flex justify-center items-center'>
+      <section className='flex flex-1 items-center justify-center'></section>
+      <section className='flex flex-1 items-center justify-center bg-slate-50'>
         <Link to={path.createTemplate}>
           <div aria-label='Lựa chọn container' className='flex flex-col gap-3'>
-            <button className='bg-white flex relative h-20 w-96 rounded-lg border outline-0 border-violet-200 hover:border-violet-400 hover:shadow-xl'>
-              <label className='w-10 h-10 rounded-full bg-violet-400 absolute right-5 top-5 flex justify-between items-center scale-150'></label>
-              <label className='w-10 h-10 rounded-full bg-violet-400 absolute right-5 top-5 shadow-55 flex justify-between items-center'>
+            <button className='relative flex h-20 w-96 rounded-lg border border-violet-200 bg-white outline-0 hover:border-violet-400 hover:shadow-xl'>
+              <label className='absolute right-5 top-5 flex h-10 w-10 scale-150 items-center justify-between rounded-full bg-violet-400'></label>
+              <label className='absolute right-5 top-5 flex h-10 w-10 items-center justify-between rounded-full bg-violet-400 shadow-55'>
                 <svg
-                  className='w-6 h-6 fill-white'
+                  className='h-6 w-6 fill-white'
                   xmlns='http://www.w3.org/2000/svg'
                   viewBox='0 0 512 512'
                 >

@@ -8,7 +8,7 @@ import MemoItemLayout from '../../MemoItemLayout'
 export default function MemoLayout() {
   const [isOpen, setOpen] = useState(false)
   return (
-    <main className='flex-1 group'>
+    <main className='group flex-1'>
       <section
         className='flex cursor-pointer items-center'
         onClick={() => setOpen(!isOpen)}

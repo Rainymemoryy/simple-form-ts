@@ -26,7 +26,7 @@ export default function ({ regName }: Props) {
         />
       )}
 
-      <section className='flex items-center w-full justify-end'>
+      <section className='flex w-full items-center justify-end'>
         <div className='flex items-center'>
           <Controller
             control={methods.control}

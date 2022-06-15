@@ -37,7 +37,7 @@ export default function MyListbox({ regName }: Props) {
         render={({ field: { onChange, onBlur, value, ref } }) => (
           <Listbox value={value} onChange={onChange}>
             <div className='relative'>
-              <Listbox.Button className='relative w-full cursor-default rounded py-2 pl-3 pr-10 text-left bg-violet-50 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm'>
+              <Listbox.Button className='relative w-full cursor-default rounded bg-violet-50 py-2 pl-3 pr-10 text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm'>
                 <div className='flex items-center gap-2'>
                   <span className=''>{getItemByValue(value)?.icon}</span>
                   <span className=''>{getItemByValue(value)?.name}</span>
@@ -57,12 +57,12 @@ export default function MyListbox({ regName }: Props) {
                 leaveFrom='opacity-100'
                 leaveTo='opacity-0'
               >
-                <Listbox.Options className='z-40 absolute mt-2 p-1.5 w-full overflow-auto rounded bg-white text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'>
+                <Listbox.Options className='absolute z-40 mt-2 w-full overflow-auto rounded bg-white p-1.5 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'>
                   {listItemType.map((itemType, index) => (
                     <Listbox.Option
                       key={index}
                       className={({ active }) =>
-                        `cursor-default select-none h-10 rounded pl-1.5 pr-0.5 flex items-center outline-none ${
+                        `flex h-10 cursor-default select-none items-center rounded pl-1.5 pr-0.5 outline-none ${
                           active ? ' bg-violet-50' : 'text-gray-900'
                         }`
                       }
@@ -70,7 +70,7 @@ export default function MyListbox({ regName }: Props) {
                     >
                       {({ selected }) => (
                         <>
-                          <div className='flex flex-1 gap-2 items-center'>
+                          <div className='flex flex-1 items-center gap-2'>
                             {itemType.icon}
                             <span>{itemType.name}</span>
                           </div>

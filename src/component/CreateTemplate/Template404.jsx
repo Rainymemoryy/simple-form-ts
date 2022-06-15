@@ -2,18 +2,18 @@ import React from 'react'
 
 export default function Template404() {
   return (
-    <div className='h-screen w-screen bg-gray-100 flex items-center'>
-      <div className='container flex flex-col md:flex-row items-center justify-center px-5 text-gray-700'>
+    <div className='flex h-screen w-screen items-center bg-gray-100'>
+      <div className='container flex flex-col items-center justify-center px-5 text-gray-700 md:flex-row'>
         <div className='max-w-md'>
-          <div className='text-5xl font-dark font-bold'>404</div>
-          <p className='text-2xl md:text-3xl font-light leading-normal'>
+          <div className='font-dark text-5xl font-bold'>404</div>
+          <p className='text-2xl font-light leading-normal md:text-3xl'>
             Kích thước màn hình quá nhỏ.{' '}
           </p>
           <p className='mb-8'>
             Hãy chọn màn hình có kích thước lớn hơn để đảm bảo trải nghiệm tốt
             nhất.{' '}
           </p>
-          <button className='px-4 inline py-2 text-sm font-medium leading-5 shadow text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-0 focus:shadow-outline-blue bg-blue-600 active:bg-blue-600 hover:bg-blue-700'>
+          <button className='focus:shadow-outline-blue inline rounded-lg border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium leading-5 text-white shadow transition-colors duration-150 hover:bg-blue-700 focus:outline-0 active:bg-blue-600'>
             trở về trang chủ
           </button>
         </div>

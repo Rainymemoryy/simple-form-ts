@@ -30,9 +30,9 @@ export default function CheckboxOrRadioItem({
 
   return (
     <main>
-      <section className='flex items-center w-full relative group'>
+      <section className='group relative flex w-full items-center'>
         <div
-          className='opacity-70 group-hover:opacity-100 group-hover:fill-violet-400 text-violet-400 '
+          className='text-violet-400 opacity-70 group-hover:fill-violet-400 group-hover:opacity-100 '
           {...provided.dragHandleProps}
           onClick={e => {
             e.stopPropagation()
@@ -76,7 +76,7 @@ export default function CheckboxOrRadioItem({
           {...methods.register(`${regName}.value`)}
         />
         <div className='flex gap-1'>
-          <IconButton className='w-8 h-8 hover:text-violet-700'>
+          <IconButton className='h-8 w-8 hover:text-violet-700'>
             <AddIcon
               fontSize='small'
               className='opacity-0 group-hover:opacity-100'
@@ -84,7 +84,7 @@ export default function CheckboxOrRadioItem({
           </IconButton>
 
           <IconButton
-            className='w-8 h-8 hover:text-violet-700'
+            className='h-8 w-8 hover:text-violet-700'
             onClick={() => {
               let dataTmp = fieldArray.fields[index]
               dataTmp = { ...dataTmp, value: dataTmp.value + ' - copy' }
@@ -98,7 +98,7 @@ export default function CheckboxOrRadioItem({
           </IconButton>
 
           <IconButton
-            className='w-8 h-8 hover:text-violet-700'
+            className='h-8 w-8 hover:text-violet-700'
             onClick={() => {
               fieldArray.remove(index)
             }}
@@ -111,7 +111,7 @@ export default function CheckboxOrRadioItem({
         </div>
       </section>
 
-      <section className='flex items-center w-full relative group pl-[66px]'>
+      <section className='group relative flex w-full items-center pl-[66px]'>
         {/* <MemoLayout /> */}
       </section>
     </main>

@@ -18,21 +18,21 @@ export default function Another({ fieldArray, regName, type }: Props) {
   return (
     <>
       {isShow && (
-        <div className='flex items-center w-full relative group'>
+        <div className='group relative flex w-full items-center'>
           <DragIndicatorIcon className='opacity-20' />
 
           {type === itemType.checkbox && <Checkbox disabled />}
           {type === itemType.radio && <Radio disabled />}
 
           <input
-            className='input-text flex-1 h-8 truncate bg-transparent border-dashed'
+            className='input-text h-8 flex-1 truncate border-dashed bg-transparent'
             placeholder='Khác...'
             disabled
           />
 
           <div className='flex gap-1'>
             <IconButton
-              className='w-8 h-8 hover:text-violet-700'
+              className='h-8 w-8 hover:text-violet-700'
               onClick={() => {
                 methods.setValue(`${regName}.${registerItem.isAnother}`, false)
               }}

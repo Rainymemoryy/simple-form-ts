@@ -23,12 +23,12 @@ export default function CreateTemplate() {
         onSubmit={methods.handleSubmit(data => console.log('submit', data))}
       >
         <div className='flex justify-center py-6 px-6'>
-          <nav className='w-96 hidden lg:block'>
+          <nav className='hidden w-96 lg:block'>
             <TemplateNav fieldArray={fieldArray} />
           </nav>
 
-          <main className='max-w-3xl w-full'>
-            <div className='w-full flex justify-between items-center'>
+          <main className='w-full max-w-3xl'>
+            <div className='flex w-full items-center justify-between'>
               <Button
                 type='submit'
                 className='button-default flex gap-1.5'
@@ -38,13 +38,13 @@ export default function CreateTemplate() {
                   fontWeight: '400'
                 }}
               >
-                <span className='text-center block'>
+                <span className='block text-center'>
                   Submit {++renderCount}
                 </span>
               </Button>
 
               <IconButton
-                className='w-8 h-8 hover:text-violet-700'
+                className='h-8 w-8 hover:text-violet-700'
                 onClick={() => {
                   fieldArray.fields?.map((e, index) =>
                     methods.setValue(

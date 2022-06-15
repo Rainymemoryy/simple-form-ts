@@ -8,7 +8,7 @@ export default function MemoCheckOrRadio() {
       {[1, 2, 3].map((item, index) => (
         <section
           key={index}
-          className='flex items-center w-full relative gap-1'
+          className='relative flex w-full items-center gap-1'
         >
           <Checkbox />
           <input
@@ -16,32 +16,32 @@ export default function MemoCheckOrRadio() {
             placeholder='Nhập tuỳ chọn'
           />
           <div className='flex gap-1'>
-            <IconButton className='w-8 h-8 hover:text-violet-700'>
+            <IconButton className='h-8 w-8 hover:text-violet-700'>
               <ClearIcon />
             </IconButton>
           </div>
         </section>
       ))}
 
-      <section className='flex items-center w-full gap-1'>
+      <section className='flex w-full items-center gap-1'>
         <Checkbox disabled />
         <input
-          className='input-text h-8 flex-1 bg-transparent hover:border-violet-400 border-dashed'
+          className='input-text h-8 flex-1 border-dashed bg-transparent hover:border-violet-400'
           placeholder='Nhập tuỳ chọn'
           disabled
         />
         <div className='flex gap-1'>
-          <IconButton className='w-8 h-8 hover:text-violet-700'>
+          <IconButton className='h-8 w-8 hover:text-violet-700'>
             <ClearIcon />
           </IconButton>
         </div>
       </section>
 
-      <section className='flex items-center w-full'>
+      <section className='flex w-full items-center'>
         <Checkbox disabled />
-        <div className='flex gap-1 items-center flex-1'>
+        <div className='flex flex-1 items-center gap-1'>
           <input
-            className='input-text flex-1 h-8 truncate'
+            className='input-text h-8 flex-1 truncate'
             placeholder='Thêm tuỳ chọn mới'
           />
           hoặc
@@ -53,7 +53,7 @@ export default function MemoCheckOrRadio() {
               fontWeight: '400'
             }}
           >
-            <span className='text-center block'>thêm "Khác"</span>
+            <span className='block text-center'>thêm "Khác"</span>
           </Button>
         </div>
       </section>

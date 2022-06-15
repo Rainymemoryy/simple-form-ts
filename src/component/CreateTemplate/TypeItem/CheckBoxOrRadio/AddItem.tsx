@@ -20,16 +20,16 @@ export default function AddItemCheckorRadio({
   const [value, setValue] = useState('')
 
   return (
-    <div className='flex items-center w-full relative group'>
+    <div className='group relative flex w-full items-center'>
       <DragIndicatorIcon className='opacity-20' />
 
       {type === itemType.checkbox && <Checkbox disabled />}
 
       {type === itemType.radio && <Radio disabled />}
 
-      <div className='flex gap-1 items-center flex-1'>
+      <div className='flex flex-1 items-center gap-1'>
         <input
-          className='input-text flex-1 h-8 truncate group-hover:border-violet-400'
+          className='input-text h-8 flex-1 truncate group-hover:border-violet-400'
           placeholder='Thêm tuỳ chọn mới'
           value={value}
           onChange={e => setValue(e.target.value)}
@@ -45,7 +45,7 @@ export default function AddItemCheckorRadio({
           }}
         />
         <IconButton
-          className='w-8 h-8 hover:text-violet-700'
+          className='h-8 w-8 hover:text-violet-700'
           disabled={value === ''}
           onClick={() => {
             if (value !== '') {
@@ -71,7 +71,7 @@ export default function AddItemCheckorRadio({
             methods.setValue(`${regName}.${registerItem.isAnother}`, true)
           }}
         >
-          <span className='text-center block'>thêm "Khác"</span>
+          <span className='block text-center'>thêm "Khác"</span>
         </Button>
       </div>
     </div>

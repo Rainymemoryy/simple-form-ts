@@ -40,11 +40,11 @@ export default function ItemLayout({
 
   return (
     <main
-      className='flex items-center relative '
+      className='relative flex items-center '
       id={fieldArray.fields[index].itemTmpID}
     >
       <section
-        className='opacity-50 group-hover:opacity-100 hover:fill-violet-400 absolute left-[-24px]'
+        className='absolute left-[-24px] opacity-50 hover:fill-violet-400 group-hover:opacity-100'
         {...provided.dragHandleProps}
         onClick={e => {
           e.stopPropagation()
@@ -54,14 +54,14 @@ export default function ItemLayout({
       </section>
 
       <section
-        className={`bg-white flex-1 relative rounded-lg gap-1 box-border p-8 pb-6 outline-0 border-2 border-transparent hover:border-violet-400 cursor-default flex flex-col shadow-11 ${
+        className={`relative box-border flex flex-1 cursor-default flex-col gap-1 rounded-lg border-2 border-transparent bg-white p-8 pb-6 shadow-11 outline-0 hover:border-violet-400 ${
           snapshot?.isDragging && 'border-violet-400'
         } transition-colors`}
       >
-        <div className='flex flex-1 gap-3 items-center'>
+        <div className='flex flex-1 items-center gap-3'>
           <TextareaAutosize
             aria-label='Item name'
-            className='input-text min-h-[32px] mt-0.5 py-0.5 text-lg tracking-wide font-medium resize-none flex-1'
+            className='input-text mt-0.5 min-h-[32px] flex-1 resize-none py-0.5 text-lg font-medium tracking-wide'
             placeholder='Nhập tên câu hỏi'
             {...methods.register(`${regName}.${registerItem.itemName}`)}
             onKeyDown={(e: any) => {
@@ -75,7 +75,7 @@ export default function ItemLayout({
 
         <TextareaAutosize
           aria-label='Item description'
-          className='input-text text-sm resize-none w-full text-gray-500'
+          className='input-text w-full resize-none text-sm text-gray-500'
           placeholder='Nhập mô tả'
           {...methods.register(`${regName}.${registerItem.itemDecs}`)}
         />
@@ -90,18 +90,18 @@ export default function ItemLayout({
 
         {isShowContent && <ItemTypeWrapper regName={regName} index={index} />}
 
-        <div className='flex justify-between pt-2 gap-3 items-center'>
-          <div className='flex justify-end gap-3 items-center text-yellow-400'>
+        <div className='flex items-center justify-between gap-3 pt-2'>
+          <div className='flex items-center justify-end gap-3 text-yellow-400'>
             <WarningIcon />
           </div>
 
-          <div className='flex justify-end gap-3 items-center'>
+          <div className='flex items-center justify-end gap-3'>
             <Controller
               control={methods.control}
               name={`${regName}.${registerItem.isShowContent}`}
               render={({ field: { onChange, onBlur, value, ref } }) => (
                 <IconButton
-                  className='w-8 h-8 hover:text-violet-700'
+                  className='h-8 w-8 hover:text-violet-700'
                   onClick={() => onChange(!value)}
                 >
                   {value ? <UnfoldLessIcon /> : <UnfoldMoreIcon />}
@@ -110,7 +110,7 @@ export default function ItemLayout({
             />
 
             <IconButton
-              className='w-8 h-8 hover:text-violet-700'
+              className='h-8 w-8 hover:text-violet-700'
               onClick={() => {
                 const field: any = methods.getValues(`${regName}`)
                 const copyData = {
@@ -125,7 +125,7 @@ export default function ItemLayout({
             </IconButton>
 
             <IconButton
-              className='w-8 h-8 hover:text-violet-700'
+              className='h-8 w-8 hover:text-violet-700'
               onClick={() => {
                 fieldArray.remove(index)
               }}

@@ -114,7 +114,7 @@ export function SelectType({ regName }: Props) {
             </MenuItem>
 
             <MenuItem sx={{ borderRadius: '4px', marginY: '4px' }} disabled>
-              <div className='bg-gray-900 h-0.5 w-full'></div>
+              <div className='h-0.5 w-full bg-gray-900'></div>
             </MenuItem>
 
             <MenuItem
