@@ -1,7 +1,8 @@
-import { Button } from '@mui/material'
+import { Button, IconButton } from '@mui/material'
 import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd'
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form'
-import { regItem } from '../../constants/regCreTemplate'
+import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
+import { registerItem, regItem } from '../../constants/regCreTemplate'
 import CreateItem from './CreateItem'
 import ItemLayout from './ItemLayout'
 import TemplateNav from './TemplateNav'
@@ -16,11 +17,6 @@ export default function CreateTemplate() {
     name: 'items'
   })
 
-  const fieldArrayOpen = useFieldArray({
-    control: methods.control,
-    name: 'showList'
-  })
-
   return (
     <FormProvider {...methods}>
       <form
@@ -30,18 +26,37 @@ export default function CreateTemplate() {
           <nav className='w-96 hidden lg:block '>
             <TemplateNav fieldArray={fieldArray} />
           </nav>
+
           <main className='max-w-3xl w-full'>
-            <Button
-              type='submit'
-              className='button-default flex gap-1.5'
-              sx={{
-                textTransform: 'unset',
-                fontSize: 16,
-                fontWeight: '400'
-              }}
-            >
-              <span className='text-center block'>Submit {++renderCount}</span>
-            </Button>
+            <div className='w-full flex justify-between items-center'>
+              <Button
+                type='submit'
+                className='button-default flex gap-1.5'
+                sx={{
+                  textTransform: 'unset',
+                  fontSize: 16,
+                  fontWeight: '400'
+                }}
+              >
+                <span className='text-center block'>
+                  Submit {++renderCount}
+                </span>
+              </Button>
+
+              <IconButton
+                className='w-8 h-8 hover:text-violet-700'
+                onClick={() => {
+                  fieldArray.fields?.map((e, index) =>
+                    methods.setValue(
+                      `${regItem(index)}.${registerItem.isShowContent}`,
+                      false
+                    )
+                  )
+                }}
+              >
+                <UnfoldLessIcon />
+              </IconButton>
+            </div>
 
             <DragDropContext
               onDragEnd={e => {
@@ -72,14 +87,13 @@ export default function CreateTemplate() {
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                               >
-                                <div className='py-2.5 u--bounceInDown'>
+                                <div className='py-2.5 '>
                                   <ItemLayout
                                     provided={provided}
                                     snapshot={snapshot}
                                     regName={regItem(index)}
                                     index={index}
                                     fieldArray={fieldArray}
-                                    fieldArrayOpen={fieldArrayOpen}
                                   />
                                 </div>
 

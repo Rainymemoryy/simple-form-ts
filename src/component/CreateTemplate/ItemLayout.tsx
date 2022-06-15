@@ -1,10 +1,10 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
-import { IconButton, Switch, TextareaAutosize } from '@mui/material'
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
+import { IconButton, Switch, TextareaAutosize } from '@mui/material'
 import WarningIcon from '@mui/icons-material/Warning'
 import { Controller, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../constants/regCreTemplate'
@@ -27,15 +27,13 @@ interface Props {
   regName: string
   index: number
   fieldArray: any
-  fieldArrayOpen: any
 }
 export default function ItemLayout({
   provided,
   snapshot,
   index,
   regName,
-  fieldArray,
-  fieldArrayOpen
+  fieldArray
 }: Props) {
   const methods = useFormContext()
   const isShowContent = useShowContent(methods, regName)
