@@ -23,7 +23,7 @@ export default function CreateTemplate() {
         onSubmit={methods.handleSubmit(data => console.log('submit', data))}
       >
         <div className='flex justify-center py-6 px-6'>
-          <nav className='w-96 hidden lg:block '>
+          <nav className='w-96 hidden lg:block'>
             <TemplateNav fieldArray={fieldArray} />
           </nav>
 
@@ -87,7 +87,7 @@ export default function CreateTemplate() {
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                               >
-                                <div className='py-2.5 '>
+                                <div className='py-2.5'>
                                   <ItemLayout
                                     provided={provided}
                                     snapshot={snapshot}

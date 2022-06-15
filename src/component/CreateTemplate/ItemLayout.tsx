@@ -9,7 +9,7 @@ import WarningIcon from '@mui/icons-material/Warning'
 import { Controller, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../constants/regCreTemplate'
 import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
-import MyListbox from '../SelectTypeCustom'
+import SelectItemType from './SelectItemType'
 
 const useShowContent = (methods, regName) => {
   const isShowContent = methods.watch(
@@ -70,7 +70,7 @@ export default function ItemLayout({
               }
             }}
           />
-          <MyListbox regName={`${regName}.${registerItem.itemType}`} />
+          <SelectItemType regName={`${regName}.${registerItem.itemType}`} />
         </div>
 
         <TextareaAutosize
@@ -80,13 +80,13 @@ export default function ItemLayout({
           {...methods.register(`${regName}.${registerItem.itemDecs}`)}
         />
 
-        {isShowContent && (
+        {/* {isShowContent && (
           <img
             className='rounded-md'
             src='https://images.wallpapersden.com/image/wxl-small-memory_58461.jpg'
             alt=''
           />
-        )}
+        )} */}
 
         {isShowContent && <ItemTypeWrapper regName={regName} index={index} />}
 

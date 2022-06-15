@@ -9,7 +9,7 @@ import ShortTextIcon from '@mui/icons-material/ShortText'
 import CheckBoxIcon from '@mui/icons-material/CheckBox'
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked'
 import { Controller, useFormContext } from 'react-hook-form'
-import { itemType } from '../constants/itemType'
+import { itemType } from '../../constants/itemType'
 
 const listItemType = [
   { name: 'Text', icon: <ShortTextIcon />, value: itemType.text },

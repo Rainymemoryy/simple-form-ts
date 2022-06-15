@@ -11,7 +11,7 @@ export default function TemplateNav({ fieldArray }: Props) {
         </div>
         {fieldArray.fields.map(item => (
           <a
-            className='truncate text-xl rounded-md px-3 py-1.5 hover:bg-violet-100 '
+            className='truncate text-xl rounded-md px-3 py-1.5 hover:bg-violet-100'
             href={`#${item?.itemTmpID}`}
             key={item?.itemTmpID}
           >
