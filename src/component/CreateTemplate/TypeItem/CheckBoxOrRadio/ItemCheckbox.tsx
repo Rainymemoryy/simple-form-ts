@@ -30,7 +30,7 @@ export default function ItemCheckbox({ regName, type }: Props) {
           e.source && e.destination && move(e.source.index, e.destination.index)
         }}
       >
-        <Droppable droppableId={regName} type='droppableItem'>
+        <Droppable droppableId={regName} type='droppable_checkRadio_Item'>
           {(provided, snapshot) => (
             <div
               ref={provided.innerRef}

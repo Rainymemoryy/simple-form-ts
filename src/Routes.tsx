@@ -1,7 +1,8 @@
 import React, { Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { path } from './constants/path'
-import CreateTemplate from './pages/CreateTemplatePage/CreateTemplate'
+import CreateTemplatePage from './pages/CreateTemplatePage/CreateTemplatePage'
+
 import Home from './pages/CreateTemplatePage/Home'
 import NotFound from './pages/CreateTemplatePage/NotFound'
 
@@ -24,7 +25,7 @@ export default function RoutesApp() {
         path={path.createTemplate}
         element={
           <Suspense fallback={<Fallback />}>
-            <CreateTemplate />
+            <CreateTemplatePage />
           </Suspense>
         }
       />

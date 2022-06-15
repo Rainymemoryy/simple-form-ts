@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
@@ -9,7 +9,6 @@ import WarningIcon from '@mui/icons-material/Warning'
 import { Controller, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../constants/regCreTemplate'
 import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
-import { SelectType } from './SelectType'
 import MyListbox from '../SelectTypeCustom'
 
 const useShowContent = (methods, regName) => {
@@ -40,9 +39,10 @@ export default function ItemLayout({
 }: Props) {
   const methods = useFormContext()
   const isShowContent = useShowContent(methods, regName)
+
   return (
     <main
-      className='flex items-center relative u--bounceInDown'
+      className='flex items-center relative '
       id={fieldArray.fields[index].itemTmpID}
     >
       <section
@@ -73,8 +73,6 @@ export default function ItemLayout({
             }}
           />
           <MyListbox regName={`${regName}.${registerItem.itemType}`} />
-
-          {/* <SelectType regName={`${regName}.${registerItem.itemType}`} /> */}
         </div>
 
         <TextareaAutosize
@@ -84,13 +82,13 @@ export default function ItemLayout({
           {...methods.register(`${regName}.${registerItem.itemDecs}`)}
         />
 
-        {/* {isShowContent && (
+        {isShowContent && (
           <img
             className='rounded-md'
             src='https://images.wallpapersden.com/image/wxl-small-memory_58461.jpg'
             alt=''
           />
-        )} */}
+        )}
 
         {isShowContent && <ItemTypeWrapper regName={regName} index={index} />}
 
@@ -112,20 +110,6 @@ export default function ItemLayout({
                 </IconButton>
               )}
             />
-
-            {/* <Controller
-              control={methods.control}
-              name={`showList.${index}`}
-              defaultValue={true}
-              render={({ field: { onChange, onBlur, value, ref } }) => (
-                <IconButton
-                  className='w-8 h-8 hover:text-violet-700'
-                  onClick={() => onChange(!value)}
-                >
-                  {value ? <UnfoldLessIcon /> : <UnfoldMoreIcon />}
-                </IconButton>
-              )}
-            /> */}
 
             <IconButton
               className='w-8 h-8 hover:text-violet-700'

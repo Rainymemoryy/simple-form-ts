@@ -8,7 +8,7 @@ import TemplateNav from './TemplateNav'
 
 let renderCount = 0
 
-export default function TemplateDetail() {
+export default function CreateTemplate() {
   const methods = useForm()
 
   const fieldArray = useFieldArray({
@@ -72,7 +72,7 @@ export default function TemplateDetail() {
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                               >
-                                <div className='py-2.5'>
+                                <div className='py-2.5 u--bounceInDown'>
                                   <ItemLayout
                                     provided={provided}
                                     snapshot={snapshot}
