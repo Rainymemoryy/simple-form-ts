@@ -1,5 +1,5 @@
 import React from 'react'
 
-export default function VectorPreview() {
-  return <div>VectorPreview</div>
+export default function VectorPreview({ regName }: any) {
+  return <div>{regName}</div>
 }

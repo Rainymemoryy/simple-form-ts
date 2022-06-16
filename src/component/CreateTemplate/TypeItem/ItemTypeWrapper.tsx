@@ -37,7 +37,9 @@ export default function ItemTypeWrapper({ regName, index }: Props) {
       )}
       {type === itemType.image && <ItemImage />}
 
-      {type === itemType.vectorCheckbox && <ItemVectorLayout />}
+      {type === itemType.vectorCheckbox && (
+        <ItemVectorLayout regName={regName} />
+      )}
     </div>
   )
 }

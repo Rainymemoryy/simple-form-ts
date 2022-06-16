@@ -1,31 +1,18 @@
-import { Button, Checkbox, IconButton, Radio } from '@mui/material'
-import { useState } from 'react'
-import { useFormContext } from 'react-hook-form'
-import { registerItem } from '../../../../constants/regCreTemplate'
+import React, { useState } from 'react'
 import AddIcon from '@mui/icons-material/Add'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
-import { itemType } from '../../../../constants/itemType'
-interface Props {
-  fieldArray?: any
-  regName?: any
-  type?: any
-}
+import { IconButton } from '@mui/material'
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank'
 
-export default function AddItemCheckorRadio({
-  fieldArray,
-  regName,
-  type
-}: Props) {
-  const methods = useFormContext()
+export default function AddItem({ append, remove }: any) {
   const [value, setValue] = useState('')
 
   return (
     <div className='group relative flex w-full items-center'>
       <DragIndicatorIcon className='opacity-20' />
-
-      {type === itemType.checkbox && <Checkbox disabled />}
-
-      {type === itemType.radio && <Radio disabled />}
+      <div className='flex h-[42px] w-[42px] items-center justify-center opacity-50'>
+        <CheckBoxOutlineBlankIcon />
+      </div>
 
       <div className='flex flex-1 items-center gap-1'>
         <input
@@ -36,8 +23,8 @@ export default function AddItemCheckorRadio({
           onKeyPress={e => {
             if (e.key === 'Enter') {
               if (value !== '') {
+                append({ value })
                 setValue('')
-                fieldArray.append({ value, tmpID: Math.random() })
               }
 
               e.preventDefault()
@@ -49,8 +36,8 @@ export default function AddItemCheckorRadio({
           disabled={value === ''}
           onClick={() => {
             if (value !== '') {
+              append({ value })
               setValue('')
-              fieldArray.append({ value, tmpID: Math.random() })
             }
           }}
         >
@@ -59,20 +46,6 @@ export default function AddItemCheckorRadio({
             className='opacity-0 group-hover:opacity-100'
           />
         </IconButton>
-        hoặc
-        <Button
-          className='button-default'
-          sx={{
-            textTransform: 'unset',
-            fontSize: 16,
-            fontWeight: '400'
-          }}
-          onClick={() => {
-            methods.setValue(`${regName}.${registerItem.isAnother}`, true)
-          }}
-        >
-          <span className='block text-center'>thêm "Khác"</span>
-        </Button>
       </div>
     </div>
   )

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import VectorEditing from './Vector/VectorEditing'
 import VectorPreview from './Vector/VectorPreview'
 
-export default function ItemVectorLayout() {
+export default function ItemVectorLayout({ regName }: any) {
   const [isPreview, setIsPreview] = useState(false)
 
   return (
@@ -14,8 +14,8 @@ export default function ItemVectorLayout() {
           onChange={e => setIsPreview(e.target.checked)}
         />
       </div>
-      {isPreview && <VectorPreview />}
-      {isPreview || <VectorEditing />}
+      {isPreview && <VectorPreview regName={regName} />}
+      {isPreview || <VectorEditing regName={regName} />}
     </>
   )
 }
