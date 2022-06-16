@@ -38,6 +38,24 @@ export default function ItemLayout({
   const methods = useFormContext()
   const isShowContent = useShowContent(methods, regName)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   return (
     <main
       className='relative flex items-center '
