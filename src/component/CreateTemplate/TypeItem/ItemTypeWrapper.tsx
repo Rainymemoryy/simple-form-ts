@@ -7,6 +7,7 @@ import ItemCheckbox from './CheckBoxOrRadio/ItemCheckbox'
 
 import ItemImage from './ItemImage'
 import ItemText from './ItemText'
+import ItemVectorLayout from './ItemVectorLayout'
 
 const useGetType = (regName, methods) => {
   const typeTMP = methods.watch(`${regName}.${registerItem.itemType}`)
@@ -36,7 +37,7 @@ export default function ItemTypeWrapper({ regName, index }: Props) {
       )}
       {type === itemType.image && <ItemImage />}
 
-      {type === itemType.vectorCheckbox && <ItemImage />}
+      {type === itemType.vectorCheckbox && <ItemVectorLayout />}
     </div>
   )
 }

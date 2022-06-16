@@ -7,13 +7,13 @@
 
 @layer components {
   .input-text {
-    @apply bg-transparent outline-0 border-b border-transparent focus:border-b-2 hover:border-violet-200 focus:border-violet-400;
+    @apply border-b border-transparent bg-transparent outline-0 hover:border-violet-200 focus:border-b-2 focus:border-violet-400;
   }
   .input-defaulvalue {
-    @apply border rounded resize-none outline-0 bg-transparent px-3 py-1.5 focus:border-violet-400 hover:border-violet-200;
+    @apply resize-none rounded border bg-transparent px-3 py-1.5 outline-0 hover:border-violet-200 focus:border-violet-400;
   }
   .button-default {
-    @apply px-3 py-1.5 rounded cursor-pointer text-violet-400 hover:bg-slate-50 hover:text-violet-700 transition-colors;
+    @apply cursor-pointer rounded bg-violet-50 px-3 py-1.5 transition-colors hover:bg-violet-100 focus:outline-none;
   }
 }
 

@@ -17,7 +17,9 @@ const listItemType = [
   { name: 'Radio', icon: <RadioButtonCheckedIcon />, value: itemType.radio },
   { name: 'Time', icon: <AccessTimeIcon />, value: itemType.time },
   { name: 'Date', icon: <CalendarTodayIcon />, value: itemType.date },
-  { name: 'Image', icon: <ImageIcon />, value: itemType.image }
+  { name: 'Image', icon: <ImageIcon />, value: itemType.image },
+
+  { name: 'List Checkbox', icon: <ImageIcon />, value: itemType.vectorCheckbox }
 ]
 
 const getItemByValue = (value: any) => listItemType.find(e => e.value === value)
