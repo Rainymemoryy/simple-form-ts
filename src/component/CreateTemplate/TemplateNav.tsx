@@ -9,11 +9,11 @@ export default function TemplateNav({ fieldArray }: Props) {
         <div className='truncate rounded-md px-3 py-1.5 text-xl '>
           Danh sách câu hỏi
         </div>
-        {fieldArray.fields.map(item => (
+        {fieldArray.fields.map((item, index) => (
           <a
             className='truncate rounded-md px-3 py-1.5 text-xl hover:bg-violet-100'
-            href={`#${item?.itemTmpID}`}
-            key={item?.itemTmpID}
+            href={`#${index}`}
+            key={item?.id}
           >
             {item.itemName}
           </a>

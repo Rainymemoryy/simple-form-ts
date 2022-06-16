@@ -39,10 +39,7 @@ export default function ItemLayout({
   const isShowContent = useShowContent(methods, regName)
 
   return (
-    <main
-      className='relative flex items-center '
-      id={fieldArray.fields[index].itemTmpID}
-    >
+    <main className='relative flex items-center' id={`${index}`}>
       <section
         className='absolute left-[-24px] opacity-50 hover:fill-violet-400 group-hover:opacity-100'
         {...provided.dragHandleProps}
