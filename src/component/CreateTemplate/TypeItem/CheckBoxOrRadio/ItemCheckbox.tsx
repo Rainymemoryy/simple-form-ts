@@ -1,9 +1,6 @@
-import { DragDropContext } from 'react-beautiful-dnd'
-import { Droppable } from 'react-beautiful-dnd'
-import { Draggable } from 'react-beautiful-dnd'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { useFieldArray, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../../../constants/regCreTemplate'
-
 import AddItemCheckorRadio from './AddItem'
 import Another from './Another'
 import CheckboxOrRadioItem from './CheckboxOrRadioItem'

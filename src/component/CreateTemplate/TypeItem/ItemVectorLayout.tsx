@@ -4,18 +4,18 @@ import VectorEditing from './Vector/VectorEditing'
 import VectorPreview from './Vector/VectorPreview'
 
 export default function ItemVectorLayout() {
-  const [isEditing, setEditing] = useState(false)
+  const [isPreview, setIsPreview] = useState(false)
 
   return (
     <>
       <div>
         <Switch
-          value={isEditing}
-          onChange={e => setEditing(e.target.checked)}
+          value={isPreview}
+          onChange={e => setIsPreview(e.target.checked)}
         />
       </div>
-      {isEditing && <VectorEditing />}
-      {isEditing || <VectorPreview />}
+      {isPreview && <VectorPreview />}
+      {isPreview || <VectorEditing />}
     </>
   )
 }
