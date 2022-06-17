@@ -8,14 +8,15 @@ export default function ItemVectorLayout({ regName }: any) {
 
   return (
     <>
-      <div>
+      {isPreview && <VectorPreview regName={regName} />}
+      {isPreview || <VectorEditing regName={regName} />}
+      <div className='flex w-full items-center justify-end'>
         <Switch
           value={isPreview}
           onChange={e => setIsPreview(e.target.checked)}
         />
+        Coi trước
       </div>
-      {isPreview && <VectorPreview regName={regName} />}
-      {isPreview || <VectorEditing regName={regName} />}
     </>
   )
 }
