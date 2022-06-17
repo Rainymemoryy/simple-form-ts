@@ -68,7 +68,7 @@ export default function VectorEditing({ regName }: any) {
       </section>
 
       <section aria-label='col' className='flex-1'>
-      <p>Nhập tên các cột</p>
+        <p>Nhập tên các cột</p>
         <DragDropContext
           onDragEnd={e => {
             e.source &&
