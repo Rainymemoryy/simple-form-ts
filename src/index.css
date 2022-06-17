@@ -17,10 +17,10 @@
   }
 }
 
-@import './style/attention.css';
-@import './style/bounce.css';
-@import './style/fade.css';
-@import './style/flip.css';
-@import './style/rotate.css';
-@import './style/slide.css';
-@import './style/zoom.css';
+@import './style/animation/attention.css';
+@import './style/animation/bounce.css';
+@import './style/animation/fade.css';
+@import './style/animation/flip.css';
+@import './style/animation/rotate.css';
+@import './style/animation/slide.css';
+@import './style/animation/zoom.css';
