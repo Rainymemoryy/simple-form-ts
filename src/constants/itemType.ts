@@ -6,5 +6,6 @@ export const itemType = {
   time: 'Time',
   image: 'Image',
 
-  vectorCheckbox: 'vectorCheckbox'
+  vectorCheckbox: 'vectorCheckbox',
+  vectorRadio: 'vectorRadio'
 }

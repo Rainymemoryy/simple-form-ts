@@ -27,7 +27,7 @@ export default function ({ regName }: Props) {
       )}
 
       <section className='flex w-full items-center justify-end'>
-        <div className='flex items-center'>
+        <div className='flex items-center gap-3'>
           <Controller
             control={methods.control}
             name={`${regName}.${registerItem.isMultiLine}`}

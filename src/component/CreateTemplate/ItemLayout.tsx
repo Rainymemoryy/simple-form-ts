@@ -1,7 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
 import { IconButton, TextareaAutosize } from '@mui/material'
@@ -11,6 +9,16 @@ import { registerItem } from '../../constants/regCreTemplate'
 import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
 import SelectItemType from './SelectItemType'
 import { useMemo } from 'react'
+import { AiFillDelete } from 'react-icons/ai'
+
+import { IoCopyOutline } from 'react-icons/io5'
+
+import {
+  BsArrowBarDown,
+  BsArrowBarUp,
+  BsArrowsCollapse,
+  BsArrowsExpand
+} from 'react-icons/bs'
 
 const useShowContent = regName => {
   const methods = useFormContext()
@@ -94,12 +102,16 @@ export default function ItemLayout({
               control={control}
               name={`${regName}.${registerItem.isShowContent}`}
               render={({ field: { onChange, onBlur, value, ref } }) => (
-                <IconButton
-                  className='hover:text-violet-400'
+                <button
+                  className='flex h-8 w-8 items-center justify-center rounded-full text-slate-900 outline-none hover:bg-slate-50'
                   onClick={() => onChange(!value)}
                 >
-                  {value ? <UnfoldLessIcon /> : <UnfoldMoreIcon />}
-                </IconButton>
+                  {value ? (
+                    <BsArrowBarUp className='h-5 w-5' />
+                  ) : (
+                    <BsArrowBarDown className='h-5 w-5' />
+                  )}
+                </button>
               )}
             />
 
@@ -114,7 +126,8 @@ export default function ItemLayout({
                 fieldArray.insert(index + 1, copyData)
               }}
             >
-              <ContentCopyIcon />
+              {/* <ContentCopyIcon /> */}
+              <IoCopyOutline />
             </IconButton>
 
             <IconButton
@@ -123,7 +136,8 @@ export default function ItemLayout({
                 fieldArray.remove(index)
               }}
             >
-              <DeleteOutlineIcon />
+              {/* <DeleteOutlineIcon /> */}
+              <AiFillDelete />
             </IconButton>
 
             <div className='flex h-10 items-center gap-2 border-l pl-3'>

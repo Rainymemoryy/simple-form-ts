@@ -2,24 +2,62 @@ import { Fragment } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 
-import AccessTimeIcon from '@mui/icons-material/AccessTime'
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
-import ImageIcon from '@mui/icons-material/Image'
-import ShortTextIcon from '@mui/icons-material/ShortText'
-import CheckBoxIcon from '@mui/icons-material/CheckBox'
-import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked'
 import { Controller, useFormContext } from 'react-hook-form'
 import { itemType } from '../../constants/itemType'
 
-const listItemType = [
-  { name: 'Text', icon: <ShortTextIcon />, value: itemType.text },
-  { name: 'Checkbox', icon: <CheckBoxIcon />, value: itemType.checkbox },
-  { name: 'Radio', icon: <RadioButtonCheckedIcon />, value: itemType.radio },
-  { name: 'Time', icon: <AccessTimeIcon />, value: itemType.time },
-  { name: 'Date', icon: <CalendarTodayIcon />, value: itemType.date },
-  { name: 'Image', icon: <ImageIcon />, value: itemType.image },
+import {
+  BsUiRadiosGrid,
+  BsUiChecksGrid,
+  BsImageFill,
+  BsTextParagraph,
+  BsCalendarEvent,
+  BsClock,
+  BsVinyl,
+  BsCheckSquare
+} from 'react-icons/bs'
 
-  { name: 'List Checkbox', icon: <ImageIcon />, value: itemType.vectorCheckbox }
+const listItemType = [
+  {
+    name: 'Text',
+    icon: <BsTextParagraph className='h-5 w-5 text-slate-900' />,
+    value: itemType.text
+  },
+  {
+    name: 'Checkbox',
+    icon: <BsCheckSquare className='h-5 w-5 text-slate-900' />,
+    value: itemType.checkbox
+  },
+  {
+    name: 'Radio',
+    icon: <BsVinyl className='h-5 w-5 text-slate-900' />,
+    value: itemType.radio
+  },
+  {
+    name: 'Time',
+    icon: <BsClock className='h-5 w-5 text-slate-900' />,
+    value: itemType.time
+  },
+  {
+    name: 'Date',
+    icon: <BsCalendarEvent className='h-5 w-5 text-slate-900' />,
+    value: itemType.date
+  },
+  {
+    name: 'Image',
+    icon: <BsImageFill className='h-5 w-5 text-slate-900' />,
+    value: itemType.image
+  },
+
+  {
+    name: 'List Checkbox',
+    icon: <BsUiChecksGrid className='h-5 w-5 text-slate-900' />,
+    value: itemType.vectorCheckbox
+  },
+  {
+    name: 'List Radio',
+    icon: <BsUiRadiosGrid className='h-5 w-5 text-slate-900' />,
+    value: itemType.vectorRadio
+  }
 ]
 
 const getItemByValue = (value: any) => listItemType.find(e => e.value === value)
