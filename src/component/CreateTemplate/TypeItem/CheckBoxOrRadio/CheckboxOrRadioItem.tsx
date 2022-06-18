@@ -1,4 +1,4 @@
-import { Checkbox, IconButton, Radio } from '@mui/material'
+import { IconButton } from '@mui/material'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import ClearIcon from '@mui/icons-material/Clear'
@@ -25,8 +25,6 @@ export default function CheckboxOrRadioItem({
   type
 }: Props) {
   const methods = useFormContext()
-
-  console.log('reRender', regName)
 
   return (
     <main>
@@ -60,14 +58,15 @@ export default function CheckboxOrRadioItem({
         {type === itemType.radio && (
           <Controller
             control={methods.control}
-            name={`${regNameItem}.${registerItem.radioCheck}`}
+            // name={`${regNameItem}.${registerItem.radioCheck}`}
+            name={`${regName}.isCheck`}
             render={({ field: { onChange, onBlur, value, ref } }) => (
               <div className='flex h-10 w-10 items-center justify-center'>
                 <input
                   type='radio'
                   name={`${regNameItem}.${registerItem.radioCheck}`}
-                  onChange={() => onChange(index)}
-                  checked={value === index}
+                  // onChange={() => onChange(index)}
+                  // checked={value === index}
                 />
               </div>
             )}

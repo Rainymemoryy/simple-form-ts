@@ -1,5 +1,4 @@
-import React from 'react'
-import { Checkbox, IconButton, Radio } from '@mui/material'
+import { IconButton } from '@mui/material'
 import { useFormContext } from 'react-hook-form'
 import { registerItem } from '../../../../constants/regCreTemplate'
 import ClearIcon from '@mui/icons-material/Clear'

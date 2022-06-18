@@ -1,7 +1,6 @@
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import { IconButton } from '@mui/material'
 import ClearIcon from '@mui/icons-material/Clear'
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank'
 import { useFormContext } from 'react-hook-form'
 
 export default function Item({ provided, regVector, remove, index }: any) {

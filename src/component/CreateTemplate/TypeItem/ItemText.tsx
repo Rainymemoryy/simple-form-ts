@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { Checkbox, TextareaAutosize } from '@mui/material'
+import { TextareaAutosize } from '@mui/material'
 import { Controller, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../../constants/regCreTemplate'
 

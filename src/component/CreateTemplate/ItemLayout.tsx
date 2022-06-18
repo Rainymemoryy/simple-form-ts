@@ -1,24 +1,28 @@
-import React, { useMemo } from 'react'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
-import { IconButton, Switch, TextareaAutosize } from '@mui/material'
+import { IconButton, TextareaAutosize } from '@mui/material'
 import WarningIcon from '@mui/icons-material/Warning'
 import { Controller, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../constants/regCreTemplate'
 import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
 import SelectItemType from './SelectItemType'
 
-const useShowContent = (methods, regName) => {
+const useShowContent = regName => {
+  const methods = useFormContext()
+
   const isShowContent = methods.watch(
     `${regName}.${registerItem.isShowContent}`
   )
-  const data = useMemo(() => {
-    return isShowContent
-  }, [isShowContent])
-  return data
+
+  return {
+    isShowContent,
+    register: methods.register,
+    control: methods.control,
+    getValues: methods.getValues
+  }
 }
 
 interface Props {
@@ -35,8 +39,8 @@ export default function ItemLayout({
   regName,
   fieldArray
 }: Props) {
-  const methods = useFormContext()
-  const isShowContent = useShowContent(methods, regName)
+  const { isShowContent, register, control, getValues } =
+    useShowContent(regName)
 
   return (
     <main className='relative flex items-center' id={`${index}`}>
@@ -60,7 +64,7 @@ export default function ItemLayout({
             aria-label='Item name'
             className='input-text mt-0.5 min-h-[32px] flex-1 resize-none py-0.5 text-lg font-medium tracking-wide'
             placeholder='Nhập tên câu hỏi'
-            {...methods.register(`${regName}.${registerItem.itemName}`)}
+            {...register(`${regName}.${registerItem.itemName}`)}
             onKeyDown={(e: any) => {
               if (!e.shiftKey && e.keyCode === 13) {
                 e.target.blur()
@@ -74,16 +78,16 @@ export default function ItemLayout({
           aria-label='Item description'
           className='input-text w-full resize-none text-sm text-gray-500'
           placeholder='Nhập mô tả'
-          {...methods.register(`${regName}.${registerItem.itemDecs}`)}
+          {...register(`${regName}.${registerItem.itemDecs}`)}
         />
 
-        {/* {isShowContent && (
+        {isShowContent && (
           <img
             className='rounded-md'
             src='https://images.wallpapersden.com/image/wxl-small-memory_58461.jpg'
             alt=''
           />
-        )} */}
+        )}
 
         {isShowContent && <ItemTypeWrapper regName={regName} index={index} />}
 
@@ -94,7 +98,7 @@ export default function ItemLayout({
 
           <div className='flex items-center justify-end gap-3'>
             <Controller
-              control={methods.control}
+              control={control}
               name={`${regName}.${registerItem.isShowContent}`}
               render={({ field: { onChange, onBlur, value, ref } }) => (
                 <IconButton
@@ -109,7 +113,7 @@ export default function ItemLayout({
             <IconButton
               className='h-8 w-8 hover:text-violet-700'
               onClick={() => {
-                const field: any = methods.getValues(`${regName}`)
+                const field: any = getValues(`${regName}`)
                 const copyData = {
                   ...field,
                   itemTmpID: `item-${Math.random()}`,
@@ -132,7 +136,7 @@ export default function ItemLayout({
 
             <div className='flex h-10 items-center gap-2 border-l pl-3'>
               <Controller
-                control={methods.control}
+                control={control}
                 name={`${regName}.${registerItem.isRequired}`}
                 render={({ field: { onChange, onBlur, value, ref } }) => (
                   <input
