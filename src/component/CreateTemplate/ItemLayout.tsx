@@ -91,13 +91,13 @@ export default function ItemLayout({
           </label>
         </div>
 
-        {isShowContent && (
+        {/* {isShowContent && (
           <img
             className='rounded-md'
             src='https://images.wallpapersden.com/image/wxl-small-memory_58461.jpg'
             alt=''
           />
-        )}
+        )} */}
       </>
     ),
     [index, isShowContent, regName]
@@ -160,6 +160,27 @@ export default function ItemLayout({
                 regName
               )}
             </>
+
+            {type === itemType.text && (
+              <div className='flex h-10 items-center gap-2 border-l pl-3'>
+                <Controller
+                  control={control}
+                  name={`${regName}.${registerItem.isMultiLine}`}
+                  render={({ field: { onChange, onBlur, value, ref } }) => (
+                    <input
+                      id={`${regName}-MultiLine`}
+                      type='checkbox'
+                      className='switch'
+                      onChange={onChange}
+                      onBlur={onBlur}
+                      checked={value || false}
+                    />
+                  )}
+                />
+                <label htmlFor={`${regName}-MultiLine`}>Nhiều dòng</label>
+              </div>
+            )}
+
             {(type === itemType.vectorCheckbox ||
               type === itemType.vectorRadio) && (
               <div className='flex h-10 items-center gap-2 border-l pl-3'>

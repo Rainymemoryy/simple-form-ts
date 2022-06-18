@@ -25,28 +25,6 @@ export default function ({ regName }: Props) {
           {...methods.register(`${regName}.${registerItem.textDefault}`)}
         />
       )}
-
-      <section className='flex w-full items-center justify-end'>
-        <div className='flex items-center gap-3'>
-          <Controller
-            control={methods.control}
-            name={`${regName}.${registerItem.isMultiLine}`}
-            render={({ field: { onChange, onBlur, value, ref } }) => (
-              <div className='flex h-8 w-8 items-center justify-center'>
-                <input
-                  id={regName + 'isMultiLine'}
-                  type='checkbox'
-                  onChange={onChange}
-                  checked={value || false}
-                />
-              </div>
-            )}
-          />
-          <label className='text-sm' htmlFor={regName + 'isMultiLine'}>
-            Nhiều dòng
-          </label>
-        </div>
-      </section>
     </main>
   )
 }
