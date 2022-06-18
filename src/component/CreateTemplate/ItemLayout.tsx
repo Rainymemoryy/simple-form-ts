@@ -1,19 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
-import { IconButton, TextareaAutosize } from '@mui/material'
+import { TextareaAutosize } from '@mui/material'
 import WarningIcon from '@mui/icons-material/Warning'
 import { Controller, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../constants/regCreTemplate'
 import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
 import SelectItemType from './SelectItemType'
 import { useMemo } from 'react'
-import { AiFillDelete } from 'react-icons/ai'
 
 import {
-  BsChevronContract,
-  BsChevronExpand,
+  BsChevronDown,
+  BsChevronUp,
   BsFiles,
-  BsImage
+  BsImage,
+  BsTrash
 } from 'react-icons/bs'
 import { itemType } from '../../constants/itemType'
 
@@ -117,20 +117,20 @@ export default function ItemLayout({
               name={`${regName}.${registerItem.isShowContent}`}
               render={({ field: { onChange, onBlur, value, ref } }) => (
                 <button
-                  className='flex h-8 w-8 items-center justify-center rounded-full text-slate-900 outline-none hover:bg-slate-50'
+                  className='group flex h-10 w-10 items-center justify-center rounded-full text-slate-900 outline-none'
                   onClick={() => onChange(!value)}
                 >
                   {value ? (
-                    <BsChevronContract className='h-5 w-5' />
+                    <BsChevronDown className='h-5 w-5 opacity-50 transition-all group-hover:scale-125 group-hover:opacity-100' />
                   ) : (
-                    <BsChevronExpand className='h-5 w-5' />
+                    <BsChevronUp className='h-5 w-5 opacity-50 transition-all group-hover:scale-125 group-hover:opacity-100' />
                   )}
                 </button>
               )}
             />
 
-            <IconButton
-              className='hover:text-violet-400'
+            <button
+              className='group flex h-10 w-10 items-center justify-center rounded-full text-slate-900 outline-none'
               onClick={() => {
                 const field: any = getValues(`${regName}`)
                 const copyData = {
@@ -140,19 +140,17 @@ export default function ItemLayout({
                 fieldArray.insert(index + 1, copyData)
               }}
             >
-              {/* <ContentCopyIcon /> */}
-              <BsFiles className='h-5 w-5' />
-            </IconButton>
+              <BsFiles className='h-5 w-5 opacity-50 transition-all group-hover:scale-125 group-hover:opacity-100' />
+            </button>
 
-            <IconButton
-              className='hover:text-violet-400'
+            <button
+              className='group flex h-10 w-10 items-center justify-center rounded-full text-slate-900 outline-none'
               onClick={() => {
                 fieldArray.remove(index)
               }}
             >
-              {/* <DeleteOutlineIcon /> */}
-              <AiFillDelete />
-            </IconButton>
+              <BsTrash className='h-5 w-5 opacity-50 transition-all group-hover:scale-125 group-hover:opacity-100' />
+            </button>
             <>
               {console.log(
                 type === itemType.vectorCheckbox ||

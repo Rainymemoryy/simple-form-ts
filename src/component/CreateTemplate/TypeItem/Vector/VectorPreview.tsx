@@ -1,8 +1,6 @@
-import { ClassNames } from '@emotion/react'
 import { Controller, useFieldArray, useFormContext } from 'react-hook-form'
 import { BsFillArrowLeftCircleFill } from 'react-icons/bs'
 import { itemType } from '../../../../constants/itemType'
-import { registerItem } from '../../../../constants/regCreTemplate'
 
 export default function VectorPreview({ regName, type }: any) {
   const methods = useFormContext()
@@ -23,7 +21,7 @@ export default function VectorPreview({ regName, type }: any) {
         <div className='flex w-full items-center justify-end'>
           <label
             htmlFor={`${regName}-prevew`}
-            className='group flex w-52 animate-bounce cursor-pointer items-center gap-3 rounded bg-yellow-100 px-3 py-1.5'
+            className='group flex w-52 cursor-pointer items-center gap-3 rounded bg-yellow-100 px-3 py-1.5'
           >
             <BsFillArrowLeftCircleFill className='h-5 w-5 transition-transform group-hover:scale-125 group-hover:animate-none ' />
             Quay lại và tiếp tục

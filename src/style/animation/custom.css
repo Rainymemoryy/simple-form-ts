@@ -1,0 +1,10 @@
+@keyframes ping__ {
+  75%,
+  100% {
+    transform: scale(1.05);
+    /* opacity: 0.8; */
+  }
+}
+.animate-ping__ {
+  animation: ping__ 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
