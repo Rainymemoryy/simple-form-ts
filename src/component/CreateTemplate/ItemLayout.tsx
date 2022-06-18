@@ -9,6 +9,7 @@ import { Controller, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../constants/regCreTemplate'
 import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
 import SelectItemType from './SelectItemType'
+import { useMemo } from 'react'
 
 const useShowContent = regName => {
   const methods = useFormContext()
@@ -41,6 +42,18 @@ export default function ItemLayout({
 }: Props) {
   const { isShowContent, register, control, getValues } =
     useShowContent(regName)
+
+  // console.log('ItemLayout', regName)
+
+  const renderContent = useMemo(
+    () => (
+      <>
+        {console.log('renderContent', regName)}
+        {isShowContent && <ItemTypeWrapper regName={regName} index={index} />}
+      </>
+    ),
+    [index, isShowContent, regName]
+  )
 
   return (
     <main className='relative flex items-center' id={`${index}`}>
@@ -89,7 +102,7 @@ export default function ItemLayout({
           />
         )}
 
-        {isShowContent && <ItemTypeWrapper regName={regName} index={index} />}
+        {renderContent}
 
         <div className='flex items-center justify-between gap-3 pt-2'>
           <div className='flex items-center justify-end gap-3 text-yellow-400'>
