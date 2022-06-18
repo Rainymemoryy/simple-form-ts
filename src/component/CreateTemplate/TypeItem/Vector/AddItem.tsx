@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import AddIcon from '@mui/icons-material/Add'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import { IconButton } from '@mui/material'
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank'
 
 export default function AddItem({ append, remove }: any) {
   const [value, setValue] = useState('')
@@ -10,8 +9,8 @@ export default function AddItem({ append, remove }: any) {
   return (
     <div className='group relative flex w-full items-center'>
       <DragIndicatorIcon className='opacity-20' />
-      <div className='flex h-[42px] w-[42px] items-center justify-center opacity-50'>
-        <CheckBoxOutlineBlankIcon />
+      <div className='flex h-10 w-10 items-center justify-center'>
+        <input type='checkbox' disabled />
       </div>
 
       <div className='flex flex-1 items-center gap-1'>

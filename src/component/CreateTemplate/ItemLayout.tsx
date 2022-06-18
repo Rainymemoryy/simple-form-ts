@@ -130,19 +130,21 @@ export default function ItemLayout({
               <DeleteOutlineIcon />
             </IconButton>
 
-            <div className='flex items-center border-l'>
+            <div className='flex h-10 items-center gap-2 border-l pl-3'>
               <Controller
                 control={methods.control}
                 name={`${regName}.${registerItem.isRequired}`}
                 render={({ field: { onChange, onBlur, value, ref } }) => (
-                  <Switch
+                  <input
+                    type='checkbox'
+                    className='switch'
                     onChange={onChange}
                     onBlur={onBlur}
                     checked={value || false}
                   />
                 )}
               />
-              Bắt buộc
+              <p>bắt buộc</p>
             </div>
           </div>
         </div>

@@ -19,8 +19,8 @@ export default function Item({ provided, regVector, remove, index }: any) {
         <DragIndicatorIcon />
       </div>
 
-      <div className='flex h-[42px] w-[42px] items-center justify-center opacity-50'>
-        <CheckBoxOutlineBlankIcon />
+      <div className='flex h-10 w-10 items-center justify-center'>
+        <input type='checkbox' disabled />
       </div>
 
       <input
