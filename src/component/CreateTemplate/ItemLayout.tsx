@@ -6,12 +6,15 @@ import { Controller, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../constants/regCreTemplate'
 import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
 import SelectItemType from './SelectItemType'
-import { useMemo } from 'react'
+import { useMemo, useRef } from 'react'
 import { AiFillDelete } from 'react-icons/ai'
 
-import { IoCopyOutline } from 'react-icons/io5'
-
-import { BsArrowBarDown, BsArrowBarUp, BsFiles, BsImage } from 'react-icons/bs'
+import {
+  BsChevronContract,
+  BsChevronExpand,
+  BsFiles,
+  BsImage
+} from 'react-icons/bs'
 
 const useShowContent = regName => {
   const methods = useFormContext()
@@ -70,16 +73,27 @@ export default function ItemLayout({
             placeholder='Nhập mô tả'
             {...register(`${regName}.${registerItem.itemDecs}`)}
           />
-          <BsImage className='h-5 w-5 cursor-pointer' />
+
+          <input
+            type='file'
+            name='myImage'
+            accept='image/png, image/gif, image/jpeg'
+            className='hidden'
+            id={regName + 'descImage'}
+          />
+
+          <label htmlFor={regName + 'descImage'}>
+            <BsImage className='h-5 w-5 cursor-pointer' />
+          </label>
         </div>
 
-        {/* {isShowContent && (
+        {isShowContent && (
           <img
             className='rounded-md'
             src='https://images.wallpapersden.com/image/wxl-small-memory_58461.jpg'
             alt=''
           />
-        )} */}
+        )}
       </>
     ),
     [index, isShowContent, regName]
@@ -103,9 +117,9 @@ export default function ItemLayout({
                   onClick={() => onChange(!value)}
                 >
                   {value ? (
-                    <BsArrowBarUp className='h-5 w-5' />
+                    <BsChevronContract className='h-5 w-5' />
                   ) : (
-                    <BsArrowBarDown className='h-5 w-5' />
+                    <BsChevronExpand className='h-5 w-5' />
                   )}
                 </button>
               )}
