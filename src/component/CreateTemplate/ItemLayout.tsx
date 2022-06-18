@@ -70,13 +70,13 @@ export default function ItemLayout({
           {...register(`${regName}.${registerItem.itemDecs}`)}
         />
 
-        {isShowContent && (
+        {/* {isShowContent && (
           <img
             className='rounded-md'
             src='https://images.wallpapersden.com/image/wxl-small-memory_58461.jpg'
             alt=''
           />
-        )}
+        )} */}
 
         {isShowContent && <ItemTypeWrapper regName={regName} index={index} />}
 

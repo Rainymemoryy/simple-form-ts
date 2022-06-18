@@ -12,9 +12,7 @@ import ItemVectorLayout from './ItemVectorLayout'
 
 const useGetType = regName => {
   const methods = useFormContext()
-
   const typeTMP = methods.watch(`${regName}.${registerItem.itemType}`)
-
   return typeTMP
 }
 
@@ -28,8 +26,7 @@ export default function ItemTypeWrapper({ regName, index }: Props) {
 
   const renderContent = useMemo(
     () => (
-      <>
-        {console.log('ItemTypeWrapper', regName)}
+      <div className='py-3'>
         {type === itemType.text && <ItemText regName={regName} />}
 
         {type === itemType.checkbox && (
@@ -45,7 +42,7 @@ export default function ItemTypeWrapper({ regName, index }: Props) {
         {type === itemType.vectorCheckbox && (
           <ItemVectorLayout regName={regName} />
         )}
-      </>
+      </div>
     ),
     [regName, type]
   )
