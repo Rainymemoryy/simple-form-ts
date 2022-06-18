@@ -6,7 +6,7 @@ import { Controller, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../constants/regCreTemplate'
 import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
 import SelectItemType from './SelectItemType'
-import { useMemo, useRef } from 'react'
+import { useMemo } from 'react'
 import { AiFillDelete } from 'react-icons/ai'
 
 import {
@@ -15,15 +15,19 @@ import {
   BsFiles,
   BsImage
 } from 'react-icons/bs'
+import { itemType } from '../../constants/itemType'
 
-const useShowContent = regName => {
+const useGetValue = regName => {
   const methods = useFormContext()
 
   const isShowContent = methods.watch(
     `${regName}.${registerItem.isShowContent}`
   )
 
+  const type = methods.watch(`${regName}.${registerItem.itemType}`)
+
   return {
+    type,
     isShowContent,
     register: methods.register,
     control: methods.control,
@@ -45,8 +49,8 @@ export default function ItemLayout({
   regName,
   fieldArray
 }: Props) {
-  const { isShowContent, register, control, getValues } =
-    useShowContent(regName)
+  const { isShowContent, register, control, getValues, type } =
+    useGetValue(regName)
 
   const renderTitle = useMemo(
     () => (
@@ -149,6 +153,33 @@ export default function ItemLayout({
               {/* <DeleteOutlineIcon /> */}
               <AiFillDelete />
             </IconButton>
+            <>
+              {console.log(
+                type === itemType.vectorCheckbox ||
+                  type === itemType.vectorRadio,
+                regName
+              )}
+            </>
+            {(type === itemType.vectorCheckbox ||
+              type === itemType.vectorRadio) && (
+              <div className='flex h-10 items-center gap-2 border-l pl-3'>
+                <Controller
+                  control={control}
+                  name={`${regName}.${registerItem.isPreview}`}
+                  render={({ field: { onChange, onBlur, value, ref } }) => (
+                    <input
+                      id={`${regName}-prevew`}
+                      type='checkbox'
+                      className='switch'
+                      onChange={onChange}
+                      onBlur={onBlur}
+                      checked={value || false}
+                    />
+                  )}
+                />
+                <label htmlFor={`${regName}-prevew`}>Xem trước</label>
+              </div>
+            )}
 
             <div className='flex h-10 items-center gap-2 border-l pl-3'>
               <Controller
@@ -171,7 +202,7 @@ export default function ItemLayout({
         </div>
       </>
     ),
-    [index, isShowContent, regName]
+    [index, isShowContent, regName, type]
   )
 
   return (

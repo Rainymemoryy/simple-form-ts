@@ -19,6 +19,9 @@ export const registerItem = {
   radioCheck: 'radioCheck',
   isAnother: 'isAnother',
 
+  //vector
+  isPreview: 'isPreview',
+
   //show
   isShowContent: 'isShowContent'
 }
