@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
@@ -43,35 +44,10 @@ export default function ItemLayout({
   const { isShowContent, register, control, getValues } =
     useShowContent(regName)
 
-  // console.log('ItemLayout', regName)
-
-  const renderContent = useMemo(
+  const ALLrenderContent = useMemo(
     () => (
       <>
         {console.log('renderContent', regName)}
-        {isShowContent && <ItemTypeWrapper regName={regName} index={index} />}
-      </>
-    ),
-    [index, isShowContent, regName]
-  )
-
-  return (
-    <main className='relative flex items-center' id={`${index}`}>
-      <section
-        className='absolute left-[-24px] opacity-50 hover:fill-violet-400 group-hover:opacity-100'
-        {...provided.dragHandleProps}
-        onClick={e => {
-          e.stopPropagation()
-        }}
-      >
-        <DragIndicatorIcon />
-      </section>
-
-      <section
-        className={`relative box-border flex flex-1 cursor-default flex-col gap-1 rounded-lg border-2 border-transparent bg-white p-8 pb-6 shadow-11 outline-0 hover:border-violet-400 ${
-          snapshot?.isDragging && 'border-violet-400'
-        } transition-colors`}
-      >
         <div className='flex flex-1 items-center gap-3'>
           <TextareaAutosize
             aria-label='Item name'
@@ -102,7 +78,7 @@ export default function ItemLayout({
           />
         )}
 
-        {renderContent}
+        {isShowContent && <ItemTypeWrapper regName={regName} index={index} />}
 
         <div className='flex items-center justify-between gap-3 pt-2'>
           <div className='flex items-center justify-end gap-3 text-yellow-400'>
@@ -165,6 +141,29 @@ export default function ItemLayout({
             </div>
           </div>
         </div>
+      </>
+    ),
+    [index, isShowContent, regName]
+  )
+
+  return (
+    <main className='relative flex items-center' id={`${index}`}>
+      <section
+        className='absolute left-[-24px] opacity-50 hover:fill-violet-400 group-hover:opacity-100'
+        {...provided.dragHandleProps}
+        onClick={e => {
+          e.stopPropagation()
+        }}
+      >
+        <DragIndicatorIcon />
+      </section>
+
+      <section
+        className={`relative box-border flex flex-1 cursor-default flex-col gap-1 rounded-lg border-2 border-transparent bg-white p-8 pb-6 shadow-11 outline-0 hover:border-violet-400 ${
+          snapshot?.isDragging && 'border-violet-400'
+        } transition-colors`}
+      >
+        {ALLrenderContent}
       </section>
     </main>
   )
