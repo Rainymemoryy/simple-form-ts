@@ -1,10 +1,10 @@
-import { Button, IconButton } from '@mui/material'
+import { Button } from '@mui/material'
 import { useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { registerItem } from '../../../../constants/regCreTemplate'
-import AddIcon from '@mui/icons-material/Add'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import { itemType } from '../../../../constants/itemType'
+import { BsFillArrowRightCircleFill } from 'react-icons/bs'
 interface Props {
   fieldArray?: any
   regName?: any
@@ -52,8 +52,10 @@ export default function AddItemCheckorRadio({
             }
           }}
         />
-        <IconButton
-          className='hover:text-violet-400'
+        <button
+          className={`flex h-8 w-8 items-center justify-center opacity-50 outline-none transition-transform ${
+            value !== '' && 'scale-150 opacity-100'
+          }`}
           disabled={value === ''}
           onClick={() => {
             if (value !== '') {
@@ -62,11 +64,8 @@ export default function AddItemCheckorRadio({
             }
           }}
         >
-          <AddIcon
-            fontSize='small'
-            className='opacity-0 group-hover:opacity-100'
-          />
-        </IconButton>
+          <BsFillArrowRightCircleFill />
+        </button>
         hoặc
         <Button
           className='button-default'

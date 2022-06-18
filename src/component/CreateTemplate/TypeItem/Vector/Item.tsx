@@ -1,7 +1,6 @@
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
-import { IconButton } from '@mui/material'
-import ClearIcon from '@mui/icons-material/Clear'
 import { useFormContext } from 'react-hook-form'
+import { BsX } from 'react-icons/bs'
 
 export default function Item({ provided, regVector, remove, index }: any) {
   const { register } = useFormContext()
@@ -28,17 +27,12 @@ export default function Item({ provided, regVector, remove, index }: any) {
         {...register(`${regVector}.value`)}
       />
 
-      <div className='flex gap-1'>
-        <IconButton
-          className='hover:text-violet-400'
-          onClick={() => remove(index)}
-        >
-          <ClearIcon
-            fontSize='small'
-            className='opacity-0 group-hover:opacity-100'
-          />
-        </IconButton>
-      </div>
+      <button
+        className='opacity-50 outline-none transition-transform hover:scale-150 hover:opacity-100'
+        onClick={() => remove(index)}
+      >
+        <BsX />
+      </button>
     </section>
   )
 }

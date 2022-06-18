@@ -15,6 +15,7 @@ import {
   BsCheckSquare,
   BsRecordCircle
 } from 'react-icons/bs'
+import { registerItem } from '../../constants/regCreTemplate'
 
 const listItemType = [
   {
@@ -73,9 +74,15 @@ export default function SelectItemType({ regName }: Props) {
     <div className='relative w-52'>
       <Controller
         control={methods.control}
-        name={`${regName}`}
+        name={`${regName}.${registerItem.itemType}`}
         render={({ field: { onChange, onBlur, value, ref } }) => (
-          <Listbox value={value} onChange={onChange}>
+          <Listbox
+            value={value}
+            onChange={e => {
+              onChange(e)
+              methods.setValue(`${regName}.${registerItem.isShowContent}`, true)
+            }}
+          >
             <div className='relative'>
               <Listbox.Button className='relative w-full cursor-default rounded bg-violet-50 py-2 pl-3 pr-10 text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm'>
                 <div className='flex items-center gap-2'>

@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import AddIcon from '@mui/icons-material/Add'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
-import { IconButton } from '@mui/material'
 import { itemType } from '../../../../constants/itemType'
+import { BsFillArrowRightCircleFill } from 'react-icons/bs'
 
 export default function AddItem({ append, type }: any) {
   const [value, setValue] = useState('')
@@ -32,8 +31,11 @@ export default function AddItem({ append, type }: any) {
             }
           }}
         />
-        <IconButton
-          className='hover:text-violet-400'
+
+        <button
+          className={`flex items-center justify-center opacity-50 outline-none transition-transform ${
+            value !== '' && 'scale-150 opacity-100'
+          }`}
           disabled={value === ''}
           onClick={() => {
             if (value !== '') {
@@ -42,11 +44,18 @@ export default function AddItem({ append, type }: any) {
             }
           }}
         >
+          <BsFillArrowRightCircleFill />
+        </button>
+
+        {/* <IconButton
+          className='hover:text-violet-400'
+         
+        >
           <AddIcon
             fontSize='small'
             className='opacity-0 group-hover:opacity-100'
           />
-        </IconButton>
+        </IconButton> */}
       </div>
     </div>
   )

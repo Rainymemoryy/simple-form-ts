@@ -1,11 +1,8 @@
-import { IconButton } from '@mui/material'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
-import ContentCopyIcon from '@mui/icons-material/ContentCopy'
-import ClearIcon from '@mui/icons-material/Clear'
-import AddIcon from '@mui/icons-material/Add'
 import { Controller, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../../../constants/regCreTemplate'
 import { itemType } from '../../../../constants/itemType'
+import { BsX } from 'react-icons/bs'
 
 interface Props {
   regName: any
@@ -79,44 +76,31 @@ export default function CheckboxOrRadioItem({
           {...methods.register(`${regName}.value`)}
         />
         <div className='flex gap-1'>
-          <IconButton className='hover:text-violet-400'>
-            <AddIcon
-              fontSize='small'
-              className='opacity-0 group-hover:opacity-100'
-            />
-          </IconButton>
-
-          <IconButton
-            className='hover:text-violet-400'
+          {/* <button
+            className={`flex h-8 w-8 items-center justify-center opacity-50 outline-none transition-transform hover:scale-150 hover:opacity-100`}
             onClick={() => {
               let dataTmp = fieldArray.fields[index]
               dataTmp = { ...dataTmp, value: dataTmp.value + ' - copy' }
               fieldArray.insert(index + 1, dataTmp)
             }}
           >
-            <ContentCopyIcon
-              fontSize='small'
-              className='opacity-0 group-hover:opacity-100'
-            />
-          </IconButton>
+            <BsFiles />
+          </button> */}
 
-          <IconButton
-            className='hover:text-violet-400'
+          <button
+            className={`hidden h-5 w-5 items-center justify-center opacity-50 outline-none transition-transform hover:scale-150 hover:opacity-100  group-hover:flex`}
             onClick={() => {
               fieldArray.remove(index)
             }}
           >
-            <ClearIcon
-              fontSize='small'
-              className='opacity-0 group-hover:opacity-100'
-            />
-          </IconButton>
+            <BsX />
+          </button>
         </div>
       </section>
 
-      <section className='group relative flex w-full items-center pl-[66px]'>
-        {/* <MemoLayout /> */}
-      </section>
+      {/* <section className='group relative flex w-full items-center pl-[66px]'>
+        <MemoLayout />
+      </section> */}
     </main>
   )
 }

@@ -8,13 +8,7 @@ import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
 import SelectItemType from './SelectItemType'
 import { useMemo } from 'react'
 
-import {
-  BsChevronDown,
-  BsChevronUp,
-  BsFiles,
-  BsImage,
-  BsTrash
-} from 'react-icons/bs'
+import { BsChevronDown, BsChevronUp, BsFiles, BsTrash } from 'react-icons/bs'
 import { itemType } from '../../constants/itemType'
 
 const useGetValue = regName => {
@@ -67,10 +61,10 @@ export default function ItemLayout({
               }
             }}
           />
-          <SelectItemType regName={`${regName}.${registerItem.itemType}`} />
+          <SelectItemType regName={regName} />
         </div>
 
-        <div className='flex h-8 items-center gap-3'>
+        <div className='flex min-h-[32px] items-center gap-3'>
           <TextareaAutosize
             aria-label='Item description'
             className='input-text flex-1 resize-none text-sm text-gray-500'
@@ -78,7 +72,7 @@ export default function ItemLayout({
             {...register(`${regName}.${registerItem.itemDecs}`)}
           />
 
-          <input
+          {/* <input
             type='file'
             name='myImage'
             accept='image/png, image/gif, image/jpeg'
@@ -88,7 +82,7 @@ export default function ItemLayout({
 
           <label htmlFor={regName + 'descImage'}>
             <BsImage className='h-5 w-5 cursor-pointer' />
-          </label>
+          </label> */}
         </div>
 
         {/* {isShowContent && (
@@ -121,9 +115,9 @@ export default function ItemLayout({
                   onClick={() => onChange(!value)}
                 >
                   {value ? (
-                    <BsChevronDown className='h-5 w-5 opacity-50 transition-all group-hover:scale-125 group-hover:opacity-100' />
-                  ) : (
                     <BsChevronUp className='h-5 w-5 opacity-50 transition-all group-hover:scale-125 group-hover:opacity-100' />
+                  ) : (
+                    <BsChevronDown className='h-5 w-5 opacity-50 transition-all group-hover:scale-125 group-hover:opacity-100' />
                   )}
                 </button>
               )}
@@ -151,13 +145,6 @@ export default function ItemLayout({
             >
               <BsTrash className='h-5 w-5 opacity-50 transition-all group-hover:scale-125 group-hover:opacity-100' />
             </button>
-            <>
-              {console.log(
-                type === itemType.vectorCheckbox ||
-                  type === itemType.vectorRadio,
-                regName
-              )}
-            </>
 
             {type === itemType.text && (
               <div className='flex h-10 items-center gap-2 border-l pl-3'>

@@ -1,7 +1,7 @@
-import { Button, TextareaAutosize } from '@mui/material'
-import AddTaskIcon from '@mui/icons-material/AddTask'
+import { TextareaAutosize } from '@mui/material'
 import { useState } from 'react'
 import { itemType } from '../../constants/itemType'
+import { BsFillArrowRightCircleFill } from 'react-icons/bs'
 
 export default function CreateItem(props: any) {
   const { append } = props
@@ -32,7 +32,7 @@ export default function CreateItem(props: any) {
             }}
           />
 
-          <Button
+          {/* <Button
             className='button-default flex gap-1.5'
             sx={{
               textTransform: 'unset',
@@ -51,7 +51,27 @@ export default function CreateItem(props: any) {
           >
             <span className='block text-center'> Tạo một câu hỏi mới</span>
             <AddTaskIcon />
-          </Button>
+          </Button> */}
+
+          <button
+            className={`button-default flex items-center gap-3 px-3 py-1.5 transition-colors ${
+              value === '' && 'opacity-80'
+            }`}
+            disabled={value === ''}
+            onClick={() => {
+              append({
+                itemName: value,
+                itemType: itemType.text,
+                isShowContent: true
+              })
+              setValue('')
+            }}
+          >
+            <span className='block text-center'> Tạo một câu hỏi mới</span>
+            <BsFillArrowRightCircleFill
+              className={`transition-transform ${value !== '' && 'scale-150 '}`}
+            />
+          </button>
         </div>
       </div>
     </main>

@@ -12,6 +12,10 @@ module.exports = {
     },
 
     fontFamily: {
+      // font-family: 'Montserrat', sans-serif
+      // font-family: 'Roboto', sans-serif
+      // font-family: 'Roboto Flex', sans-serif
+
       sans: ['Roboto', 'sans-serif']
     }
   },
