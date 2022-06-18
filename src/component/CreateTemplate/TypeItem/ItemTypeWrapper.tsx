@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { render } from '@testing-library/react'
 import { useEffect, useMemo, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { itemType } from '../../../constants/itemType'
@@ -9,12 +10,12 @@ import ItemImage from './ItemImage'
 import ItemText from './ItemText'
 import ItemVectorLayout from './ItemVectorLayout'
 
-const useGetType = (regName, methods) => {
+const useGetType = regName => {
+  const methods = useFormContext()
+
   const typeTMP = methods.watch(`${regName}.${registerItem.itemType}`)
-  const type = useMemo(() => {
-    return typeTMP
-  }, [typeTMP])
-  return type
+
+  return typeTMP
 }
 
 interface Props {
@@ -23,23 +24,31 @@ interface Props {
 }
 
 export default function ItemTypeWrapper({ regName, index }: Props) {
-  const methods = useFormContext()
-  const type = useGetType(regName, methods)
+  const type = useGetType(regName)
 
-  return (
-    <div>
-      {type === itemType.text && <ItemText regName={regName} />}
-      {type === itemType.checkbox && (
-        <ItemCheckbox regName={regName} type={type} />
-      )}
-      {type === itemType.radio && (
-        <ItemCheckbox regName={regName} type={type} />
-      )}
-      {type === itemType.image && <ItemImage />}
+  const renderContent = useMemo(
+    () => (
+      <>
+        {console.log('ItemTypeWrapper', regName)}
+        {type === itemType.text && <ItemText regName={regName} />}
 
-      {type === itemType.vectorCheckbox && (
-        <ItemVectorLayout regName={regName} />
-      )}
-    </div>
+        {type === itemType.checkbox && (
+          <ItemCheckbox regName={regName} type={type} />
+        )}
+
+        {type === itemType.radio && (
+          <ItemCheckbox regName={regName} type={type} />
+        )}
+
+        {type === itemType.image && <ItemImage />}
+
+        {type === itemType.vectorCheckbox && (
+          <ItemVectorLayout regName={regName} />
+        )}
+      </>
+    ),
+    [regName, type]
   )
+
+  return <>{renderContent}</>
 }
