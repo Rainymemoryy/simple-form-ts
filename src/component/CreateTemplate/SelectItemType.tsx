@@ -12,50 +12,50 @@ import {
   BsTextParagraph,
   BsCalendarEvent,
   BsClock,
-  BsVinyl,
-  BsCheckSquare
+  BsCheckSquare,
+  BsRecordCircle
 } from 'react-icons/bs'
 
 const listItemType = [
   {
     name: 'Text',
-    icon: <BsTextParagraph className='h-5 w-5 text-slate-900' />,
+    icon: <BsTextParagraph className='h-5 w-5 text-[#172b4d]' />,
     value: itemType.text
   },
   {
     name: 'Checkbox',
-    icon: <BsCheckSquare className='h-5 w-5 text-slate-900' />,
+    icon: <BsCheckSquare className='h-5 w-5 text-[#172b4d]' />,
     value: itemType.checkbox
   },
   {
     name: 'Radio',
-    icon: <BsVinyl className='h-5 w-5 text-slate-900' />,
+    icon: <BsRecordCircle className='h-5 w-5 text-[#172b4d]' />,
     value: itemType.radio
   },
   {
     name: 'Time',
-    icon: <BsClock className='h-5 w-5 text-slate-900' />,
+    icon: <BsClock className='h-5 w-5 text-[#172b4d]' />,
     value: itemType.time
   },
   {
     name: 'Date',
-    icon: <BsCalendarEvent className='h-5 w-5 text-slate-900' />,
+    icon: <BsCalendarEvent className='h-5 w-5 text-[#172b4d]' />,
     value: itemType.date
   },
   {
     name: 'Image',
-    icon: <BsImageFill className='h-5 w-5 text-slate-900' />,
+    icon: <BsImageFill className='h-5 w-5 text-[#172b4d]' />,
     value: itemType.image
   },
 
   {
     name: 'List Checkbox',
-    icon: <BsUiChecksGrid className='h-5 w-5 text-slate-900' />,
+    icon: <BsUiChecksGrid className='h-5 w-5 text-[#172b4d]' />,
     value: itemType.vectorCheckbox
   },
   {
     name: 'List Radio',
-    icon: <BsUiRadiosGrid className='h-5 w-5 text-slate-900' />,
+    icon: <BsUiRadiosGrid className='h-5 w-5 text-[#172b4d]' />,
     value: itemType.vectorRadio
   }
 ]
@@ -66,7 +66,7 @@ interface Props {
   regName?: any
 }
 
-export default function MyListbox({ regName }: Props) {
+export default function SelectItemType({ regName }: Props) {
   const methods = useFormContext()
 
   return (

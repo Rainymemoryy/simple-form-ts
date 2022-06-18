@@ -17,8 +17,6 @@ export default function CreateTemplate() {
     name: 'items'
   })
 
-  console.log('CreateTemplate', 'reRender')
-
   return (
     <FormProvider {...methods}>
       <form

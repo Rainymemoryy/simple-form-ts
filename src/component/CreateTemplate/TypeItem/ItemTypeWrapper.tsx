@@ -40,7 +40,11 @@ export default function ItemTypeWrapper({ regName, index }: Props) {
         {type === itemType.image && <ItemImage />}
 
         {type === itemType.vectorCheckbox && (
-          <ItemVectorLayout regName={regName} />
+          <ItemVectorLayout regName={regName} type={itemType.vectorCheckbox} />
+        )}
+
+        {type === itemType.vectorRadio && (
+          <ItemVectorLayout regName={regName} type={itemType.vectorRadio} />
         )}
       </div>
     ),

@@ -1,7 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
-import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
-import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
 import { IconButton, TextareaAutosize } from '@mui/material'
 import WarningIcon from '@mui/icons-material/Warning'
 import { Controller, useFormContext } from 'react-hook-form'
@@ -13,12 +11,7 @@ import { AiFillDelete } from 'react-icons/ai'
 
 import { IoCopyOutline } from 'react-icons/io5'
 
-import {
-  BsArrowBarDown,
-  BsArrowBarUp,
-  BsArrowsCollapse,
-  BsArrowsExpand
-} from 'react-icons/bs'
+import { BsArrowBarDown, BsArrowBarUp, BsFiles, BsImage } from 'react-icons/bs'
 
 const useShowContent = regName => {
   const methods = useFormContext()
@@ -70,12 +63,15 @@ export default function ItemLayout({
           <SelectItemType regName={`${regName}.${registerItem.itemType}`} />
         </div>
 
-        <TextareaAutosize
-          aria-label='Item description'
-          className='input-text w-full resize-none text-sm text-gray-500'
-          placeholder='Nhập mô tả'
-          {...register(`${regName}.${registerItem.itemDecs}`)}
-        />
+        <div className='flex h-8 items-center gap-3'>
+          <TextareaAutosize
+            aria-label='Item description'
+            className='input-text flex-1 resize-none text-sm text-gray-500'
+            placeholder='Nhập mô tả'
+            {...register(`${regName}.${registerItem.itemDecs}`)}
+          />
+          <BsImage className='h-5 w-5 cursor-pointer' />
+        </div>
 
         {/* {isShowContent && (
           <img
@@ -127,7 +123,7 @@ export default function ItemLayout({
               }}
             >
               {/* <ContentCopyIcon /> */}
-              <IoCopyOutline />
+              <BsFiles className='h-5 w-5' />
             </IconButton>
 
             <IconButton

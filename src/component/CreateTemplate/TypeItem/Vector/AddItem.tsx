@@ -2,15 +2,17 @@ import React, { useState } from 'react'
 import AddIcon from '@mui/icons-material/Add'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import { IconButton } from '@mui/material'
+import { itemType } from '../../../../constants/itemType'
 
-export default function AddItem({ append, remove }: any) {
+export default function AddItem({ append, type }: any) {
   const [value, setValue] = useState('')
 
   return (
     <div className='group relative flex w-full items-center'>
       <DragIndicatorIcon className='opacity-20' />
       <div className='flex h-10 w-10 items-center justify-center'>
-        <input type='checkbox' disabled />
+        {type === itemType.vectorCheckbox && <input type='checkbox' disabled />}
+        {type === itemType.vectorRadio && <input type='radio' disabled />}
       </div>
 
       <div className='flex flex-1 items-center gap-1'>

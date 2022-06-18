@@ -3,7 +3,7 @@ import { useFieldArray, useFormContext } from 'react-hook-form'
 import AddItem from './AddItem'
 import Item from './Item'
 
-export default function VectorEditing({ regName }: any) {
+export default function VectorEditing({ regName, type }: any) {
   const methods = useFormContext()
 
   const rowArray = useFieldArray({
@@ -64,7 +64,7 @@ export default function VectorEditing({ regName }: any) {
             )}
           </Droppable>
         </DragDropContext>
-        <AddItem append={rowArray.append} remove={rowArray.remove} />
+        <AddItem append={rowArray.append} type={type} />
       </section>
 
       <section aria-label='col' className='flex-1'>
@@ -115,7 +115,7 @@ export default function VectorEditing({ regName }: any) {
           </Droppable>
         </DragDropContext>
 
-        <AddItem append={colArray.append} />
+        <AddItem append={colArray.append} type={type} />
       </section>
     </div>
   )
