@@ -116,7 +116,6 @@ export default function ItemLayout({
                 const field: any = getValues(`${regName}`)
                 const copyData = {
                   ...field,
-                  itemTmpID: `item-${Math.random()}`,
                   itemName: `${field.itemName} - copy`
                 }
                 fieldArray.insert(index + 1, copyData)
@@ -140,6 +139,7 @@ export default function ItemLayout({
                 name={`${regName}.${registerItem.isRequired}`}
                 render={({ field: { onChange, onBlur, value, ref } }) => (
                   <input
+                    id={`${regName}`}
                     type='checkbox'
                     className='switch'
                     onChange={onChange}
@@ -148,7 +148,7 @@ export default function ItemLayout({
                   />
                 )}
               />
-              <p>bắt buộc</p>
+              <label htmlFor={`${regName}`}>Bắt buộc</label>
             </div>
           </div>
         </div>
