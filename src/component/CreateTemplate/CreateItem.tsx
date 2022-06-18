@@ -24,7 +24,6 @@ export default function CreateItem(props: any) {
                 e?.target.blur()
                 append({
                   itemName: value,
-                  itemTmpID: `item-${Math.random()}`,
                   itemType: itemType.text,
                   isShowContent: true
                 })
@@ -44,7 +43,6 @@ export default function CreateItem(props: any) {
             onClick={() => {
               append({
                 itemName: value,
-                itemTmpID: `item-${Math.random()}`,
                 itemType: itemType.text,
                 isShowContent: true
               })

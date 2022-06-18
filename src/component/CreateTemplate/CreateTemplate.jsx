@@ -73,36 +73,34 @@ export default function CreateTemplate() {
                       snapshot.isDraggingOver && 'rounded bg-slate-50'
                     }`}
                   >
-                    {fieldArray?.fields
-                      ?.map(e => e.itemTmpID)
-                      ?.map((item, index) => (
-                        <Draggable
-                          key={`card${item}`}
-                          draggableId={`card${item}`}
-                          index={index}
-                        >
-                          {(provided, snapshot) => {
-                            return (
-                              <div
-                                ref={provided.innerRef}
-                                {...provided.draggableProps}
-                              >
-                                <div className='py-2.5'>
-                                  <ItemLayout
-                                    provided={provided}
-                                    snapshot={snapshot}
-                                    regName={regItem(index)}
-                                    index={index}
-                                    fieldArray={fieldArray}
-                                  />
-                                </div>
-
-                                {provided.placeholder}
+                    {fieldArray?.fields?.map((item, index) => (
+                      <Draggable
+                        key={item.id}
+                        draggableId={item.id}
+                        index={index}
+                      >
+                        {(provided, snapshot) => {
+                          return (
+                            <div
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                            >
+                              <div className='py-2.5'>
+                                <ItemLayout
+                                  provided={provided}
+                                  snapshot={snapshot}
+                                  regName={regItem(index)}
+                                  index={index}
+                                  fieldArray={fieldArray}
+                                />
                               </div>
-                            )
-                          }}
-                        </Draggable>
-                      ))}
+
+                              {provided.placeholder}
+                            </div>
+                          )
+                        }}
+                      </Draggable>
+                    ))}
 
                     {provided.placeholder}
                   </div>

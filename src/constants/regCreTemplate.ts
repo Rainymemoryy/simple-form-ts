@@ -3,7 +3,6 @@ export const registerItem = {
 
   //type
   itemName: 'itemName',
-  itemTmpID: 'itemTmpID',
   itemType: 'itemType',
   itemDecs: 'itemDecs',
   itemCheckOrRadioItem: 'itemCheckOrRadioItem',

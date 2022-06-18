@@ -44,8 +44,8 @@ export default function AddItemCheckorRadio({
           onKeyPress={e => {
             if (e.key === 'Enter') {
               if (value !== '') {
+                fieldArray.append({ value })
                 setValue('')
-                fieldArray.append({ value, tmpID: Math.random() })
               }
 
               e.preventDefault()
@@ -57,8 +57,8 @@ export default function AddItemCheckorRadio({
           disabled={value === ''}
           onClick={() => {
             if (value !== '') {
+              fieldArray.append({ value })
               setValue('')
-              fieldArray.append({ value, tmpID: Math.random() })
             }
           }}
         >

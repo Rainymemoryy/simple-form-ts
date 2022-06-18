@@ -34,6 +34,7 @@ export default function ({ regName }: Props) {
             render={({ field: { onChange, onBlur, value, ref } }) => (
               <div className='flex h-8 w-8 items-center justify-center'>
                 <input
+                  id={regName + 'isMultiLine'}
                   type='checkbox'
                   onChange={onChange}
                   checked={value || false}
@@ -41,7 +42,9 @@ export default function ({ regName }: Props) {
               </div>
             )}
           />
-          Nhiều dòng
+          <label className='text-sm' htmlFor={regName + 'isMultiLine'}>
+            Nhiều dòng
+          </label>
         </div>
       </section>
     </main>
