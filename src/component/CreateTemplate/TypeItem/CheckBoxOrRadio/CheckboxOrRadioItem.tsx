@@ -79,7 +79,7 @@ export default function CheckboxOrRadioItem({
           {...methods.register(`${regName}.value`)}
         />
         <div className='flex gap-1'>
-          <IconButton className='h-8 w-8 hover:text-violet-700'>
+          <IconButton className='hover:text-violet-400'>
             <AddIcon
               fontSize='small'
               className='opacity-0 group-hover:opacity-100'
@@ -87,7 +87,7 @@ export default function CheckboxOrRadioItem({
           </IconButton>
 
           <IconButton
-            className='h-8 w-8 hover:text-violet-700'
+            className='hover:text-violet-400'
             onClick={() => {
               let dataTmp = fieldArray.fields[index]
               dataTmp = { ...dataTmp, value: dataTmp.value + ' - copy' }
@@ -101,7 +101,7 @@ export default function CheckboxOrRadioItem({
           </IconButton>
 
           <IconButton
-            className='h-8 w-8 hover:text-violet-700'
+            className='hover:text-violet-400'
             onClick={() => {
               fieldArray.remove(index)
             }}

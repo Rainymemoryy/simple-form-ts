@@ -44,10 +44,9 @@ export default function ItemLayout({
   const { isShowContent, register, control, getValues } =
     useShowContent(regName)
 
-  const ALLrenderContent = useMemo(
+  const renderTitle = useMemo(
     () => (
       <>
-        {console.log('renderContent', regName)}
         <div className='flex flex-1 items-center gap-3'>
           <TextareaAutosize
             aria-label='Item name'
@@ -77,9 +76,14 @@ export default function ItemLayout({
             alt=''
           />
         )} */}
+      </>
+    ),
+    [index, isShowContent, regName]
+  )
 
-        {isShowContent && <ItemTypeWrapper regName={regName} index={index} />}
-
+  const renderNav = useMemo(
+    () => (
+      <>
         <div className='flex items-center justify-between gap-3 pt-2'>
           <div className='flex items-center justify-end gap-3 text-yellow-400'>
             <WarningIcon />
@@ -91,7 +95,7 @@ export default function ItemLayout({
               name={`${regName}.${registerItem.isShowContent}`}
               render={({ field: { onChange, onBlur, value, ref } }) => (
                 <IconButton
-                  className='h-8 w-8 hover:text-violet-700'
+                  className='hover:text-violet-400'
                   onClick={() => onChange(!value)}
                 >
                   {value ? <UnfoldLessIcon /> : <UnfoldMoreIcon />}
@@ -100,7 +104,7 @@ export default function ItemLayout({
             />
 
             <IconButton
-              className='h-8 w-8 hover:text-violet-700'
+              className='hover:text-violet-400'
               onClick={() => {
                 const field: any = getValues(`${regName}`)
                 const copyData = {
@@ -114,7 +118,7 @@ export default function ItemLayout({
             </IconButton>
 
             <IconButton
-              className='h-8 w-8 hover:text-violet-700'
+              className='hover:text-violet-400'
               onClick={() => {
                 fieldArray.remove(index)
               }}
@@ -163,7 +167,11 @@ export default function ItemLayout({
           snapshot?.isDragging && 'border-violet-400'
         } transition-colors`}
       >
-        {ALLrenderContent}
+        {renderTitle}
+
+        {isShowContent && <ItemTypeWrapper regName={regName} index={index} />}
+
+        {renderNav}
       </section>
     </main>
   )

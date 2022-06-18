@@ -44,11 +44,11 @@ export default function MemoItemLayout(props) {
         )}
 
         <div className='flex justify-end gap-3  pt-1'>
-          <IconButton className='h-8 w-8 hover:text-violet-700'>
+          <IconButton className='hover:text-violet-400'>
             <ContentCopyIcon />
           </IconButton>
 
-          <IconButton className='h-8 w-8 hover:text-violet-700'>
+          <IconButton className='hover:text-violet-400'>
             <DeleteOutlineIcon />
           </IconButton>
         </div>

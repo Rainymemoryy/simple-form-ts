@@ -16,7 +16,7 @@ export default function MemoCheckOrRadio() {
             placeholder='Nhập tuỳ chọn'
           />
           <div className='flex gap-1'>
-            <IconButton className='h-8 w-8 hover:text-violet-700'>
+            <IconButton className='hover:text-violet-400'>
               <ClearIcon />
             </IconButton>
           </div>
@@ -31,7 +31,7 @@ export default function MemoCheckOrRadio() {
           disabled
         />
         <div className='flex gap-1'>
-          <IconButton className='h-8 w-8 hover:text-violet-700'>
+          <IconButton className='hover:text-violet-400'>
             <ClearIcon />
           </IconButton>
         </div>

@@ -31,7 +31,7 @@ export default function AddItem({ append, remove }: any) {
           }}
         />
         <IconButton
-          className='h-8 w-8 hover:text-violet-700'
+          className='hover:text-violet-400'
           disabled={value === ''}
           onClick={() => {
             if (value !== '') {

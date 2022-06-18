@@ -40,7 +40,7 @@ export default function Another({ fieldArray, regName, type }: Props) {
 
           <div className='flex gap-1'>
             <IconButton
-              className='h-8 w-8 hover:text-violet-700'
+              className='hover:text-violet-400'
               onClick={() => {
                 methods.setValue(`${regName}.${registerItem.isAnother}`, false)
               }}
