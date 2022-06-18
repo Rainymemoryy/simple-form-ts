@@ -25,11 +25,10 @@ export default function CreateTemplate() {
         onSubmit={methods.handleSubmit(data => console.log('submit', data))}
       >
         <div className='flex justify-center py-6 px-6'>
-          <nav className='hidden w-96 lg:block'>
-            <TemplateNav fieldArray={fieldArray} />
-          </nav>
-
-          <main className='w-full max-w-3xl'>
+          <main className='relative w-full max-w-3xl'>
+            <nav className='absolute top-0 left-0 hidden w-96 translate-x-[-100%] lg:block'>
+              <TemplateNav fieldArray={fieldArray} />
+            </nav>
             <div className='flex w-full items-center justify-between'>
               <Button
                 type='submit'

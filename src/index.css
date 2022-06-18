@@ -15,6 +15,10 @@
   .button-default {
     @apply cursor-pointer rounded bg-violet-50 px-3 py-1.5 transition-colors hover:bg-violet-100 focus:outline-none;
   }
+
+  .icon-button {
+    @apply flex h-8 w-8 items-center justify-center;
+  }
 }
 
 @import './style/animation/attention.css';
