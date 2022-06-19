@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { registerItem } from '../../../constants/regCreTemplate'
-import VectorEditing from './Vector/VectorEditing'
+import VectorEditingLayout from './Vector/VectorEditingLayout'
 import VectorPreview from './Vector/VectorPreview'
 
 const usePreview = regName => {
@@ -17,7 +17,7 @@ export default function ItemVectorLayout({ regName, type }: any) {
     () => (
       <>
         {isPreview && <VectorPreview regName={regName} type={type} />}
-        {isPreview || <VectorEditing regName={regName} type={type} />}
+        {isPreview || <VectorEditingLayout regName={regName} type={type} />}
       </>
     ),
     [isPreview, regName, type]

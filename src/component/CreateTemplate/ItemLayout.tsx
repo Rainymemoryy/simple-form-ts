@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
-import { TextareaAutosize } from '@mui/material'
 import WarningIcon from '@mui/icons-material/Warning'
 import { Controller, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../constants/regCreTemplate'
@@ -10,22 +9,22 @@ import { useMemo } from 'react'
 
 import { BsChevronDown, BsChevronUp, BsFiles, BsTrash } from 'react-icons/bs'
 import { itemType } from '../../constants/itemType'
+import ReactTextareaAutosize from 'react-textarea-autosize'
 
 const useGetValue = regName => {
-  const methods = useFormContext()
+  const { register, control, getValues, watch, setFocus } = useFormContext()
 
-  const isShowContent = methods.watch(
-    `${regName}.${registerItem.isShowContent}`
-  )
+  const isShowContent = watch(`${regName}.${registerItem.isShowContent}`)
 
-  const type = methods.watch(`${regName}.${registerItem.itemType}`)
+  const type = watch(`${regName}.${registerItem.itemType}`)
 
   return {
     type,
     isShowContent,
-    register: methods.register,
-    control: methods.control,
-    getValues: methods.getValues
+    register,
+    control,
+    getValues,
+    setFocus
   }
 }
 
@@ -43,21 +42,22 @@ export default function ItemLayout({
   regName,
   fieldArray
 }: Props) {
-  const { isShowContent, register, control, getValues, type } =
+  const { isShowContent, register, control, getValues, setFocus, type } =
     useGetValue(regName)
 
   const renderTitle = useMemo(
     () => (
       <>
         <div className='flex flex-1 items-center gap-3'>
-          <TextareaAutosize
+          <ReactTextareaAutosize
             aria-label='Item name'
-            className='input-text mt-0.5 min-h-[32px] flex-1 resize-none py-0.5 text-lg font-medium tracking-wide'
+            className='input-text min-h-[32px] flex-1 resize-none overflow-y-hidden text-lg font-medium tracking-wide'
             placeholder='Nhập tên câu hỏi'
             {...register(`${regName}.${registerItem.itemName}`)}
             onKeyDown={(e: any) => {
-              if (!e.shiftKey && e.keyCode === 13) {
+              if (e.keyCode === 13) {
                 e.target.blur()
+                setFocus(`${regName}.${registerItem.itemDecs}`)
               }
             }}
           />
@@ -65,12 +65,32 @@ export default function ItemLayout({
         </div>
 
         <div className='flex min-h-[32px] items-center gap-3'>
-          <TextareaAutosize
+          <Controller
+            control={control}
+            name={`${regName}.${registerItem.itemDecs}`}
+            render={({ field: { onChange, onBlur, value, ref } }) => (
+              <ReactTextareaAutosize
+                aria-label='Item description'
+                className='input-text flex-1 resize-none overflow-y-hidden text-sm text-gray-500'
+                placeholder='Nhập mô tả'
+                onChange={onChange}
+                value={value?.trimStart() || ''}
+                onKeyDown={(e: any) => {
+                  if (e.keyCode === 13 && !e.shiftKey) {
+                    e.target.blur()
+                  }
+                }}
+              />
+            )}
+          />
+
+          {/* <ReactTextareaAutosize
             aria-label='Item description'
-            className='input-text flex-1 resize-none text-sm text-gray-500'
+            className='input-text flex-1 resize-none overflow-y-hidden text-sm text-gray-500'
             placeholder='Nhập mô tả'
             {...register(`${regName}.${registerItem.itemDecs}`)}
-          />
+            onFocus={e => e.target.select()}
+          /> */}
 
           {/* <input
             type='file'
