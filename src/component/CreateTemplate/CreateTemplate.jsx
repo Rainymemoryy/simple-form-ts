@@ -96,13 +96,14 @@ export default function CreateTemplate() {
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                             >
-                              <div className='py-2.5'>
+                              <div className='relative py-2.5 '>
                                 <ItemLayout
                                   provided={provided}
                                   snapshot={snapshot}
                                   regName={regItem(index)}
                                   index={index}
                                   fieldArray={fieldArray}
+                                  id={item.id}
                                 />
                               </div>
 

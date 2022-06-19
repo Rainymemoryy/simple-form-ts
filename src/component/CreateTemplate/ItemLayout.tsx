@@ -12,16 +12,20 @@ import { itemType } from '../../constants/itemType'
 import ReactTextareaAutosize from 'react-textarea-autosize'
 
 const useGetValue = regName => {
-  const { register, control, getValues, watch, setFocus } = useFormContext()
+  const { register, control, getValues, watch, setFocus, setValue } =
+    useFormContext()
   const isShowContent = watch(`${regName}.${registerItem.isShowContent}`)
   const type = watch(`${regName}.${registerItem.itemType}`)
+  const focusItemID = watch(`${registerItem.focusItemID}`)
   return {
     type,
     isShowContent,
     register,
     control,
     getValues,
-    setFocus
+    setFocus,
+    focusItemID,
+    setValue
   }
 }
 
@@ -31,16 +35,26 @@ interface Props {
   regName: string
   index: number
   fieldArray: any
+  id: any
 }
 export default function ItemLayout({
   provided,
   snapshot,
   index,
   regName,
-  fieldArray
+  fieldArray,
+  id
 }: Props) {
-  const { isShowContent, register, control, getValues, setFocus, type } =
-    useGetValue(regName)
+  const {
+    isShowContent,
+    register,
+    control,
+    getValues,
+    setFocus,
+    type,
+    focusItemID,
+    setValue
+  } = useGetValue(regName)
 
   const renderTitle = useMemo(
     () => (
@@ -53,7 +67,7 @@ export default function ItemLayout({
             {...register(`${regName}.${registerItem.itemName}`)}
             onKeyDown={(e: any) => {
               if (e.keyCode === 13) {
-                e.target.blur()
+                // e.target.blur()
                 setFocus(`${regName}.${registerItem.itemDecs}`)
               }
             }}
@@ -231,19 +245,25 @@ export default function ItemLayout({
   )
 
   return (
-    <main className='relative flex items-center' id={`${index}`}>
+    <main
+      className='relative flex items-center '
+      id={`${index}`}
+      onClick={() =>
+        focusItemID !== id && setValue(`${registerItem.focusItemID}`, id)
+      }
+    >
       <section
         className='absolute left-[-24px] opacity-50 hover:fill-violet-400 group-hover:opacity-100'
         {...provided.dragHandleProps}
-        onClick={e => {
-          e.stopPropagation()
-        }}
+        // onClick={e => {
+        //   e.stopPropagation()
+        // }}
       >
         <DragIndicatorIcon />
       </section>
 
       <section
-        className={`relative box-border flex flex-1 cursor-default flex-col gap-1 rounded-lg border-2 border-transparent bg-white p-8 pb-6 shadow-11 outline-0 hover:border-violet-400 ${
+        className={`relative box-border flex flex-1 cursor-default flex-col gap-1 rounded-lg border-2 border-transparent bg-white p-8 pb-6 shadow-11 outline-0 ${
           snapshot?.isDragging && 'border-violet-400'
         } transition-colors`}
       >
@@ -253,6 +273,10 @@ export default function ItemLayout({
 
         {renderNav}
       </section>
+
+      {focusItemID === id && (
+        <div className='absolute left-2 h-[50%] w-1 rounded-full bg-violet-400 opacity-50'></div>
+      )}
     </main>
   )
 }

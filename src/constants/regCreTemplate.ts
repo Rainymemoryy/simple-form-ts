@@ -23,7 +23,9 @@ export const registerItem = {
   isPreview: 'isPreview',
 
   //show
-  isShowContent: 'isShowContent'
+  isShowContent: 'isShowContent',
+
+  focusItemID: 'focusItemID'
 }
 
 export const regItem = (itemIndex: number) =>
