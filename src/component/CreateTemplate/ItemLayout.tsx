@@ -13,11 +13,8 @@ import ReactTextareaAutosize from 'react-textarea-autosize'
 
 const useGetValue = regName => {
   const { register, control, getValues, watch, setFocus } = useFormContext()
-
   const isShowContent = watch(`${regName}.${registerItem.isShowContent}`)
-
   const type = watch(`${regName}.${registerItem.itemType}`)
-
   return {
     type,
     isShowContent,
@@ -131,6 +128,7 @@ export default function ItemLayout({
               name={`${regName}.${registerItem.isShowContent}`}
               render={({ field: { onChange, onBlur, value, ref } }) => (
                 <button
+                  type={'button'}
                   className='group flex h-10 w-10 items-center justify-center rounded-full text-slate-900 outline-none'
                   onClick={() => onChange(!value)}
                 >
@@ -144,6 +142,7 @@ export default function ItemLayout({
             />
 
             <button
+              type={'button'}
               className='group flex h-10 w-10 items-center justify-center rounded-full text-slate-900 outline-none'
               onClick={() => {
                 const field: any = getValues(`${regName}`)
