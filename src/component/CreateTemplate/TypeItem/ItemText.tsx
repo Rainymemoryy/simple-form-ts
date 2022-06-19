@@ -20,7 +20,7 @@ export default function ({ regName }: Props) {
         />
       ) : (
         <input
-          className='input-text h-8 w-full'
+          className='input-text h-8 w-full border-slate-200'
           placeholder='Nhập một câu ngắn'
           {...methods.register(`${regName}.${registerItem.textDefault}`)}
         />

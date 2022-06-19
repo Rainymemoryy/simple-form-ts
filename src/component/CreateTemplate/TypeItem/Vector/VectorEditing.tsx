@@ -16,8 +16,8 @@ export default function VectorEditing({ regName, type }: any) {
   })
 
   return (
-    <div className='flex gap-3'>
-      <section aria-label='row' className='flex-1 '>
+    <div className='flex gap-3 '>
+      <section aria-label='row' className='flex-1'>
         <p className='pl-8'>Nhập tên các hàng</p>
         <DragDropContext
           onDragEnd={e => {
@@ -66,6 +66,8 @@ export default function VectorEditing({ regName, type }: any) {
         </DragDropContext>
         <AddItem append={rowArray.append} type={type} />
       </section>
+
+      <div className=' border-r'></div>
 
       <section aria-label='col' className='flex-1'>
         <p className='pl-8'>Nhập tên các cột</p>

@@ -15,7 +15,7 @@ export default function CreateItem(props: any) {
         <div className='flex flex-1 gap-3'>
           <TextareaAutosize
             aria-label='Item name'
-            className='input-text mt-0.5 min-h-[32px] flex-1 resize-none py-0.5 text-lg font-medium tracking-wide'
+            className='input-text mt-0.5 min-h-[32px] flex-1 resize-none border-slate-200 py-0.5 text-lg font-medium tracking-wide'
             placeholder='Nhập tên câu hỏi'
             onChange={e => setValue(e.target.value)}
             value={value}

@@ -37,7 +37,7 @@ export default function AddItemCheckorRadio({
 
       <div className='flex flex-1 items-center gap-1'>
         <input
-          className='input-text h-8 flex-1 truncate group-hover:border-violet-400'
+          className='input-text h-8 flex-1 truncate border-slate-200 group-hover:border-violet-400'
           placeholder='Thêm tuỳ chọn mới'
           value={value}
           onChange={e => setValue(e.target.value)}

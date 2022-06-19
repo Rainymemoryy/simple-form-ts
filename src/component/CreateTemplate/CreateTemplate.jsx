@@ -6,6 +6,8 @@ import { registerItem, regItem } from '../../constants/regCreTemplate'
 import CreateItem from './CreateItem'
 import ItemLayout from './ItemLayout'
 import TemplateNav from './TemplateNav'
+import { useEffect } from 'react'
+import { itemType } from '../../constants/itemType'
 
 let renderCount = 0
 
@@ -16,6 +18,15 @@ export default function CreateTemplate() {
     control: methods.control,
     name: 'items'
   })
+
+  useEffect(() => {
+    fieldArray?.append({
+      itemName: 'Nhập tên câu hỏi',
+      itemType: itemType.text,
+      isShowContent: true
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <FormProvider {...methods}>
