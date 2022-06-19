@@ -7,7 +7,13 @@ import ItemTypeWrapper from './TypeItem/ItemTypeWrapper'
 import SelectItemType from './SelectItemType'
 import { useMemo } from 'react'
 
-import { BsChevronDown, BsChevronUp, BsFiles, BsTrash } from 'react-icons/bs'
+import {
+  BsChevronDown,
+  BsChevronUp,
+  BsFiles,
+  BsImage,
+  BsTrash
+} from 'react-icons/bs'
 import { itemType } from '../../constants/itemType'
 import ReactTextareaAutosize from 'react-textarea-autosize'
 
@@ -67,7 +73,7 @@ export default function ItemLayout({
             {...register(`${regName}.${registerItem.itemName}`)}
             onKeyDown={(e: any) => {
               if (e.keyCode === 13) {
-                // e.target.blur()
+                e.target.blur()
                 setFocus(`${regName}.${registerItem.itemDecs}`)
               }
             }}
@@ -79,11 +85,12 @@ export default function ItemLayout({
           <Controller
             control={control}
             name={`${regName}.${registerItem.itemDecs}`}
-            render={({ field: { onChange, onBlur, value, ref } }) => (
+            render={({ field: { onChange, onBlur, value, ref, name } }) => (
               <ReactTextareaAutosize
                 aria-label='Item description'
                 className='input-text flex-1 resize-none overflow-y-hidden text-sm text-gray-500'
                 placeholder='Nhập mô tả'
+                name={name}
                 onChange={onChange}
                 value={value?.trimStart() || ''}
                 onKeyDown={(e: any) => {
@@ -91,19 +98,13 @@ export default function ItemLayout({
                     e.target.blur()
                   }
                 }}
+                ref={ref}
+                onBlur={onBlur}
               />
             )}
           />
 
-          {/* <ReactTextareaAutosize
-            aria-label='Item description'
-            className='input-text flex-1 resize-none overflow-y-hidden text-sm text-gray-500'
-            placeholder='Nhập mô tả'
-            {...register(`${regName}.${registerItem.itemDecs}`)}
-            onFocus={e => e.target.select()}
-          /> */}
-
-          {/* <input
+          <input
             type='file'
             name='myImage'
             accept='image/png, image/gif, image/jpeg'
@@ -113,7 +114,7 @@ export default function ItemLayout({
 
           <label htmlFor={regName + 'descImage'}>
             <BsImage className='h-5 w-5 cursor-pointer' />
-          </label> */}
+          </label>
         </div>
 
         {/* {isShowContent && (

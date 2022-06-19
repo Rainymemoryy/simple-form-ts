@@ -26,7 +26,7 @@ export default function ItemTypeWrapper({ regName, index }: Props) {
 
   const renderContent = useMemo(
     () => (
-      <>
+      <div className='pt-4'>
         {type === itemType.text && <ItemText regName={regName} />}
 
         {type === itemType.checkbox && (
@@ -46,7 +46,7 @@ export default function ItemTypeWrapper({ regName, index }: Props) {
         {type === itemType.vectorRadio && (
           <ItemVectorLayout regName={regName} type={itemType.vectorRadio} />
         )}
-      </>
+      </div>
     ),
     [regName, type]
   )
