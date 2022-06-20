@@ -27,7 +27,6 @@ export default function VectorPreview({ regName, type }: any) {
   const renderContent = useMemo(
     () => (
       <>
-        {console.log('VectorPreview', regName)}
         {rows.length === 0 || cols.length === 0 ? (
           <div className='flex w-full items-center justify-end'>
             <label

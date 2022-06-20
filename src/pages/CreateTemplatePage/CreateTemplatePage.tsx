@@ -3,9 +3,8 @@ import Template404 from '../../component/CreateTemplate/Template404'
 
 export default function CreateTemplatePage() {
   return (
-    <main className='flex justify-center text-gray-900'>
+    <main className='flex max-h-screen justify-center scroll-smooth'>
       <section className='hidden h-screen w-full max-w-7xl sm:block'>
-        {/*  max-h-screen overflow-auto scroll-smooth */}
         <CreateTemplate />
       </section>
 

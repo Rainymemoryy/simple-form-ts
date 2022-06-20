@@ -3,7 +3,7 @@ import RoutesApp from './Routes'
 
 function App() {
   return (
-    <div className='App text-grey-900 relative'>
+    <div className='text-grey-900 relative'>
       <RoutesApp />
       <ScrollButton />
     </div>

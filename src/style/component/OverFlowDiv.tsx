@@ -1,8 +1,6 @@
 import styled from '@emotion/styled'
 
 export const OverFlowDiv = styled.div`
-  overflow-y: scroll;
-
   .border-color-top {
     border-top-color: rgb(71 85 105);
   }

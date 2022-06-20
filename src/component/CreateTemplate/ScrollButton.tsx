@@ -13,8 +13,6 @@ const ScrollButton = () => {
     }
   }
 
-  console.log(visible)
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
