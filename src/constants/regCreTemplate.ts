@@ -5,6 +5,8 @@ export const registerItem = {
   itemName: 'itemName',
   itemType: 'itemType',
   itemDecs: 'itemDecs',
+  itemImageDesc: 'itemImageDece',
+
   itemCheckOrRadioItem: 'itemCheckOrRadioItem',
 
   //config

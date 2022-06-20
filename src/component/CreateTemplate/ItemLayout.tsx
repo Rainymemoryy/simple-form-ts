@@ -53,13 +53,13 @@ export default function ItemLayout({
 }: Props) {
   const {
     isShowContent,
-    register,
     control,
     getValues,
     setFocus,
     type,
     focusItemID,
-    setValue
+    setValue,
+    register
   } = useGetValue(regName)
 
   const renderTitle = useMemo(
@@ -115,10 +115,10 @@ export default function ItemLayout({
 
           <input
             type='file'
-            name='myImage'
             accept='image/png, image/gif, image/jpeg'
             className='hidden'
             id={regName + 'descImage'}
+            {...register(`${regName}.${registerItem.itemImageDesc}`)}
           />
 
           <label htmlFor={regName + 'descImage'}>

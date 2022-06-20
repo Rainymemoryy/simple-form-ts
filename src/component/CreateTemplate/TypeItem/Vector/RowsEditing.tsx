@@ -35,11 +35,7 @@ export default function RowsEditing({ regName, type }: any) {
               className={`${snapshot.isDraggingOver && 'rounded bg-slate-50'}`}
             >
               {fields.map((item, index) => (
-                <Draggable
-                  key={item.id}
-                  draggableId={`vector-${regName}-row[${index}]`}
-                  index={index}
-                >
+                <Draggable key={item.id} draggableId={item.id} index={index}>
                   {(provided, snapshot) => {
                     return (
                       <div ref={provided.innerRef} {...provided.draggableProps}>
