@@ -123,8 +123,6 @@ export default function CreateTemplate() {
 
             <CreateItem append={fieldArray.append} />
           </main>
-
-          <ScrollButton />
         </div>
       </form>
     </FormProvider>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BsFillArrowUpCircleFill } from 'react-icons/bs'
+import { BsArrowUpCircle, BsFillArrowUpCircleFill } from 'react-icons/bs'
 const ScrollButton = () => {
   const [visible, setVisible] = useState(false)
 
@@ -24,16 +24,14 @@ const ScrollButton = () => {
   window.addEventListener('scroll', toggleVisible)
 
   return (
-    <nav className='sticky top-0 max-h-screen'>
-      <button
-        className={`absolute bottom-10 rounded-full outline-none transition-all  duration-1000 hover:scale-125 ${
-          visible ? 'opacity-100' : 'opacity-0'
-        }`}
-        onClick={scrollToTop}
-      >
-        <BsFillArrowUpCircleFill className='h-8 w-8' />
-      </button>
-    </nav>
+    <button
+      className={`fixed right-4 bottom-9 rounded-full text-slate-400 shadow-2xl  outline-none transition-all duration-1000 hover:scale-125 hover:text-slate-600 ${
+        visible ? 'opacity-100' : 'opacity-0'
+      }`}
+      onClick={scrollToTop}
+    >
+      <BsArrowUpCircle className='h-8 w-8 ' />
+    </button>
   )
 }
 
