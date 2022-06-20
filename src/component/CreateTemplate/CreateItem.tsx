@@ -33,7 +33,7 @@ export default function CreateItem(props: any) {
           />
 
           <button
-            className={`button-default flex h-9 items-center gap-3 px-3 py-1.5 transition-colors ${
+            className={`button-default flex h-9 w-52 items-center gap-3 px-3 py-1.5 transition-colors ${
               value === '' && 'opacity-80'
             }`}
             disabled={value === ''}

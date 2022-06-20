@@ -66,29 +66,44 @@ export default function ItemLayout({
     () => (
       <>
         <div className='flex flex-1 items-center gap-3'>
-          <ReactTextareaAutosize
-            aria-label='Item name'
-            className='input-text min-h-[32px] flex-1 resize-none overflow-y-hidden text-lg font-medium tracking-wide'
-            placeholder='Nhập tên câu hỏi'
-            {...register(`${regName}.${registerItem.itemName}`)}
-            onKeyDown={(e: any) => {
-              if (e.keyCode === 13) {
-                e.target.blur()
-                setFocus(`${regName}.${registerItem.itemDecs}`)
-              }
-            }}
+          <Controller
+            control={control}
+            name={`${regName}.${registerItem.itemName}`}
+            render={({ field: { onChange, onBlur, value, ref, name } }) => (
+              <ReactTextareaAutosize
+                name={name}
+                ref={ref}
+                value={value?.trimStart() || ''}
+                onChange={onChange}
+                onBlur={() => {
+                  console.log(name)
+                  console.log(value)
+                  setValue(name, value)
+                }}
+                aria-label='Item name'
+                className='input-text min-h-[32px] flex-1 resize-none overflow-y-hidden text-lg font-medium tracking-wide'
+                placeholder='Nhập tên câu hỏi'
+                onKeyDown={(e: any) => {
+                  if (e.keyCode === 13) {
+                    e.target.blur()
+                    setFocus(`${regName}.${registerItem.itemDecs}`)
+                  }
+                }}
+              />
+            )}
           />
+
           <SelectItemType regName={regName} />
         </div>
 
-        <div className='flex min-h-[32px] items-center gap-3'>
+        <div className='flex min-h-[32px] items-center gap-3 text-gray-500'>
           <Controller
             control={control}
             name={`${regName}.${registerItem.itemDecs}`}
             render={({ field: { onChange, onBlur, value, ref, name } }) => (
               <ReactTextareaAutosize
                 aria-label='Item description'
-                className='input-text flex-1 resize-none overflow-y-hidden text-sm text-gray-500'
+                className='input-text flex-1 resize-none overflow-y-hidden text-sm'
                 placeholder='Nhập mô tả'
                 name={name}
                 onChange={onChange}
@@ -99,7 +114,6 @@ export default function ItemLayout({
                   }
                 }}
                 ref={ref}
-                onBlur={onBlur}
               />
             )}
           />
@@ -117,13 +131,13 @@ export default function ItemLayout({
           </label>
         </div>
 
-        {/* {isShowContent && (
+        {isShowContent && (
           <img
             className='rounded-md'
             src='https://images.wallpapersden.com/image/wxl-small-memory_58461.jpg'
             alt=''
           />
-        )} */}
+        )}
       </>
     ),
     [index, isShowContent, regName]
@@ -256,9 +270,9 @@ export default function ItemLayout({
       <section
         className='absolute left-[-24px] opacity-50 hover:fill-violet-400 group-hover:opacity-100'
         {...provided.dragHandleProps}
-        // onClick={e => {
-        //   e.stopPropagation()
-        // }}
+        onClick={e => {
+          e.stopPropagation()
+        }}
       >
         <DragIndicatorIcon />
       </section>
