@@ -8,6 +8,7 @@ import ItemLayout from './ItemLayout'
 import TemplateNav from './TemplateNav'
 import { useEffect } from 'react'
 import { itemType } from '../../constants/itemType'
+import ScrollButton from './ScrollToTop'
 
 let renderCount = 0
 
@@ -33,12 +34,12 @@ export default function CreateTemplate() {
       <form
         onSubmit={methods.handleSubmit(data => console.log('submit', data))}
       >
-        <div className='relative flex justify-center px-6 gap-10'>
+        <div className='relative flex h-full justify-center gap-10 px-6'>
           <nav className='sticky top-0 hidden max-h-screen w-96 overflow-y-auto lg:block'>
             <TemplateNav fieldArray={fieldArray} />
           </nav>
 
-          <main className='relative w-full max-w-3xl'>
+          <main className='relative w-full max-w-3xl py-6'>
             <div className='flex w-full items-center justify-between'>
               <Button
                 type='submit'
@@ -122,6 +123,8 @@ export default function CreateTemplate() {
 
             <CreateItem append={fieldArray.append} />
           </main>
+
+          <ScrollButton />
         </div>
       </form>
     </FormProvider>
