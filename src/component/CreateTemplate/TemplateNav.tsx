@@ -4,13 +4,9 @@ interface Props {
   fieldArray?: any
 }
 
-const useGetValues = () => {
-  const { watch } = useFormContext()
-  const fields = watch('items')
-  console.log(fields)
-}
 export default function TemplateNav({ fieldArray }: Props) {
-  useGetValues()
+  const { getValues } = useFormContext()
+
   return (
     <nav className='max-h-screen items-center px-8 py-12 '>
       <section aria-label='field name' className='flex w-full flex-col gap-3 '>
@@ -24,6 +20,7 @@ export default function TemplateNav({ fieldArray }: Props) {
             key={item?.id}
           >
             {item.itemName}
+            {/* {getValues(`items[${index}].itemName`)} */}
           </a>
         ))}
       </section>

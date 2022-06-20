@@ -75,11 +75,6 @@ export default function ItemLayout({
                 ref={ref}
                 value={value?.trimStart() || ''}
                 onChange={onChange}
-                onBlur={() => {
-                  console.log(name)
-                  console.log(value)
-                  setValue(name, value)
-                }}
                 aria-label='Item name'
                 className='input-text min-h-[32px] flex-1 resize-none overflow-y-hidden text-lg font-medium tracking-wide'
                 placeholder='Nhập tên câu hỏi'
