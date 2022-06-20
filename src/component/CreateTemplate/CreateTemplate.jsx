@@ -33,8 +33,8 @@ export default function CreateTemplate() {
       <form
         onSubmit={methods.handleSubmit(data => console.log('submit', data))}
       >
-        <div className='flex justify-center py-6 px-6'>
-          <nav className='hidden w-96 lg:block'>
+        <div className='relative flex justify-center px-6 gap-10'>
+          <nav className='sticky top-0 hidden max-h-screen w-96 overflow-y-auto lg:block'>
             <TemplateNav fieldArray={fieldArray} />
           </nav>
 
