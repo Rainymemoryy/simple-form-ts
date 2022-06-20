@@ -31,7 +31,7 @@ const ScrollButton = () => {
         }`}
         onClick={scrollToTop}
       >
-        <BsFillArrowUpCircleFill className='h-10 w-10' />
+        <BsFillArrowUpCircleFill className='h-8 w-8' />
       </button>
     </nav>
   )
