@@ -8,7 +8,6 @@ import ItemLayout from './ItemLayout'
 import TemplateNav from './TemplateNav'
 import { useEffect } from 'react'
 import { itemType } from '../../constants/itemType'
-import ScrollButton from './ScrollToTop'
 
 let renderCount = 0
 
