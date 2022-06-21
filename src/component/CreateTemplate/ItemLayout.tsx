@@ -12,7 +12,9 @@ import {
   BsChevronUp,
   BsFiles,
   BsImage,
-  BsTrash
+  BsTrash,
+  BsX,
+  BsXCircleFill
 } from 'react-icons/bs'
 import { itemType } from '../../constants/itemType'
 import ReactTextareaAutosize from 'react-textarea-autosize'
@@ -122,14 +124,17 @@ export default function ItemLayout({
                   accept='image/png, image/gif, image/jpeg'
                   className='hidden'
                   id={regName + 'descImage'}
-                  onChange={(e: any) =>
+                  onChange={(e: any) => {
+                    console.log(URL.createObjectURL(e.target.files[0]))
                     onChange(URL.createObjectURL(e.target.files[0]))
-                  }
-                  ref={ref}
+                    console.log(e.target.value)
+                  }}
                 />
-                <label htmlFor={regName + 'descImage'}>
-                  <BsImage className='h-5 w-5 cursor-pointer' />
-                </label>
+                {!value && (
+                  <label htmlFor={regName + 'descImage'}>
+                    <BsImage className='h-5 w-5 cursor-pointer' />
+                  </label>
+                )}
               </>
             )}
           />
@@ -140,14 +145,25 @@ export default function ItemLayout({
             control={control}
             name={`${regName}.${registerItem.itemImageDesc}`}
             render={({ field: { onChange, onBlur, value, ref, name } }) => (
-              <>
+              <div className='relative'>
                 <img
                   className='w-full rounded-md object-cover'
-                  // src='https://images.wallpapersden.com/image/wxl-small-memory_58461.jpg'
-                  src={value && value}
+                  src={!!value && value}
                   alt=''
                 />
-              </>
+                {value && (
+                  <BsXCircleFill
+                    className='absolute top-2 right-2 h-5 w-5 cursor-pointer transition-transform hover:scale-150'
+                    onClick={() => onChange(null)}
+                  />
+                )}
+
+                {value && (
+                  <label htmlFor={regName + 'descImage'}>
+                    <BsImage className='absolute top-10 right-2 h-5 w-5 cursor-pointer transition-transform hover:scale-150' />
+                  </label>
+                )}
+              </div>
             )}
           />
         )}
