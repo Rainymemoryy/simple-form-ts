@@ -152,14 +152,14 @@ export default function ItemLayout({
                 />
                 {value && (
                   <BsXCircleFill
-                    className='absolute top-2 right-2 h-5 w-5 cursor-pointer transition-all hover:scale-150 hover:fill-gray-800'
+                    className='absolute top-2 right-2 h-5 w-5 cursor-pointer fill-white mix-blend-exclusion transition-all hover:scale-150'
                     onClick={() => onChange(null)}
                   />
                 )}
 
                 {value && (
                   <label htmlFor={regName + 'descImage'}>
-                    <BsImage className='absolute top-10 right-2 h-5 w-5 cursor-pointer transition-transform hover:scale-150 hover:fill-gray-800' />
+                    <BsImage className='absolute top-10 right-2 h-5 w-5 cursor-pointer fill-white mix-blend-exclusion transition-all hover:scale-150' />
                   </label>
                 )}
               </div>

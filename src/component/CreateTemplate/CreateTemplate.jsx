@@ -47,7 +47,8 @@ export default function CreateTemplate() {
                 sx={{
                   textTransform: 'unset',
                   fontSize: 16,
-                  fontWeight: '400'
+                  fontWeight: '400',
+                  height: 40
                 }}
               >
                 <span className='block text-center'>
