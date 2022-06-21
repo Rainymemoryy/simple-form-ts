@@ -58,8 +58,7 @@ export default function ItemLayout({
     setFocus,
     type,
     focusItemID,
-    setValue,
-    register
+    setValue
   } = useGetValue(regName)
 
   const renderTitle = useMemo(
@@ -113,24 +112,43 @@ export default function ItemLayout({
             )}
           />
 
-          <input
-            type='file'
-            accept='image/png, image/gif, image/jpeg'
-            className='hidden'
-            id={regName + 'descImage'}
-            {...register(`${regName}.${registerItem.itemImageDesc}`)}
+          <Controller
+            control={control}
+            name={`${regName}.${registerItem.itemImageDesc}`}
+            render={({ field: { onChange, onBlur, value, ref, name } }) => (
+              <>
+                <input
+                  type='file'
+                  accept='image/png, image/gif, image/jpeg'
+                  className='hidden'
+                  id={regName + 'descImage'}
+                  onChange={(e: any) =>
+                    onChange(URL.createObjectURL(e.target.files[0]))
+                  }
+                  ref={ref}
+                />
+                <label htmlFor={regName + 'descImage'}>
+                  <BsImage className='h-5 w-5 cursor-pointer' />
+                </label>
+              </>
+            )}
           />
-
-          <label htmlFor={regName + 'descImage'}>
-            <BsImage className='h-5 w-5 cursor-pointer' />
-          </label>
         </div>
 
         {isShowContent && (
-          <img
-            className='rounded-md'
-            src='https://images.wallpapersden.com/image/wxl-small-memory_58461.jpg'
-            alt=''
+          <Controller
+            control={control}
+            name={`${regName}.${registerItem.itemImageDesc}`}
+            render={({ field: { onChange, onBlur, value, ref, name } }) => (
+              <>
+                <img
+                  className='w-full rounded-md object-cover'
+                  // src='https://images.wallpapersden.com/image/wxl-small-memory_58461.jpg'
+                  src={value && value}
+                  alt=''
+                />
+              </>
+            )}
           />
         )}
       </>

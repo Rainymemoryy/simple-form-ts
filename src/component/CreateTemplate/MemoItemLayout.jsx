@@ -1,8 +1,6 @@
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate'
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import ContentCopyIcon from '@mui/icons-material/ContentCopy'
-import { IconButton, TextareaAutosize } from '@mui/material'
+import { TextareaAutosize } from '@mui/material'
 import MemoCheckOrRadio from './TypeItem/CheckBoxOrRadio/MemoCheckOrRadio'
 import { BsFiles, BsTrash } from 'react-icons/bs'
 export default function MemoItemLayout(props) {
