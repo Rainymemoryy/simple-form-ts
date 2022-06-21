@@ -147,7 +147,7 @@ export default function ItemLayout({
               <div className='relative text-gray-500'>
                 <img
                   className='w-full rounded-md object-cover'
-                  src={!!value && value}
+                  src={value ? value : undefined}
                   alt=''
                 />
                 {value && (
