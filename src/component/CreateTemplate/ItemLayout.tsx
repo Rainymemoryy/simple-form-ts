@@ -13,7 +13,6 @@ import {
   BsFiles,
   BsImage,
   BsTrash,
-  BsX,
   BsXCircleFill
 } from 'react-icons/bs'
 import { itemType } from '../../constants/itemType'
@@ -125,10 +124,10 @@ export default function ItemLayout({
                   className='hidden'
                   id={regName + 'descImage'}
                   onChange={(e: any) => {
-                    console.log(URL.createObjectURL(e.target.files[0]))
                     onChange(URL.createObjectURL(e.target.files[0]))
-                    console.log(e.target.value)
                   }}
+                  onSelect={e => console.log('onSelect', e)}
+                  value=''
                 />
                 {!value && (
                   <label htmlFor={regName + 'descImage'}>
@@ -145,7 +144,7 @@ export default function ItemLayout({
             control={control}
             name={`${regName}.${registerItem.itemImageDesc}`}
             render={({ field: { onChange, onBlur, value, ref, name } }) => (
-              <div className='relative'>
+              <div className='relative text-gray-500'>
                 <img
                   className='w-full rounded-md object-cover'
                   src={!!value && value}
@@ -153,14 +152,14 @@ export default function ItemLayout({
                 />
                 {value && (
                   <BsXCircleFill
-                    className='absolute top-2 right-2 h-5 w-5 cursor-pointer transition-transform hover:scale-150'
+                    className='absolute top-2 right-2 h-5 w-5 cursor-pointer transition-all hover:scale-150 hover:fill-gray-800'
                     onClick={() => onChange(null)}
                   />
                 )}
 
                 {value && (
                   <label htmlFor={regName + 'descImage'}>
-                    <BsImage className='absolute top-10 right-2 h-5 w-5 cursor-pointer transition-transform hover:scale-150' />
+                    <BsImage className='absolute top-10 right-2 h-5 w-5 cursor-pointer transition-transform hover:scale-150 hover:fill-gray-800' />
                   </label>
                 )}
               </div>
