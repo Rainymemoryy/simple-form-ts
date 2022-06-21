@@ -289,12 +289,13 @@ export default function ItemLayout({
 
   return (
     <main
-      className='relative flex items-center '
+      className='relative flex items-center'
       id={`${index}`}
       onClick={() =>
         focusItemID !== id && setValue(`${registerItem.focusItemID}`, id)
       }
     >
+      <>{console.log(regName)}</>
       <section
         className='absolute left-[-24px] opacity-50 hover:fill-violet-400 group-hover:opacity-100'
         {...provided.dragHandleProps}
