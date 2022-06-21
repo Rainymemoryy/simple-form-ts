@@ -3,6 +3,7 @@ import { Controller, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../../../constants/regCreTemplate'
 import { itemType } from '../../../../constants/itemType'
 import { BsX } from 'react-icons/bs'
+import MemoLayout from './MemoLayout'
 
 interface Props {
   regName: any
@@ -87,8 +88,17 @@ export default function CheckboxOrRadioItem({
             <BsFiles />
           </button> */}
 
-          <button
+          {/* <button
             className={`hidden h-5 w-5 items-center justify-center opacity-50 outline-none transition-transform hover:scale-150 hover:opacity-100  group-hover:flex`}
+            onClick={() => {
+              fieldArray.remove(index)
+            }}
+          >
+            <BsX />
+          </button> */}
+
+          <button
+            className='opacity-50 outline-none transition-transform hover:scale-150 hover:opacity-100'
             onClick={() => {
               fieldArray.remove(index)
             }}
@@ -98,9 +108,9 @@ export default function CheckboxOrRadioItem({
         </div>
       </section>
 
-      {/* <section className='group relative flex w-full items-center pl-[66px]'>
+      <section className='group relative flex w-full items-center pl-[64px]'>
         <MemoLayout />
-      </section> */}
+      </section>
     </main>
   )
 }

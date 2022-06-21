@@ -1,6 +1,6 @@
 import React from 'react'
-import ClearIcon from '@mui/icons-material/Clear'
-import { Button, Checkbox, IconButton } from '@mui/material'
+import { Button } from '@mui/material'
+import { BsX } from 'react-icons/bs'
 
 export default function MemoCheckOrRadio() {
   return (
@@ -10,35 +10,41 @@ export default function MemoCheckOrRadio() {
           key={index}
           className='relative flex w-full items-center gap-1'
         >
-          <Checkbox />
+          <div className='flex h-10 w-10 items-center justify-center'>
+            <input type={'checkbox'} />
+          </div>
           <input
             className='input-text h-8 flex-1 hover:border-violet-400'
             placeholder='Nhập tuỳ chọn'
           />
           <div className='flex gap-1'>
-            <IconButton className='hover:text-violet-400'>
-              <ClearIcon />
-            </IconButton>
+            <button className='opacity-50 outline-none transition-transform hover:scale-150 hover:opacity-100'>
+              <BsX />
+            </button>
           </div>
         </section>
       ))}
 
       <section className='flex w-full items-center gap-1'>
-        <Checkbox disabled />
+        <div className='flex h-10 w-10 items-center justify-center'>
+          <input type={'checkbox'} disabled />
+        </div>
         <input
           className='input-text h-8 flex-1 border-dashed bg-transparent hover:border-violet-400'
-          placeholder='Nhập tuỳ chọn'
+          placeholder='Khác...'
           disabled
         />
         <div className='flex gap-1'>
-          <IconButton className='hover:text-violet-400'>
-            <ClearIcon />
-          </IconButton>
+          <button className='opacity-50 outline-none transition-transform hover:scale-150 hover:opacity-100'>
+            <BsX />
+          </button>
         </div>
       </section>
 
       <section className='flex w-full items-center'>
-        <Checkbox disabled />
+        <div className='flex h-10 w-10 items-center justify-center'>
+          <input type={'checkbox'} disabled />
+        </div>
         <div className='flex flex-1 items-center gap-1'>
           <input
             className='input-text h-8 flex-1 truncate'
