@@ -4,6 +4,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import { IconButton, TextareaAutosize } from '@mui/material'
 import MemoCheckOrRadio from './TypeItem/CheckBoxOrRadio/MemoCheckOrRadio'
+import { BsFiles, BsTrash } from 'react-icons/bs'
 export default function MemoItemLayout(props) {
   const { type, provided } = props
   return (
@@ -44,13 +45,16 @@ export default function MemoItemLayout(props) {
         )}
 
         <div className='flex justify-end gap-3  pt-1'>
-          <IconButton className='hover:text-violet-400'>
-            <ContentCopyIcon />
-          </IconButton>
+          <button
+            type={'button'}
+            className='flex h-10 w-10 items-center justify-center rounded-full text-slate-900 outline-none'
+          >
+            <BsFiles className='h-5 w-5 opacity-50 transition-all hover:scale-125 hover:opacity-100' />
+          </button>
 
-          <IconButton className='hover:text-violet-400'>
-            <DeleteOutlineIcon />
-          </IconButton>
+          <button className='flex h-10 w-10 items-center justify-center rounded-full text-slate-900 outline-none'>
+            <BsTrash className='h-5 w-5 opacity-50 transition-all hover:scale-125 hover:opacity-100' />
+          </button>
         </div>
       </section>
     </main>
