@@ -17,7 +17,7 @@ import {
 } from 'react-icons/bs'
 import { registerItem } from '../../constants/regCreTemplate'
 
-const listItemType = [
+export const listItemType = [
   {
     name: 'Text',
     icon: <BsTextParagraph className='h-5 w-5 text-[#172b4d]' />,
@@ -61,7 +61,8 @@ const listItemType = [
   }
 ]
 
-const getItemByValue = (value: any) => listItemType.find(e => e.value === value)
+export const getItemByValue = (value: any) =>
+  listItemType.find(e => e.value === value)
 
 interface Props {
   regName?: any
