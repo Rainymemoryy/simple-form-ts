@@ -2,6 +2,8 @@
 import { ArrowLeftIcon, ChevronLeftIcon } from '@heroicons/react/solid'
 import React, { useState } from 'react'
 import { BsClipboardCheck } from 'react-icons/bs'
+import { Link } from 'react-router-dom'
+import { path } from '../constants/path'
 const tabData = [
   {
     icon: (
@@ -60,16 +62,19 @@ export default function PageLayout({ children }: any) {
       </aside>
 
       <main className='flex-1 overflow-y-scroll'>
-        <div className='flex flex-1 flex-col py-4 px-10'>
-          <button className='flex items-center gap-x-1 text-gray-400'>
-            <ArrowLeftIcon className='h-4 w-4 fill-current' />
+        <Link to={path.home}>
+          <div className='group fixed top-0 flex h-[60px] w-full items-center gap-x-1 pl-10 text-gray-400'>
+            <ArrowLeftIcon className='h-4 w-4 fill-current transition-all group-hover:scale-150 group-hover:fill-slate-900' />
             <span className='inline-block pt-0.5 text-sm leading-6'>
               Về trang chủ
             </span>
-          </button>
+          </div>
+        </Link>
 
-          <section className='pt-6'>{!!children && children}</section>
-        </div>
+        <section className='pl-10'>
+          <div className='h-[60px] w-full'></div>
+          {!!children && children}
+        </section>
       </main>
     </div>
   )
