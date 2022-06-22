@@ -65,26 +65,28 @@ export default function ItemLayout({
   const renderTitle = useMemo(
     () => (
       <>
-        <div className='flex flex-1 items-center gap-3'>
+        <div className='flex flex-1 gap-3'>
           <Controller
             control={control}
             name={`${regName}.${registerItem.itemName}`}
             render={({ field: { onChange, onBlur, value, ref, name } }) => (
-              <ReactTextareaAutosize
-                name={name}
-                ref={ref}
-                value={value?.trimStart() || ''}
-                onChange={onChange}
-                aria-label='Item name'
-                className='input-text min-h-[32px] flex-1 resize-none overflow-y-hidden text-lg font-medium tracking-wide'
-                placeholder='Nhập tên câu hỏi'
-                onKeyDown={(e: any) => {
-                  if (e.keyCode === 13) {
-                    e.target.blur()
-                    setFocus(`${regName}.${registerItem.itemDecs}`)
-                  }
-                }}
-              />
+              <div className='flex flex-1 items-center'>
+                <ReactTextareaAutosize
+                  name={name}
+                  ref={ref}
+                  value={value?.trimStart() || ''}
+                  onChange={onChange}
+                  aria-label='Item name'
+                  className='input-text min-h-[32px] w-full resize-none overflow-y-hidden text-lg font-medium tracking-wide'
+                  placeholder='Nhập tên câu hỏi'
+                  onKeyDown={(e: any) => {
+                    if (e.keyCode === 13) {
+                      e.target.blur()
+                      setFocus(`${regName}.${registerItem.itemDecs}`)
+                    }
+                  }}
+                />
+              </div>
             )}
           />
 

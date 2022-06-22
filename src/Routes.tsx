@@ -3,8 +3,10 @@ import { Route, Routes } from 'react-router-dom'
 import { path } from './constants/path'
 import CreateTemplatePage from './pages/CreateTemplatePage/CreateTemplatePage'
 
-import Home from './pages/CreateTemplatePage/Home'
-import NotFound from './pages/CreateTemplatePage/NotFound'
+import Home from './pages/Home'
+import NotFound from './pages/NotFound'
+
+import PageLayout from './pages/PageLayout'
 
 // const Home = lazy(() => import('./pages/Home/Home'))
 
@@ -25,7 +27,10 @@ export default function RoutesApp() {
         path={path.createTemplate}
         element={
           <Suspense fallback={<Fallback />}>
-            <CreateTemplatePage />
+            {/* <CreateTemplatePage /> */}
+            <PageLayout>
+              <CreateTemplatePage />
+            </PageLayout>
           </Suspense>
         }
       />

@@ -10,16 +10,14 @@ interface Props {
 export default function TemplateNav({ fieldArray }: Props) {
   const { control } = useFormContext()
   return (
-    <nav className='max-h-screen items-center p-6 '>
+    <nav className='max-h-screen items-center'>
       <section
         aria-label='field name'
         className='flex w-full flex-col gap-2.5 rounded-md'
       >
-        <div className='h-10 truncate rounded-md px-3 py-1.5 text-lg text-gray-500'>
-          Danh sách câu hỏi
-        </div>
+        <h1 className='text-xl font-bold text-gray-900'> Danh sách câu hỏi</h1>
 
-        <div className='flex min-h-[500px] flex-col gap-1 rounded-lg border bg-white p-3'>
+        <div className='flex min-h-[500px] flex-col gap-1 rounded-lg border bg-gray-50 p-3'>
           <DragDropContext
             onDragEnd={e => {
               e.source &&
