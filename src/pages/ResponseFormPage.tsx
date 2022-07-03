@@ -22,7 +22,7 @@ export default function ResponseFormPage() {
     <div className='flex w-full justify-center bg-slate-50'>
       <FormProvider {...methods}>
         <form
-          className='relative flex w-full max-w-3xl flex-col gap-1 py-6'
+          className='relative flex w-full max-w-3xl flex-col py-6'
           onSubmit={methods.handleSubmit(data => console.log('submit', data))}
         >
           {fieldArray.fields?.map((item, index) => (

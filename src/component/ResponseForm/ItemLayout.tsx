@@ -1,13 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import ItemText from '../CreateTemplate/TypeItem/ItemText'
+
 import ItemImage from '../CreateTemplate/TypeItem/ItemImage'
-import ItemVectorLayout from '../CreateTemplate/TypeItem/ItemVectorLayout'
-import CheckboxOrRadio from './ItemContentType/CheckboxOrRadio'
-import Vector from './ItemContentType/Vector'
 import { itemType } from '../../constants/itemType'
 import { TextareaAutosize } from '@mui/material'
-import { useFormContext } from 'react-hook-form'
+import { Controller, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../constants/regCreTemplate'
+import Vector from './Vector'
 
 interface Props {
   regName: string
@@ -17,10 +15,10 @@ interface Props {
 
 export default function ItemLayout({ regName, fields }: Props) {
   const { itemName, itemDecs, isMultiLine, itemType: type } = fields
-  const { register } = useFormContext()
+  const { register, control } = useFormContext()
 
   return (
-    <main className='relative flex flex-1 items-center'>
+    <main className='relative flex flex-1 items-center border-t-2 border-violet-100'>
       <section className={`flex flex-1 flex-col bg-white p-6  outline-0`}>
         {itemName && (
           <p className='min-h-[32px] flex-1 resize-none text-lg font-medium tracking-wide'>
@@ -56,18 +54,58 @@ export default function ItemLayout({ regName, fields }: Props) {
               )}
             </>
           )}
-          {type === itemType.checkbox && (
-            <CheckboxOrRadio regName={regName} type={itemType.checkbox} />
+          {/* listCheckOrRadio */}
+          {(type === itemType.checkbox || type === itemType.radio) && (
+            <>
+              {fields.listCheckOrRadio?.map((item, index) => (
+                <section className='group relative flex w-full items-center'>
+                  {type === itemType.checkbox && (
+                    <Controller
+                      control={control}
+                      name={`${regName}.listCheckOrRadio[${index}].isCheck`}
+                      render={({ field: { onChange, onBlur, value, ref } }) => (
+                        <div className='flex h-8 w-8 items-center justify-center'>
+                          <input
+                            type='checkbox'
+                            id={`${regName}.listCheckOrRadio[${index}]`}
+                            onChange={onChange}
+                            checked={value || false}
+                          />
+                        </div>
+                      )}
+                    />
+                  )}
+
+                  {type === itemType.radio && (
+                    <Controller
+                      control={control}
+                      name={`${regName}.isCheck`}
+                      render={({ field: { onChange, onBlur, value, ref } }) => (
+                        <div className='flex h-8 w-8 items-center justify-center'>
+                          <input
+                            type='radio'
+                            id={`${regName}.listCheckOrRadio[${index}]`}
+                            name={`${regName}.${registerItem.radioCheck}`}
+                          />
+                        </div>
+                      )}
+                    />
+                  )}
+
+                  <label htmlFor={`${regName}.listCheckOrRadio[${index}]`}>
+                    <div className='flex h-8 flex-1 cursor-pointer items-center'>
+                      {item.value}
+                    </div>
+                  </label>
+                </section>
+              ))}
+            </>
           )}
-          {type === itemType.radio && (
-            <CheckboxOrRadio regName={regName} type={itemType.checkbox} />
-          )}
+
           {type === itemType.image && <ItemImage />}
-          {type === itemType.vectorCheckbox && (
+          {(type === itemType.vectorCheckbox ||
+            type === itemType.vectorRadio) && (
             <Vector regName={regName} type={itemType.vectorCheckbox} />
-          )}
-          {type === itemType.vectorRadio && (
-            <ItemVectorLayout regName={regName} type={itemType.vectorRadio} />
           )}
         </div>
       </section>
