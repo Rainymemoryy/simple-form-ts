@@ -48,14 +48,14 @@ export default function ItemLayout({ regName, fields }: Props) {
                 />
               ) : (
                 <input
-                  className='w-full truncate rounded border  border-slate-200 px-3 py-1.5 outline-none outline-0 hover:border-violet-200 focus:border-violet-400'
+                  className='w-full truncate rounded border border-slate-200 px-3 py-1.5 opacity-100 outline-none outline-0 hover:border-violet-200 focus:border-violet-400'
                   placeholder='Nhập một câu ngắn'
                   {...register(`${regName}.${registerItem.textDefault}`)}
                 />
               )}
             </>
           )}
-          {/* listCheckOrRadio */}
+
           {(type === itemType.checkbox || type === itemType.radio) && (
             <>
               {fields.listCheckOrRadio?.map((item, index) => (
@@ -111,7 +111,7 @@ export default function ItemLayout({ regName, fields }: Props) {
         </div>
       </section>
 
-      {/* <div className='absolute left-2 h-[50%] w-1 rounded-full bg-yellow-400'></div> */}
+      <div className='absolute left-2 h-[50%] w-1 rounded-full bg-violet-400 opacity-50'></div>
     </main>
   )
 }
