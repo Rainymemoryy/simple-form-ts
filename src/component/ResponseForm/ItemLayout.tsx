@@ -59,7 +59,10 @@ export default function ItemLayout({ regName, fields }: Props) {
           {(type === itemType.checkbox || type === itemType.radio) && (
             <>
               {fields.listCheckOrRadio?.map((item, index) => (
-                <section className='group relative flex w-full items-center'>
+                <section
+                  className='group relative flex w-full items-center'
+                  key={index}
+                >
                   {type === itemType.checkbox && (
                     <Controller
                       control={control}
