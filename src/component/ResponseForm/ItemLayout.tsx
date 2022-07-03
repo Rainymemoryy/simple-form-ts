@@ -47,7 +47,7 @@ export default function ItemLayout({ regName, fields }: Props) {
                 />
               ) : (
                 <input
-                  className='w-full rounded border border-slate-200  px-3 py-1.5 outline-none outline-0'
+                  className='w-full truncate rounded border  border-slate-200 px-3 py-1.5 outline-none outline-0'
                   placeholder='Nhập một câu ngắn'
                   {...register(`${regName}.${registerItem.textDefault}`)}
                 />
