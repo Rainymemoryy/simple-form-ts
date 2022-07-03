@@ -43,13 +43,13 @@ export default function ItemLayout({ regName, fields }: Props) {
               {isMultiLine ? (
                 <TextareaAutosize
                   minRows={2}
-                  className='input-defaulvalue w-full'
+                  className='w-full resize-none rounded border px-3 py-1.5 outline-none outline-1'
                   placeholder='Nhập một đoạn văn'
                   {...register(`${regName}.${registerItem.textDefault}`)}
                 />
               ) : (
                 <input
-                  className='h-8 w-full border-slate-200 bg-slate-100 outline-none outline-0'
+                  className='w-full rounded border border-slate-200  px-3 py-1.5 outline-none outline-0'
                   placeholder='Nhập một câu ngắn'
                   {...register(`${regName}.${registerItem.textDefault}`)}
                 />
