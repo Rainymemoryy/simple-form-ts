@@ -3,7 +3,151 @@ import ItemLayout from '../component/ResponseForm/ItemLayout'
 import { regItem } from '../constants/regCreTemplate'
 
 const form = JSON.parse(
-  '{"items":[{"itemName":"Nhập tên câu hỏi","itemType":"CheckBox","isShowContent":true,"textDefault":"","listCheckOrRadio":[{"value":"một hai ba bón"},{"value":"năm sau bay tam"}]},{"itemName":"Nhập tên câu hỏi - copy","itemType":"Radio","isShowContent":true,"textDefault":"","listCheckOrRadio":[{"value":"một hai ba bón"},{"value":"năm sau bay tam"}]},{"itemName":"Nhập cái gì vào đây cũng dc à","itemType":"Text","isShowContent":true,"textDefault":"","isMultiLine":false},{"itemName":"Nhập cái gì vào đây cũng dc à - copy","itemType":"Text","isShowContent":true,"textDefault":"","isMultiLine":true},{"itemName":"Nhập tên câu hỏi","itemType":"Text","isShowContent":true,"textDefault":""},{"itemName":"Nhập cái gì","itemType":"vectorCheckbox","isShowContent":true,"textDefault":"","itemIsRequired":true,"rows":[{"value":"Nhập cái số 1"},{"value":"Cái hsoso 2"}],"cols":[{"value":"Nhập cái số 3"},{"value":"Nhập cái số 5"}]}],"focusItemID":"fe9d2ca4-c769-4d60-abeb-2bddf0f1970f"}'
+  JSON.stringify({
+    items: [
+      {
+        itemName: 'Nhập tên câu hỏi',
+        itemType: 'Text',
+        isShowContent: true,
+        itemDecs:
+          'Đơn giản chỉ với 1 đôi giày có thể làm nổi bật lên cá tính phong cách cách riêng của bạn \nCách mix màu sành điệu \nDễ phối đồ dù là trang phục bụi bặm hay váy xuông cá tính \nNếu quý khách muốn biết rõ hơn về sản phẩm Xin vui lòng CHAT vs SHOP để được tư vấn trước khi đặt hàng \n✅Kích thước ( SIZE) 35,36,37,38,39\n✅Chiều cao đế 5cm\n✅Ôm chân, thon gọn, tuyệt xinh',
+        textDefault: 'Nhập mô tả cho nhiều dòng nè bạn ơi',
+        isMultiLine: true
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        itemDecs:
+          'Đơn giản chỉ với 1 đôi giày có thể làm nổi bật lên cá tính phong cách cách riêng của bạn \nCách mix màu sành điệu \nDễ phối đồ dù là trang phục bụi bặm hay váy xuông cá tính \nNếu quý khách muốn biết rõ hơn về sản phẩm Xin vui lòng CHAT vs SHOP để được tư vấn trước khi đặt hàng \n✅Kích thước ( SIZE) 35,36,37,38,39\n✅Chiều cao đế 5cm\n✅Ôm chân, thon gọn, tuyệt xinh',
+        textDefault: 'Nhập mô tả cho nhiều dòng nè bạn ơi',
+        isMultiLine: false
+      },
+      {
+        itemName: 'Nhập tên câu hỏi',
+        itemType: 'CheckBox',
+        isShowContent: true,
+        itemDecs:
+          'Đơn giản chỉ với 1 đôi giày có thể làm nổi bật lên cá tính phong cách cách riêng của bạn \nCách mix màu sành điệu \nDễ phối đồ dù là trang phục bụi bặm hay váy xuông cá tính \nNếu quý khách muốn biết rõ hơn về sản phẩm Xin vui lòng CHAT vs SHOP để được tư vấn trước khi đặt hàng \n✅Kích thước ( SIZE) 35,36,37,38,39\n✅Chiều cao đế 5cm\n✅Ôm chân, thon gọn, tuyệt xinh',
+        textDefault: 'Nhập mô tả cho nhiều dòng nè bạn ơi',
+        isMultiLine: false,
+        rows: [
+          { value: 'Hàng 1' },
+          { value: 'Hàng 2' },
+          { value: 'Hàng 3' },
+          { value: 'Hàng 4' },
+          { value: 'Hàng 5' },
+          { value: 'Hàng 6' },
+          { value: 'Hàng 7' }
+        ],
+        cols: [
+          { value: 'Cột 1' },
+          { value: 'Cột 2' },
+          { value: 'Cột 3' },
+          { value: 'Cột 4' },
+          { value: 'Cột 5 ' },
+          { value: 'Cột 6' },
+          { value: 'Cột 7' }
+        ],
+        listCheckOrRadio: [
+          { value: 'Lựa chọn số 1', isCheck: true },
+          { value: 'Lựa chọn số 2', isCheck: true },
+          { value: 'Lựa chọn số 3' },
+          { value: 'Lựa chọn só 4' },
+          { value: 'Lựa chọn số 5' }
+        ]
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy',
+        itemType: 'Radio',
+        isShowContent: true,
+        itemDecs:
+          'Đơn giản chỉ với 1 đôi giày có thể làm nổi bật lên cá tính phong cách cách riêng của bạn \nCách mix màu sành điệu \nDễ phối đồ dù là trang phục bụi bặm hay váy xuông cá tính \nNếu quý khách muốn biết rõ hơn về sản phẩm Xin vui lòng CHAT vs SHOP để được tư vấn trước khi đặt hàng \n✅Kích thước ( SIZE) 35,36,37,38,39\n✅Chiều cao đế 5cm\n✅Ôm chân, thon gọn, tuyệt xinh',
+        textDefault: 'Nhập mô tả cho nhiều dòng nè bạn ơi',
+        isMultiLine: false,
+        rows: [
+          { value: 'Hàng 1' },
+          { value: 'Hàng 2' },
+          { value: 'Hàng 3' },
+          { value: 'Hàng 4' },
+          { value: 'Hàng 5' },
+          { value: 'Hàng 6' },
+          { value: 'Hàng 7' }
+        ],
+        cols: [
+          { value: 'Cột 1' },
+          { value: 'Cột 2' },
+          { value: 'Cột 3' },
+          { value: 'Cột 4' },
+          { value: 'Cột 5 ' },
+          { value: 'Cột 6' },
+          { value: 'Cột 7' }
+        ],
+        listCheckOrRadio: [
+          { value: 'Lựa chọn số 1', isCheck: true },
+          { value: 'Lựa chọn số 2', isCheck: true },
+          { value: 'Lựa chọn số 3' },
+          { value: 'Lựa chọn só 4' },
+          { value: 'Lựa chọn số 5' }
+        ]
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy',
+        itemType: 'vectorCheckbox',
+        isShowContent: true,
+        itemDecs:
+          'Đơn giản chỉ với 1 đôi giày có thể làm nổi bật lên cá tính phong cách cách riêng của bạn \nCách mix màu sành điệu \nDễ phối đồ dù là trang phục bụi bặm hay váy xuông cá tính \nNếu quý khách muốn biết rõ hơn về sản phẩm Xin vui lòng CHAT vs SHOP để được tư vấn trước khi đặt hàng \n✅Kích thước ( SIZE) 35,36,37,38,39\n✅Chiều cao đế 5cm\n✅Ôm chân, thon gọn, tuyệt xinh',
+        textDefault: 'Nhập mô tả cho nhiều dòng nè bạn ơi',
+        isMultiLine: false,
+        rows: [
+          { value: 'Hàng 1' },
+          { value: 'Hàng 2' },
+          { value: 'Hàng 3' },
+          { value: 'Hàng 4' },
+          { value: 'Hàng 5' },
+          { value: 'Hàng 6' },
+          { value: 'Hàng 7' }
+        ],
+        cols: [
+          { value: 'Cột 1' },
+          { value: 'Cột 2' },
+          { value: 'Cột 3' },
+          { value: 'Cột 4' },
+          { value: 'Cột 5 ' },
+          { value: 'Cột 6' },
+          { value: 'Cột 7' }
+        ]
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy',
+        itemType: 'vectorRadio',
+        isShowContent: true,
+        itemDecs:
+          'Đơn giản chỉ với 1 đôi giày có thể làm nổi bật lên cá tính phong cách cách riêng của bạn \nCách mix màu sành điệu \nDễ phối đồ dù là trang phục bụi bặm hay váy xuông cá tính \nNếu quý khách muốn biết rõ hơn về sản phẩm Xin vui lòng CHAT vs SHOP để được tư vấn trước khi đặt hàng \n✅Kích thước ( SIZE) 35,36,37,38,39\n✅Chiều cao đế 5cm\n✅Ôm chân, thon gọn, tuyệt xinh',
+        textDefault: 'Nhập mô tả cho nhiều dòng nè bạn ơi',
+        isMultiLine: false,
+        rows: [
+          { value: 'Hàng 1' },
+          { value: 'Hàng 2' },
+          { value: 'Hàng 3' },
+          { value: 'Hàng 4' },
+          { value: 'Hàng 5' },
+          { value: 'Hàng 6' },
+          { value: 'Hàng 7' }
+        ],
+        cols: [
+          { value: 'Cột 1' },
+          { value: 'Cột 2' },
+          { value: 'Cột 3' },
+          { value: 'Cột 4' },
+          { value: 'Cột 5 ' },
+          { value: 'Cột 6' },
+          { value: 'Cột 7' }
+        ]
+      }
+    ],
+    focusItemID: 'e375e76b-9647-4c48-91a9-705dc8ac331b'
+  })
 )
 
 export default function ResponseFormPage() {
@@ -12,6 +156,7 @@ export default function ResponseFormPage() {
       items: form.items
     }
   })
+  console.log(form)
 
   const fieldArray = useFieldArray({
     control: methods.control,

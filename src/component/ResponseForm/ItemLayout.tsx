@@ -20,7 +20,7 @@ export default function ItemLayout({ regName, fields }: Props) {
   return (
     <main className='relative flex flex-1 items-center'>
       <section
-        className={`flex flex-1 flex-col rounded bg-white p-6  outline-0`}
+        className={`flex flex-1 flex-col rounded bg-white p-6 outline-0`}
       >
         {itemName && (
           <p className='min-h-[32px] flex-1 resize-none text-lg font-medium tracking-wide'>
@@ -29,15 +29,14 @@ export default function ItemLayout({ regName, fields }: Props) {
         )}
 
         {itemDecs && (
-          <p className='flex-1 resize-none overflow-y-hidden text-sm'>
-            {`Thông số kỹ thuật:
-             Kính cường lực rõ ràng bảo vệ màn hình
-             Độ cứng 9H có thể chống xước, chống bám vân tay và chống bám bụi hiệu quả.
-           `}
-          </p>
+          <TextareaAutosize
+            disabled
+            className='resize-none bg-white text-sm text-gray-600 outline-0'
+            {...register(`${regName}.${registerItem.itemDecs}`)}
+          />
         )}
 
-        <div>
+        <div className='pt-4'>
           {type === itemType.text && (
             <>
               {isMultiLine ? (
@@ -112,7 +111,7 @@ export default function ItemLayout({ regName, fields }: Props) {
         </div>
       </section>
 
-      <div className='absolute left-2 h-[50%] w-1 rounded-full bg-violet-400 opacity-50'></div>
+      {/* <div className='absolute left-2 h-[50%] w-1 rounded-full bg-yellow-400'></div> */}
     </main>
   )
 }
