@@ -26,7 +26,12 @@ export default function ResponseFormPage() {
           onSubmit={methods.handleSubmit(data => console.log('submit', data))}
         >
           {fieldArray.fields?.map((item, index) => (
-            <ItemLayout index={index} regName={regItem(index)} key={index} />
+            <ItemLayout
+              index={index}
+              regName={regItem(index)}
+              key={index}
+              fields={fieldArray.fields[index]}
+            />
           ))}
         </form>
       </FormProvider>

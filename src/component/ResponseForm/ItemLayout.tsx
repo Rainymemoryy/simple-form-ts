@@ -1,117 +1,78 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-
-import { Controller, useFormContext } from 'react-hook-form'
-import { registerItem } from '../../constants/regCreTemplate'
-import ReactTextareaAutosize from 'react-textarea-autosize'
 import ItemText from '../CreateTemplate/TypeItem/ItemText'
 import ItemImage from '../CreateTemplate/TypeItem/ItemImage'
 import ItemVectorLayout from '../CreateTemplate/TypeItem/ItemVectorLayout'
-import { itemType } from '../../constants/itemType'
 import CheckboxOrRadio from './ItemContentType/CheckboxOrRadio'
 import Vector from './ItemContentType/Vector'
-
-const useGetValue = regName => {
-  const { register, control, getValues, watch, setFocus, setValue } =
-    useFormContext()
-  const isShowContent = watch(`${regName}.${registerItem.isShowContent}`)
-  const type = watch(`${regName}.${registerItem.itemType}`)
-
-  const focusItemID = watch(`${registerItem.focusItemID}`)
-  return {
-    type,
-    isShowContent,
-    register,
-    control,
-    getValues,
-    setFocus,
-    focusItemID,
-    setValue
-  }
-}
+import { itemType } from '../../constants/itemType'
+import { TextareaAutosize } from '@mui/material'
+import { useFormContext } from 'react-hook-form'
+import { registerItem } from '../../constants/regCreTemplate'
 
 interface Props {
   regName: string
   index: number
+  fields: any
 }
-export default function ItemLayout({ index, regName }: Props) {
-  const { control, setFocus, type } = useGetValue(regName)
+
+export default function ItemLayout({ regName, fields }: Props) {
+  const { itemName, itemDecs, isMultiLine, itemType: type } = fields
+  const { register } = useFormContext()
 
   return (
     <main className='relative flex flex-1 items-center'>
-      <section className={`flex flex-1 flex-col bg-white p-8 pb-6  outline-0`}>
-        <div className='flex flex-1 items-center gap-3'>
-          <Controller
-            control={control}
-            name={`${regName}.${registerItem.itemName}`}
-            render={({ field: { onChange, onBlur, value, ref, name } }) => (
-              <ReactTextareaAutosize
-                disabled
-                name={name}
-                ref={ref}
-                value={value?.trimStart() || ''}
-                onChange={onChange}
-                aria-label='Item name'
-                className='min-h-[32px] flex-1 resize-none overflow-y-hidden bg-transparent text-lg font-medium tracking-wide'
-                placeholder='Nhập tên câu hỏi'
-                onKeyDown={(e: any) => {
-                  if (e.keyCode === 13) {
-                    e.target.blur()
-                    setFocus(`${regName}.${registerItem.itemDecs}`)
-                  }
-                }}
-              />
-            )}
-          />
-        </div>
+      <section className={`flex flex-1 flex-col bg-white p-6  outline-0`}>
+        {itemName && (
+          <p className='min-h-[32px] flex-1 resize-none text-lg font-medium tracking-wide'>
+            {itemName}
+          </p>
+        )}
 
-        <div className='flex min-h-[32px] items-center gap-3 text-gray-500'>
-          <Controller
-            control={control}
-            name={`${regName}.${registerItem.itemDecs}`}
-            render={({ field: { onChange, onBlur, value, ref, name } }) => (
-              <ReactTextareaAutosize
-                disabled
-                aria-label='Item description'
-                className='flex-1 resize-none overflow-y-hidden bg-transparent text-sm'
-                placeholder='Nhập mô tả'
-                name={name}
-                onChange={onChange}
-                value={value?.trimStart() || ''}
-                onKeyDown={(e: any) => {
-                  if (e.keyCode === 13 && !e.shiftKey) {
-                    e.target.blur()
-                  }
-                }}
-                ref={ref}
-              />
-            )}
-          />
-        </div>
+        {itemDecs && (
+          <p className='flex-1 resize-none overflow-y-hidden text-sm'>
+            {`Thông số kỹ thuật:
+             Kính cường lực rõ ràng bảo vệ màn hình
+             Độ cứng 9H có thể chống xước, chống bám vân tay và chống bám bụi hiệu quả.
+           `}
+          </p>
+        )}
 
         <div>
-          {type === itemType.text && <ItemText regName={regName} />}
-
+          {type === itemType.text && (
+            <>
+              {isMultiLine ? (
+                <TextareaAutosize
+                  minRows={2}
+                  className='input-defaulvalue w-full'
+                  placeholder='Nhập một đoạn văn'
+                  {...register(`${regName}.${registerItem.textDefault}`)}
+                />
+              ) : (
+                <input
+                  className='h-8 w-full border-slate-200 bg-slate-100 outline-none outline-0'
+                  placeholder='Nhập một câu ngắn'
+                  {...register(`${regName}.${registerItem.textDefault}`)}
+                />
+              )}
+            </>
+          )}
           {type === itemType.checkbox && (
-            <CheckboxOrRadio regName={regName} type={type} />
+            <CheckboxOrRadio regName={regName} type={itemType.checkbox} />
           )}
-
           {type === itemType.radio && (
-            <CheckboxOrRadio regName={regName} type={type} />
+            <CheckboxOrRadio regName={regName} type={itemType.checkbox} />
           )}
-
           {type === itemType.image && <ItemImage />}
-
           {type === itemType.vectorCheckbox && (
             <Vector regName={regName} type={itemType.vectorCheckbox} />
           )}
-
           {type === itemType.vectorRadio && (
             <ItemVectorLayout regName={regName} type={itemType.vectorRadio} />
           )}
         </div>
       </section>
 
-      {/* <div className='absolute left-2 h-[50%] w-1 rounded-full bg-violet-400 opacity-50'></div> */}
+      <div className='absolute left-2 h-[50%] w-1 rounded-full bg-violet-400 opacity-50'></div>
     </main>
   )
 }
