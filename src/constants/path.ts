@@ -1,6 +1,6 @@
 export const path = {
   createTemplate: '/create-template',
-
+  response: '/response/:formId',
   home: '/',
 
   login: '/login',

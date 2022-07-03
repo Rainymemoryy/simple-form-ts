@@ -1,5 +1,5 @@
-import CreateTemplate from '../../component/CreateTemplate/CreateTemplate'
-import Template404 from '../../component/CreateTemplate/Template404'
+import CreateTemplate from '../component/CreateTemplate/CreateTemplate'
+import Template404 from '../component/CreateTemplate/Template404'
 
 export default function CreateTemplatePage() {
   return (

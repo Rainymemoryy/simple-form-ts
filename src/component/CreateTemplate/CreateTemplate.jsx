@@ -32,7 +32,9 @@ export default function CreateTemplate() {
   return (
     <FormProvider {...methods}>
       <form
-        onSubmit={methods.handleSubmit(data => console.log('submit', data))}
+        onSubmit={methods.handleSubmit(data =>
+          console.log('submit', JSON.stringify(data))
+        )}
       >
         <div className='relative flex h-full justify-center gap-10 px-6'>
           <OverFlowDiv className='sticky top-0 hidden max-h-screen w-96 overflow-y-auto lg:block'>

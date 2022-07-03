@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { path } from '../../constants/path'
+import { path } from '../constants/path'
 
 export default function Home() {
   return (

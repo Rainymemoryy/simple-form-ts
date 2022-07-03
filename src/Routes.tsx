@@ -1,10 +1,11 @@
 import React, { Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { path } from './constants/path'
-import CreateTemplatePage from './pages/CreateTemplatePage/CreateTemplatePage'
+import CreateTemplatePage from './pages/CreateTemplatePage'
 
-import Home from './pages/CreateTemplatePage/Home'
-import NotFound from './pages/CreateTemplatePage/NotFound'
+import Home from './pages/Home'
+import NotFound from './pages/NotFound'
+import ResponseFormPage from './pages/ResponseFormPage'
 
 // const Home = lazy(() => import('./pages/Home/Home'))
 
@@ -26,6 +27,14 @@ export default function RoutesApp() {
         element={
           <Suspense fallback={<Fallback />}>
             <CreateTemplatePage />
+          </Suspense>
+        }
+      />
+      <Route
+        path={path.response}
+        element={
+          <Suspense fallback={<Fallback />}>
+            <ResponseFormPage />
           </Suspense>
         }
       />
