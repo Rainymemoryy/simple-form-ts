@@ -18,8 +18,10 @@ export default function ItemLayout({ regName, fields }: Props) {
   const { register, control } = useFormContext()
 
   return (
-    <main className='relative flex flex-1 rounded-lg items-center'>
-      <section className={`flex flex-1 flex-col bg-white p-6  outline-0`}>
+    <main className='relative flex flex-1 items-center'>
+      <section
+        className={`flex flex-1 flex-col rounded bg-white p-6  outline-0`}
+      >
         {itemName && (
           <p className='min-h-[32px] flex-1 resize-none text-lg font-medium tracking-wide'>
             {itemName}
