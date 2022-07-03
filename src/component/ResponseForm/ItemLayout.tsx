@@ -31,7 +31,7 @@ export default function ItemLayout({ regName, fields }: Props) {
         {itemDecs && (
           <TextareaAutosize
             disabled
-            className='resize-none bg-white text-sm text-gray-600 outline-0'
+            className='resize-none bg-white text-sm outline-0'
             {...register(`${regName}.${registerItem.itemDecs}`)}
           />
         )}
