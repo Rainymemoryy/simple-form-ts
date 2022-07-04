@@ -1,12 +1,19 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { PinInput } from 'react-input-pin-code'
+import { Link, useNavigate } from 'react-router-dom'
 import { path } from '../constants/path'
 
 export default function Home() {
+  const [values, setValues] = React.useState(['', '', '', '', '', ''])
+  const navigate = useNavigate()
+  useEffect(() => {
+    values.every(e => e !== '') &&
+      navigate(path.response + values.toString().replaceAll(',', ''))
+  }, [navigate, values])
   return (
     <main className='flex h-screen'>
       <section className='flex flex-1 items-center justify-center'></section>
-      <section className='flex flex-1 items-center justify-center bg-slate-50'>
+      <section className='flex flex-1 flex-col items-center justify-center gap-10 bg-slate-50'>
         <Link to={path.createTemplate}>
           <div aria-label='Lựa chọn container' className='flex flex-col gap-3'>
             <button className='relative flex h-20 w-96 rounded-lg border border-violet-200 bg-white outline-0 hover:border-violet-400 hover:shadow-xl'>
@@ -24,6 +31,15 @@ export default function Home() {
             </button>
           </div>
         </Link>
+
+        <PinInput
+          type='number'
+          values={values}
+          onChange={(value, index, values) => setValues(values)}
+          validBorderColor='rgb(167, 139, 250)'
+          borderColor='rgb(221, 214, 254)'
+          focusBorderColor='rgb(167, 139, 250)'
+        />
       </section>
     </main>
   )
