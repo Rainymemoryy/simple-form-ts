@@ -74,7 +74,7 @@ export default function ItemLayout({ regName, fields }: Props) {
                       control={control}
                       name={`${regName}.listCheckOrRadio[${index}].isCheck`}
                       render={({ field: { onChange, onBlur, value, ref } }) => (
-                        <div className='flex h-10 w-10 items-center justify-center'>
+                        <div className='flex h-9 w-10 items-center justify-center'>
                           <input
                             type='checkbox'
                             id={`${regName}.listCheckOrRadio[${index}]`}
@@ -91,7 +91,7 @@ export default function ItemLayout({ regName, fields }: Props) {
                       control={control}
                       name={`${regName}.isCheck`}
                       render={({ field: { onChange, onBlur, value, ref } }) => (
-                        <div className='flex h-8 w-10 items-center justify-center'>
+                        <div className='flex h-9 w-10 items-center justify-center'>
                           <input
                             type='radio'
                             id={`${regName}.listCheckOrRadio[${index}]`}
