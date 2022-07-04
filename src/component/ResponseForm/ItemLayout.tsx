@@ -18,7 +18,7 @@ const randomColor = () => {
   return color > 2 ? 'bg-yellow-50' : color > 1 ? 'bg-red-50' : ''
 }
 export default function ItemLayout({ regName, fields }: Props) {
-  const { itemName, itemDecs, isMultiLine, itemType: type } = fields
+  const { itemName, itemDecs, isMultiLine, itemType: type, isRequired } = fields
   const { register, control } = useFormContext()
 
   const [color] = useState(randomColor)
@@ -47,17 +47,26 @@ export default function ItemLayout({ regName, fields }: Props) {
             <>
               {isMultiLine ? (
                 <TextareaAutosize
-                  minRows={2}
+                  id={regName + 'text'}
                   className='w-full resize-none rounded border bg-transparent px-3 py-1.5 outline-none outline-1 hover:border-violet-200 focus:border-violet-400'
                   placeholder='Nhập một đoạn văn'
+                  minRows={2}
                   {...register(`${regName}.${registerItem.textDefault}`)}
                 />
               ) : (
                 <input
+                  id={regName + 'text'}
                   className='w-full truncate rounded border border-slate-200 bg-transparent px-3 py-1.5 opacity-100 outline-none outline-0 hover:border-violet-200 focus:border-violet-400'
                   placeholder='Nhập một câu ngắn'
                   {...register(`${regName}.${registerItem.textDefault}`)}
                 />
+              )}
+              {true && (
+                <label htmlFor={regName + 'text'}>
+                  <p className='cursor-pointer text-sm text-red-400'>
+                    * Đây là bắt buộc phải nhập
+                  </p>
+                </label>
               )}
             </>
           )}
