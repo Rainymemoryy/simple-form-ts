@@ -9,6 +9,7 @@ import TemplateNav from './TemplateNav'
 import { useEffect } from 'react'
 import { itemType } from '../../constants/itemType'
 import { OverFlowDiv } from '../../style/component/OverFlowDiv'
+import TeamplateDecs from './TeamplateDecs'
 
 let renderCount = 0
 
@@ -32,9 +33,10 @@ export default function CreateTemplate() {
   return (
     <FormProvider {...methods}>
       <form
-        onSubmit={methods.handleSubmit(data =>
+        onSubmit={methods.handleSubmit(data => {
           console.log('submit', JSON.stringify(data))
-        )}
+          console.log('data', data)
+        })}
       >
         <div className='relative flex h-full justify-center gap-10 px-6'>
           <OverFlowDiv className='sticky top-0 hidden max-h-screen w-96 overflow-y-auto lg:block'>
@@ -72,6 +74,8 @@ export default function CreateTemplate() {
                 <UnfoldLessIcon />
               </IconButton>
             </div>
+
+            <TeamplateDecs />
 
             <DragDropContext
               onDragEnd={e => {

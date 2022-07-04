@@ -295,7 +295,6 @@ export default function ItemLayout({
         focusItemID !== id && setValue(`${registerItem.focusItemID}`, id)
       }
     >
-      <>{console.log(regName)}</>
       <section
         className='absolute left-[-24px] opacity-50 hover:fill-violet-400 group-hover:opacity-100'
         {...provided.dragHandleProps}

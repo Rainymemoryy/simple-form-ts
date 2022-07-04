@@ -1,162 +1,48 @@
-import { FormProvider, useFieldArray, useForm } from 'react-hook-form'
+import {
+  Controller,
+  FormProvider,
+  useFieldArray,
+  useForm
+} from 'react-hook-form'
+import { BsXCircleFill } from 'react-icons/bs'
+import ReactTextareaAutosize from 'react-textarea-autosize'
 import ItemLayout from '../component/ResponseForm/ItemLayout'
 import { regItem } from '../constants/regCreTemplate'
 
 const form = JSON.parse(
   JSON.stringify({
+    templateName: 'Tên phiếu khảo sát',
+    templateDesc: 'Nhập cái gì vàoo đây cũng dc mà đúng ko',
+    templateImage: {},
     items: [
       {
         itemName: 'Nhập tên câu hỏi',
-        itemType: 'Text',
-        isShowContent: true,
-        itemDecs:
-          'Đơn giản chỉ với 1 đôi giày có thể làm nổi bật lên cá tính phong cách cách riêng của bạn \nCách mix màu sành điệu \nDễ phối đồ dù là trang phục bụi bặm hay váy xuông cá tính \nNếu quý khách muốn biết rõ hơn về sản phẩm Xin vui lòng CHAT vs SHOP để được tư vấn trước khi đặt hàng \n✅Kích thước ( SIZE) 35,36,37,38,39\n✅Chiều cao đế 5cm\n✅Ôm chân, thon gọn, tuyệt xinh',
-        textDefault: 'Nhập mô tả cho nhiều dòng nè bạn ơi',
-        isMultiLine: true
-      },
-      {
-        itemName: 'Nhập tên câu hỏi - copy',
-        itemType: 'Text',
-        isShowContent: true,
-        itemDecs:
-          'Đơn giản chỉ với 1 đôi giày có thể làm nổi bật lên cá tính phong cách cách riêng của bạn \nCách mix màu sành điệu \nDễ phối đồ dù là trang phục bụi bặm hay váy xuông cá tính \nNếu quý khách muốn biết rõ hơn về sản phẩm Xin vui lòng CHAT vs SHOP để được tư vấn trước khi đặt hàng \n✅Kích thước ( SIZE) 35,36,37,38,39\n✅Chiều cao đế 5cm\n✅Ôm chân, thon gọn, tuyệt xinh',
-        textDefault: 'Nhập mô tả cho nhiều dòng nè bạn ơi',
-        isMultiLine: false
-      },
-      {
-        itemName: 'Nhập tên câu hỏi',
-        itemType: 'CheckBox',
-        isShowContent: true,
-        itemDecs:
-          'Đơn giản chỉ với 1 đôi giày có thể làm nổi bật lên cá tính phong cách cách riêng của bạn \nCách mix màu sành điệu \nDễ phối đồ dù là trang phục bụi bặm hay váy xuông cá tính \nNếu quý khách muốn biết rõ hơn về sản phẩm Xin vui lòng CHAT vs SHOP để được tư vấn trước khi đặt hàng \n✅Kích thước ( SIZE) 35,36,37,38,39\n✅Chiều cao đế 5cm\n✅Ôm chân, thon gọn, tuyệt xinh',
-        textDefault: 'Nhập mô tả cho nhiều dòng nè bạn ơi',
-        isMultiLine: false,
-        rows: [
-          { value: 'Hàng 1' },
-          { value: 'Hàng 2' },
-          { value: 'Hàng 3' },
-          { value: 'Hàng 4' },
-          { value: 'Hàng 5' },
-          { value: 'Hàng 6' },
-          { value: 'Hàng 7' }
-        ],
-        cols: [
-          { value: 'Cột 1' },
-          { value: 'Cột 2' },
-          { value: 'Cột 3' },
-          { value: 'Cột 4' },
-          { value: 'Cột 5 ' },
-          { value: 'Cột 6' },
-          { value: 'Cột 7' }
-        ],
-        listCheckOrRadio: [
-          { value: 'Lựa chọn số 1', isCheck: true },
-          { value: 'Lựa chọn số 2', isCheck: true },
-          { value: 'Lựa chọn số 3' },
-          { value: 'Lựa chọn só 4' },
-          { value: 'Lựa chọn số 5' }
-        ]
-      },
-      {
-        itemName: 'Nhập tên câu hỏi - copy',
         itemType: 'Radio',
         isShowContent: true,
-        itemDecs:
-          'Đơn giản chỉ với 1 đôi giày có thể làm nổi bật lên cá tính phong cách cách riêng của bạn \nCách mix màu sành điệu \nDễ phối đồ dù là trang phục bụi bặm hay váy xuông cá tính \nNếu quý khách muốn biết rõ hơn về sản phẩm Xin vui lòng CHAT vs SHOP để được tư vấn trước khi đặt hàng \n✅Kích thước ( SIZE) 35,36,37,38,39\n✅Chiều cao đế 5cm\n✅Ôm chân, thon gọn, tuyệt xinh',
-        textDefault: 'Nhập mô tả cho nhiều dòng nè bạn ơi',
-        isMultiLine: false,
-        rows: [
-          { value: 'Hàng 1' },
-          { value: 'Hàng 2' },
-          { value: 'Hàng 3' },
-          { value: 'Hàng 4' },
-          { value: 'Hàng 5' },
-          { value: 'Hàng 6' },
-          { value: 'Hàng 7' }
-        ],
-        cols: [
-          { value: 'Cột 1' },
-          { value: 'Cột 2' },
-          { value: 'Cột 3' },
-          { value: 'Cột 4' },
-          { value: 'Cột 5 ' },
-          { value: 'Cột 6' },
-          { value: 'Cột 7' }
-        ],
+        textDefault: '',
         listCheckOrRadio: [
-          { value: 'Lựa chọn số 1', isCheck: true },
-          { value: 'Lựa chọn số 2', isCheck: true },
-          { value: 'Lựa chọn số 3' },
-          { value: 'Lựa chọn só 4' },
-          { value: 'Lựa chọn số 5' }
-        ]
-      },
-      {
-        itemName: 'Nhập tên câu hỏi - copy',
-        itemType: 'vectorCheckbox',
-        isShowContent: true,
-        itemDecs:
-          'Đơn giản chỉ với 1 đôi giày có thể làm nổi bật lên cá tính phong cách cách riêng của bạn \nCách mix màu sành điệu \nDễ phối đồ dù là trang phục bụi bặm hay váy xuông cá tính \nNếu quý khách muốn biết rõ hơn về sản phẩm Xin vui lòng CHAT vs SHOP để được tư vấn trước khi đặt hàng \n✅Kích thước ( SIZE) 35,36,37,38,39\n✅Chiều cao đế 5cm\n✅Ôm chân, thon gọn, tuyệt xinh',
-        textDefault: 'Nhập mô tả cho nhiều dòng nè bạn ơi',
-        isMultiLine: false,
-        rows: [
-          { value: 'Hàng 1' },
-          { value: 'Hàng 2' },
-          { value: 'Hàng 3' },
-          { value: 'Hàng 4' },
-          { value: 'Hàng 5' },
-          { value: 'Hàng 6' },
-          { value: 'Hàng 7' }
-        ],
-        cols: [
-          { value: 'Cột 1' },
-          { value: 'Cột 2' },
-          { value: 'Cột 3' },
-          { value: 'Cột 4' },
-          { value: 'Cột 5 ' },
-          { value: 'Cột 6' },
-          { value: 'Cột 7' }
-        ]
-      },
-      {
-        itemName: 'Nhập tên câu hỏi - copy',
-        itemType: 'vectorRadio',
-        isShowContent: true,
-        itemDecs:
-          'Đơn giản chỉ với 1 đôi giày có thể làm nổi bật lên cá tính phong cách cách riêng của bạn \nCách mix màu sành điệu \nDễ phối đồ dù là trang phục bụi bặm hay váy xuông cá tính \nNếu quý khách muốn biết rõ hơn về sản phẩm Xin vui lòng CHAT vs SHOP để được tư vấn trước khi đặt hàng \n✅Kích thước ( SIZE) 35,36,37,38,39\n✅Chiều cao đế 5cm\n✅Ôm chân, thon gọn, tuyệt xinh',
-        textDefault: 'Nhập mô tả cho nhiều dòng nè bạn ơi',
-        isMultiLine: false,
-        rows: [
-          { value: 'Hàng 1' },
-          { value: 'Hàng 2' },
-          { value: 'Hàng 3' },
-          { value: 'Hàng 4' },
-          { value: 'Hàng 5' },
-          { value: 'Hàng 6' },
-          { value: 'Hàng 7' }
-        ],
-        cols: [
-          { value: 'Cột 1' },
-          { value: 'Cột 2' },
-          { value: 'Cột 3' },
-          { value: 'Cột 4' },
-          { value: 'Cột 5 ' },
-          { value: 'Cột 6' },
-          { value: 'Cột 7' }
+          { value: 'Một con vịt có 2 cánh' },
+          { value: 'có 3 cánh' },
+          { value: '4 cánh' },
+          { value: 'và 5 cánh' }
         ]
       }
     ],
-    focusItemID: 'e375e76b-9647-4c48-91a9-705dc8ac331b'
+    focusItemID: 'be07e403-14b2-4f5c-b53d-d011d72e987d'
   })
 )
 
 export default function ResponseFormPage() {
   const methods = useForm({
     defaultValues: {
-      items: form.items
+      items: form.items,
+      templateImage: form.templateImage,
+      templateName: form.templateName,
+      templateDesc: form.templateDesc
     }
   })
-  console.log(form)
+
+  const { control } = methods
 
   const fieldArray = useFieldArray({
     control: methods.control,
@@ -170,6 +56,67 @@ export default function ResponseFormPage() {
           className='relative flex w-full max-w-3xl flex-col gap-3 py-6 px-3'
           onSubmit={methods.handleSubmit(data => console.log('submit', data))}
         >
+          <div className='my-3 rounded-lg bg-white p-8 shadow-11'>
+            <Controller
+              control={control}
+              name='templateName'
+              defaultValue='Tên phiếu khảo sát'
+              render={({ field: { onChange, onBlur, value, ref, name } }) => (
+                <ReactTextareaAutosize
+                  name={name}
+                  ref={ref}
+                  value={value?.trimStart() || ''}
+                  onChange={onChange}
+                  aria-label='Item name'
+                  className='input-text min-h-[32px] w-full flex-1 resize-none overflow-y-hidden text-xl font-medium tracking-wide'
+                  placeholder='Tên phiếu khảo sát'
+                  onKeyDown={(e: any) => {
+                    if (e.keyCode === 13) {
+                      e.target.blur()
+                    }
+                  }}
+                />
+              )}
+            />
+
+            <Controller
+              control={control}
+              name='templateDesc'
+              defaultValue='Mô tả chi tiết cho phiếu khảo sát'
+              render={({ field: { onChange, onBlur, value, ref, name } }) => (
+                <ReactTextareaAutosize
+                  name={name}
+                  ref={ref}
+                  value={value?.trimStart() || ''}
+                  onChange={onChange}
+                  aria-label='Item name'
+                  className='input-text w-full flex-1 resize-none overflow-y-hidden text-sm text-gray-500'
+                  placeholder='Mô tả'
+                  onKeyDown={(e: any) => {
+                    if (e.keyCode === 13) {
+                      e.target.blur()
+                    }
+                  }}
+                />
+              )}
+            />
+
+            <Controller
+              defaultValue={null}
+              control={control}
+              name='templateImage'
+              render={({ field: { value } }) => (
+                <img
+                  className='w-full rounded-lg'
+                  src={
+                    value ? (value[0] ? URL.createObjectURL(value[0]) : '') : ''
+                  }
+                  alt=''
+                />
+              )}
+            />
+          </div>
+
           {fieldArray.fields?.map((item, index) => (
             <ItemLayout
               index={index}

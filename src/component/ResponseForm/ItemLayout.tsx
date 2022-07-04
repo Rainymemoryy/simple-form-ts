@@ -35,7 +35,7 @@ export default function ItemLayout({ regName, fields }: Props) {
         )}
 
         <>
-          {itemDecs.split('\n')?.map((line, index) => (
+          {itemDecs?.split('\n')?.map((line, index) => (
             <p className='w-full text-sm text-gray-600' key={index}>
               {line}
             </p>
