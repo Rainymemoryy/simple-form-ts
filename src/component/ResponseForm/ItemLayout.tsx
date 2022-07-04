@@ -28,13 +28,13 @@ export default function ItemLayout({ regName, fields }: Props) {
           </p>
         )}
 
-        {itemDecs && (
-          <TextareaAutosize
-            disabled
-            className='resize-none bg-white text-sm outline-0'
-            {...register(`${regName}.${registerItem.itemDecs}`)}
-          />
-        )}
+        <>
+          {itemDecs.split('\n')?.map((line, index) => (
+            <p className='w-full text-sm text-gray-600' key={index}>
+              {line}
+            </p>
+          ))}
+        </>
 
         <div className='pt-4'>
           {type === itemType.text && (
