@@ -6,6 +6,7 @@ import { TextareaAutosize } from '@mui/material'
 import { Controller, useFormContext } from 'react-hook-form'
 import { registerItem } from '../../constants/regCreTemplate'
 import Vector from './Vector'
+import DOMPurify from 'dompurify'
 
 interface Props {
   regName: string
