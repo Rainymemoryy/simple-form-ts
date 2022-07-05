@@ -2,7 +2,6 @@ import React from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 import { BsImage, BsUpload, BsXCircleFill } from 'react-icons/bs'
 import ReactTextareaAutosize from 'react-textarea-autosize'
-import { registerItem } from '../../constants/regCreTemplate'
 
 export default function TeamplateDecs() {
   const { control, register } = useFormContext()

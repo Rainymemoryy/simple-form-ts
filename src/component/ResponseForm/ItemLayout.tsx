@@ -18,7 +18,7 @@ const randomColor = () => {
   return color > 2 ? 'bg-yellow-50' : color > 1 ? 'bg-red-50' : ''
 }
 export default function ItemLayout({ regName, fields }: Props) {
-  const { itemName, itemDecs, isMultiLine, itemType: type, isRequired } = fields
+  const { itemName, itemDecs, isMultiLine, itemType: type } = fields
   const { register, control } = useFormContext()
 
   const [color] = useState(randomColor)

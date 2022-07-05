@@ -4,7 +4,7 @@ import {
   useFieldArray,
   useForm
 } from 'react-hook-form'
-import { BsXCircleFill } from 'react-icons/bs'
+
 import ReactTextareaAutosize from 'react-textarea-autosize'
 import ItemLayout from '../component/ResponseForm/ItemLayout'
 import { regItem } from '../constants/regCreTemplate'
@@ -12,23 +12,401 @@ import { regItem } from '../constants/regCreTemplate'
 const form = JSON.parse(
   JSON.stringify({
     templateName: 'Tên phiếu khảo sát',
-    templateDesc: 'Nhập cái gì vàoo đây cũng dc mà đúng ko',
+    templateDesc: 'Mô tả chi tiết cho phiếu khảo sát',
     templateImage: {},
     items: [
       {
-        itemName: 'Nhập tên câu hỏi',
-        itemType: 'Radio',
+        itemName: 'Nhập tên câu hỏi - copy',
+        itemType: 'Text',
         isShowContent: true,
-        textDefault: '',
-        listCheckOrRadio: [
-          { value: 'Một con vịt có 2 cánh' },
-          { value: 'có 3 cánh' },
-          { value: '4 cánh' },
-          { value: 'và 5 cánh' }
-        ]
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
+      },
+      {
+        itemName: 'Nhập tên câu hỏi - copy - copy',
+        itemType: 'Text',
+        isShowContent: true,
+        textDefault: ''
       }
     ],
-    focusItemID: 'be07e403-14b2-4f5c-b53d-d011d72e987d'
+    focusItemID: 'e916faee-97c0-47c9-8604-d3d5d16b58c9'
   })
 )
 
